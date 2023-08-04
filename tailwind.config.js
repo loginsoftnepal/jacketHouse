@@ -6,6 +6,7 @@ module.exports = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
+    './section/**/*.{ts,tsx}',
 	],
   theme: {
     container: {
@@ -22,6 +23,15 @@ module.exports = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        red: "var(--red)",
+        search: {
+          DEFAULT: "var(--search)",
+          foreground: "var(--search-foreground)"
+        },
+        screen: {
+          DEFAULT: "var(--screen)",
+          foreground: "var(--screen-foreground)",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -73,4 +83,10 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
+   safelist: [
+    {
+      pattern:
+        /(bg|text|border)-(screen|search|red)/,
+    },
+  ],
 }

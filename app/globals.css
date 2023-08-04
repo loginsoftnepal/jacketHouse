@@ -34,6 +34,14 @@
     --ring: 215 20.2% 65.1%;
  
     --radius: 0.5rem;
+
+    --search: #ececec; 
+    --search-foreground: #979797;
+
+    --screen: #D2D2D2;
+    --screen-foreground: #525252;
+
+    --red: #EE6060;
   }
  
   .dark {
@@ -65,6 +73,14 @@
     --destructive-foreground: 0 85.7% 97.3%;
  
     --ring: 217.2 32.6% 17.5%;
+
+    --search: #494949; 
+    --search-foreground: #fce2e2;
+
+    --screen: #1d1c1c;
+    --screen-foreground: #fce2e2;
+
+    --red: #f2f2f2;
   }
 }
  
@@ -75,4 +91,4 @@
   body {
     @apply bg-background text-foreground;
   }
-}
+} 
