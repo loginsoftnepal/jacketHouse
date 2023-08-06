@@ -1,89 +1,97 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 @layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
- 
+
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
- 
+
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
- 
+
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
- 
+
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
- 
+
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
- 
+
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
- 
+
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
- 
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
- 
+
     --ring: 215 20.2% 65.1%;
- 
+
     --radius: 0.5rem;
 
-    --search: #ececec; 
+    --search: #ececec;
     --search-foreground: #979797;
 
-    --screen: #D2D2D2;
+    --screen: #d2d2d2;
     --screen-foreground: #525252;
 
-    --red: #EE6060;
+    --red: #ee6060;
+    --collection-red: #cf8888;
+    --brand-black: #171717;
+    --light-white: #d9d9d9;
+    --dark-white: #777777;
   }
- 
+
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
- 
+
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
- 
+
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
- 
+
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
- 
+
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
- 
+
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
- 
+
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
- 
+
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
- 
+
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 85.7% 97.3%;
- 
+
     --ring: 217.2 32.6% 17.5%;
 
-    --search: #494949; 
+    --search: #494949;
     --search-foreground: #fce2e2;
 
     --screen: #1d1c1c;
     --screen-foreground: #fce2e2;
 
     --red: #f2f2f2;
+    --collection-red: #575757;
+    --brand-black: #171717;
+    --light-white: #ffffff;
+    --dark-white: #777777;
   }
 }
- 
+
 @layer base {
   * {
     @apply border-border;
@@ -91,4 +99,4 @@
   body {
     @apply bg-background text-foreground;
   }
-} 
+}
