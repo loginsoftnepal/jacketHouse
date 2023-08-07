@@ -4,7 +4,7 @@ import { SearchIcon } from 'lucide-react'
 
 export default function Searchbar() {
   return (
-    <div className="flex basis-[40%] bg-search ml-8 px-2 py-1 w-full ">
+    <div className="flex basis-[30%] bg-search ml-8 px-2 py-1 w-full ">
       <Button className="mx-2" variant={'search'} size={'icon'}>
         <SearchIcon />
       </Button>

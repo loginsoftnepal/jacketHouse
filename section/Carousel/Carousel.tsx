@@ -4,11 +4,12 @@ import { PropsWithChildren, useEffect, useState } from 'react'
 import { Dots } from './Dots'
 import React from 'react'
 import { CarouselControls } from './CarouselControls'
+import AutoPlay from 'embla-carousel-autoplay';
 
 type Props = PropsWithChildren & EmblaOptionsType
 
 export default function Carousel({ children, ...options }: Props) {
-  const [emblaRef, emblaApi] = useEmblaCarousel(options)
+  const [emblaRef, emblaApi] = useEmblaCarousel(options, [AutoPlay()])
   const [selectedIndex, setSelectedIndex] = useState(0)
 
   useEffect(() => {
@@ -32,12 +33,12 @@ export default function Carousel({ children, ...options }: Props) {
     <>
       <div className="overflow-hidden relative" ref={emblaRef}>
         <div className="flex">{children}</div>
-        <CarouselControls
+        {/* <CarouselControls
           canScrollPrev={canScrollPrev}
           canScrollNext={canScrollNext}
           onPrev={() => emblaApi?.scrollPrev()}
           onNext={() => emblaApi?.scrollNext()}
-        />
+        /> */}
       </div>
       <Dots itemsLength={length} selectedIndex={selectedIndex} />
     </>

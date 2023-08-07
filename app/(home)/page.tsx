@@ -1,12 +1,10 @@
 import CategoryBar from '@/section/CategoryBar/CategoryBar'
 import Collection from '@/section/Collection/Collection'
 import HeroSlider from '@/section/HeroSlider/HeroSlider'
-import Navbar from '@/section/Navbar/Navbar'
 import JacketImage from '../../image/Rectangle 13.png'
 import CollectionImage from '../../image/man 1.png'
 import { SaleBanner } from '@/section/SaleBanner/SaleBanner'
 import { LandingBrands } from '@/section/LandingBrands/LandingBrands'
-import { Footer } from '@/section/Footer/Footer'
 
 export default function Home() {
   const collection1 = {
@@ -74,15 +72,13 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <Navbar />
+    <div> 
       <CategoryBar />
       <HeroSlider />
       <Collection {...collection1} />
       <Collection {...collection2} />
       <SaleBanner />
       <LandingBrands />
-      <Footer />
     </div>
   )
 }

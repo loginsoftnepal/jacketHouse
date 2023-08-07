@@ -12,7 +12,7 @@ export interface IJacket {
 
 export const JacketItem: React.FC<IJacket> = (props) => {
   return (
-    <div className="w-[25%] flex flex-col">
+    <div className="w-[30%] flex flex-col">
       <div className="">
         <Image className="w-full h-full object-cover" src={props.img} alt="" />
       </div>
