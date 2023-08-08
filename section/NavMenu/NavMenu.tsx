@@ -12,7 +12,7 @@ export default function NavMenu() {
       </div>
 
        <div className="h-full flex items-center border-b-4 transition-colors duration-300 border-b-transparent hover:border-b-red">
-        <Link href={'/brands'}>Our Brands</Link>
+        <Link href={'/brand'}>Our Brands</Link>
       </div>
 
       <div className="h-full flex items-center border-b-4 transition-colors duration-300 border-b-transparent hover:border-b-red">
