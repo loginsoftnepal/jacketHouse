@@ -1,4 +1,4 @@
-import Image, { StaticImageData } from 'next/Image'
+import Image, { StaticImageData } from 'next/image'
 import React from 'react'
 import Image1 from '../../image/man 1.png';
 import { Button } from '@/components/ui/button';
@@ -16,7 +16,7 @@ export interface IJacket {
 
   return (
     <div className='flex flex-col items-center'>
-       <div className='w-[300px]'>
+       <div className='w-[250px]'>
         <Image src={props.img} alt="" className='-w-full h-full object-cover object-center' />
        </div>
        <div className='w-full flex flex-col'>
@@ -25,7 +25,7 @@ export interface IJacket {
             <div className='flex'>
                 {props.colors.map((val, index) => {
                     return (
-                        <div key={index} className={`mr-2 w-[10px] h-[10px] rounded-full bg-[${val}]`}></div>
+                        <div key={index} className={`mr-2 w-[15px] h-[15px] rounded-full bg-[red]`}></div>
                     )
                 })}
             </div>
@@ -39,8 +39,8 @@ export interface IJacket {
          </div>
 
          <div className='w-full flex justify-between items-center'>
-            <Button variant={'link'}>Add to Cart</Button>
-            <Link href="/product">View</Link>
+            <Button className='px-0 font-semibold' variant={'link'}>Add to Cart</Button>
+            <Link className='font-semibold' href="/product">View</Link>
          </div>
        </div>
     </div>
