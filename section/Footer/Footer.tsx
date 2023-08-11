@@ -40,67 +40,114 @@ export const Footer = () => {
               alt=""
             />
           </div>
-          <div className='flex flex-col mb-4'>
-            <span className='text-darkWheat hover:text-white'>Head Office: Satdobato,</span>
-            <span className='text-darkWheat hover:text-white'>Lalitpur, Nepal</span>
+          <div className="flex flex-col mb-4">
+            <span className="text-darkWheat hover:text-white">
+              Head Office: Satdobato,
+            </span>
+            <span className="text-darkWheat hover:text-white">
+              Lalitpur, Nepal
+            </span>
           </div>
 
-          <div className=' flex flex-col mb-4'>
-           <span className='text-darkWheat hover:text-white'>sales@thejackethouse.com</span>
-            <span className='text-darkWheat hover:text-white'>+977 974761111</span>
+          <div className=" flex flex-col mb-4">
+            <span className="text-darkWheat hover:text-white">
+              sales@thejackethouse.com
+            </span>
+            <span className="text-darkWheat hover:text-white">
+              +977 974761111
+            </span>
           </div>
 
-          <div className='flex'>
-            <Link href={'#'} className='mr-4'>
-              <FacebookIcon color='white' />
+          <div className="flex">
+            <Link href={'#'} className="mr-4">
+              <FacebookIcon color="white" />
             </Link>
-            <Link href={'#'} className='mr-4'>
-              <InstagramIcon color='white' />
+            <Link href={'#'} className="mr-4">
+              <InstagramIcon color="white" />
             </Link>
-            <Link href={'#'} className='mr-4'>
-              <WheatIcon color='white' />
+            <Link href={'#'} className="mr-4">
+              <WheatIcon color="white" />
             </Link>
           </div>
         </div>
 
         <div className="secondColumn basis-[15%] flex flex-col">
-          <h3 className='mb-8 uppercase text-white'>COMPANY</h3>
-          <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>About Us</Link>
-          <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Shop</Link>
-          <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Career</Link>
-          <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Contact Us</Link>
+          <h3 className="mb-8 uppercase text-white">COMPANY</h3>
+          <Link className="text-darkWheat hover:text-white mb-2" href={'#'}>
+            About Us
+          </Link>
+          <Link className="text-darkWheat hover:text-white mb-2" href={'#'}>
+            Shop
+          </Link>
+          <Link className="text-darkWheat hover:text-white mb-2" href={'#'}>
+            Career
+          </Link>
+          <Link className="text-darkWheat hover:text-white mb-2" href={'#'}>
+            Contact Us
+          </Link>
         </div>
 
-        <div className='thirdColumn text-white basis-[15%] flex flex-col'>
-          <h3 className='mb-8 uppercase'>SHOP</h3>
-          <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Women</Link>
-          <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Men</Link>
-          <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Jacket</Link>
-          <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Leggings</Link>
+        <div className="thirdColumn text-white basis-[15%] flex flex-col">
+          <h3 className="mb-8 uppercase">SHOP</h3>
+          <Link className="text-darkWheat hover:text-white mb-2" href={'#'}>
+            Women
+          </Link>
+          <Link className="text-darkWheat hover:text-white mb-2" href={'#'}>
+            Men
+          </Link>
+          <Link className="text-darkWheat hover:text-white mb-2" href={'#'}>
+            Jacket
+          </Link>
+          <Link className="text-darkWheat hover:text-white mb-2" href={'#'}>
+            Leggings
+          </Link>
         </div>
 
-        <div className='fouthColumn text-white basis-[15%] flex flex-col'>
-          <h3 className='mb-8 uppercase'>Our Locations</h3>
+        <div className="fouthColumn text-white basis-[15%] flex flex-col">
+          <h3 className="mb-8 uppercase">Our Locations</h3>
 
-          <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Satdobato</Link>
-          <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Samakhushi</Link>
-          <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Bhaktapur</Link>
-          <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Bouddha</Link>
-          <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Pokhara</Link>
+          <Link className="text-darkWheat hover:text-white mb-2" href={'#'}>
+            Satdobato
+          </Link>
+          <Link className="text-darkWheat hover:text-white mb-2" href={'#'}>
+            Samakhushi
+          </Link>
+          <Link className="text-darkWheat hover:text-white mb-2" href={'#'}>
+            Bhaktapur
+          </Link>
+          <Link className="text-darkWheat hover:text-white mb-2" href={'#'}>
+            Bouddha
+          </Link>
+          <Link className="text-darkWheat hover:text-white mb-2" href={'#'}>
+            Pokhara
+          </Link>
         </div>
 
-        <div className='fifthColumn text-white basis-[15%] flex flex-col'>
-          <h3 className='mb-8 uppercase'>Help</h3>
-          <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Customer Service</Link>
-          <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Legal Privacy</Link>
-          <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Contract</Link>
-          <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Membership</Link>
+        <div className="fifthColumn text-white basis-[15%] flex flex-col">
+          <h3 className="mb-8 uppercase">Help</h3>
+          <Link className="text-darkWheat hover:text-white mb-2" href={'#'}>
+            Customer Service
+          </Link>
+          <Link className="text-darkWheat hover:text-white mb-2" href={'#'}>
+            Legal Privacy
+          </Link>
+          <Link className="text-darkWheat hover:text-white mb-2" href={'#'}>
+            Contract
+          </Link>
+          <Link className="text-darkWheat hover:text-white mb-2" href={'#'}>
+            Membership
+          </Link>
         </div>
       </div>
 
-      <div className='flex justify-between items-center w-[80%] mx-auto mt-4'>
-         <span  className='basis-[35%] text-darkWheat hover:text-white'>@Copyright 2023 | All Right Reserved</span>
-         <span className='basis-[60%] text-darkWheat hover:text-white'>Designed By <span className='text-red text-md font-semibold'>LOGIN SOFT</span></span>
+      <div className="flex justify-between items-center w-[80%] mx-auto mt-4">
+        <span className="basis-[35%] text-darkWheat hover:text-white">
+          @Copyright 2023 | All Right Reserved
+        </span>
+        <span className="basis-[60%] text-darkWheat hover:text-white">
+          Designed By{' '}
+          <span className="text-red text-md font-semibold">LOGIN SOFT</span>
+        </span>
       </div>
     </div>
   )

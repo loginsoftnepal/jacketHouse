@@ -1,6 +1,13 @@
-"use client"
+'use client'
 import { Button } from '@/components/ui/button'
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet'
 import {
   AppWindow,
   LayoutGrid,
@@ -12,8 +19,8 @@ import {
   User,
 } from 'lucide-react'
 import React from 'react'
-import { signIn, signOut } from "next-auth/react";
-import CredentialsProvider  from 'next-auth/providers/credentials'
+import { signIn, signOut } from 'next-auth/react'
+import CredentialsProvider from 'next-auth/providers/credentials'
 
 function NavItem() {
   return (
@@ -21,23 +28,27 @@ function NavItem() {
       <div className="relative">
         <Sheet>
           <SheetTrigger>
-        <ShoppingBag color="#000000" strokeWidth={1.75} />
-        <div className="absolute -top-1 -right-1 h-[8px] w-[8px] rounded-[50%] bg-red"></div>
-         </SheetTrigger>
-         <SheetContent>
+            <ShoppingBag color="#000000" strokeWidth={1.75} />
+            <div className="absolute -top-1 -right-1 h-[8px] w-[8px] rounded-[50%] bg-red"></div>
+          </SheetTrigger>
+          <SheetContent>
             <SheetHeader>
-      <SheetTitle>Cart</SheetTitle>
-      <SheetDescription>
-        This action cannot be undone. This will permanently delete your account
-        and remove your data from our servers.
-      </SheetDescription>
-    </SheetHeader>
-         </SheetContent>
+              <SheetTitle>Cart</SheetTitle>
+              <SheetDescription>
+                This action cannot be undone. This will permanently delete your
+                account and remove your data from our servers.
+              </SheetDescription>
+            </SheetHeader>
+          </SheetContent>
         </Sheet>
       </div>
 
       <div>
-        <Button variant={'default'} className="rounded-3xl" onClick={() => signIn()}>
+        <Button
+          variant={'default'}
+          className="rounded-3xl"
+          onClick={() => signIn()}
+        >
           <User size={20} className="mr-2" />
           {`Login`}
         </Button>

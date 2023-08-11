@@ -9,7 +9,7 @@ export default function CategoryBar() {
     },
     {
       img: Jacket,
-      name: 'TrackSuit',
+      name: 'nepal suit',
     },
     {
       img: Jacket,
