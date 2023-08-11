@@ -1,6 +1,6 @@
 import Carousel from "../Carousel/Carousel";
 import SliderImage from '../../image/Group 133.png';
-import Image from "next/Image";
+import Image from "next/image";
 
 export default function HeroSlider() {
 
