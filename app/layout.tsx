@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { Footer } from '@/section/Footer/Footer'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter', })
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Jacket House',
@@ -22,7 +22,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
-      </body>
+        </body>
     </html>
   )
 }

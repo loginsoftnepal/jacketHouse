@@ -11,7 +11,7 @@ export default function NavMenu() {
         <Link href={'/shop'}>Our Shop</Link>
       </div>
 
-      <div className="h-full flex items-center border-b-4 transition-colors duration-300 border-b-transparent hover:border-b-red">
+       <div className="h-full flex items-center border-b-4 transition-colors duration-300 border-b-transparent hover:border-b-red">
         <Link href={'/brand'}>Our Brands</Link>
       </div>
 

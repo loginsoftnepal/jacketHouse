@@ -54,7 +54,7 @@ function Collection(collection: ICollection) {
                 <JacketItem
                   key={index}
                   id={index}
-                  image={val.image}
+                  img={val.img}
                   colors={val.colors}
                   price={val.price}
                   category={val.category}

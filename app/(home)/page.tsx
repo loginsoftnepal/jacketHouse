@@ -14,7 +14,7 @@ export default function Home() {
     product: [
       {
         id: 1,
-        image: JacketImage,
+        img: JacketImage,
         category: 'Dress',
         name: 'Yellomel',
         price: 2300,
@@ -22,7 +22,7 @@ export default function Home() {
       },
       {
         id: 2,
-        image: JacketImage,
+        img: JacketImage,
         category: 'Dress',
         name: 'Yellomel',
         price: 2300,
@@ -30,7 +30,7 @@ export default function Home() {
       },
       {
         id: 3,
-        image: JacketImage,
+        img: JacketImage,
         category: 'Dress',
         name: 'Yellomel',
         price: 2300,
@@ -46,7 +46,7 @@ export default function Home() {
     product: [
       {
         id: 1,
-        image: JacketImage,
+        img: JacketImage,
         category: 'Dress',
         name: 'Yellomel',
         price: 2300,
@@ -54,7 +54,7 @@ export default function Home() {
       },
       {
         id: 2,
-        image: JacketImage,
+        img: JacketImage,
         category: 'Dress',
         name: 'Yellomel',
         price: 2300,
@@ -62,7 +62,7 @@ export default function Home() {
       },
       {
         id: 3,
-        image: JacketImage,
+        img: JacketImage,
         category: 'Dress',
         name: 'Yellomel',
         price: 2300,
@@ -72,7 +72,7 @@ export default function Home() {
   }
 
   return (
-    <div>
+    <div> 
       <CategoryBar />
       <HeroSlider />
       <Collection {...collection1} />

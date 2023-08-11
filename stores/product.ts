@@ -1,10 +1,10 @@
-import { StateCreator } from 'zustand'
-import { Product } from './cart'
+import { StateCreator } from "zustand";
+import { Product } from "./cart";
 
 export interface ProductSlice {
-  products: Product[]
+    products: Product[],
 }
 
 export const createProductSlice: StateCreator<ProductSlice> = (set) => ({
-  products: [],
+    products: [],
 })
