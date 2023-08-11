@@ -12,8 +12,6 @@ import {
   User,
 } from 'lucide-react'
 import React from 'react'
-import { signIn, signOut } from "next-auth/react";
-import CredentialsProvider  from 'next-auth/providers/credentials'
 
 function NavItem() {
   return (
@@ -37,7 +35,7 @@ function NavItem() {
       </div>
 
       <div>
-        <Button variant={'default'} className="rounded-3xl" onClick={() => signIn()}>
+        <Button variant={'default'} className="rounded-3xl">
           <User size={20} className="mr-2" />
           {`Login`}
         </Button>
