@@ -22,6 +22,26 @@
     background: #555;
 }
 
+.cartItem::-webkit-scrollbar {
+    width: 4px;
+}
+  
+/* Track */
+.cartItem::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+  
+/* Handle */
+.cartItem::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+  
+/* Handle on hover */
+.cartItem::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

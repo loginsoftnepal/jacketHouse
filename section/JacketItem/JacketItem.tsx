@@ -1,8 +1,10 @@
+"use client"
 import Image, { StaticImageData } from 'next/image'
 import React from 'react'
 import Image1 from '../../image/man 1.png';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { useStore } from '@/store/useStore';
 
 export interface IJacket {
     id: number,
@@ -12,8 +14,23 @@ export interface IJacket {
     name: string,
     price: number
 }
- export function JacketItem(props: IJacket) {
 
+const Product = {
+   id: 1,
+   title: "Jacket",
+   image: Image1,
+   description: "This jacket can only be found in jackethouse",
+   price: 2000,
+   size: 'xl',
+   color: 'red',
+   quantity: 1,
+   category: 'mens',
+   brand: 'legacy',
+}
+
+export function JacketItem(props: IJacket) {
+
+   const { addToCart } = useStore();
   return (
     <div className='flex flex-col items-center'>
        <div className='w-[250px]'>
@@ -39,7 +56,7 @@ export interface IJacket {
          </div>
 
          <div className='w-full flex justify-between items-center'>
-            <Button className='px-0 font-semibold' variant={'link'}>Add to Cart</Button>
+            <Button className='px-0 font-semibold' variant={'link'} onClick={() => addToCart(Product)}>Add to Cart</Button>
             <Link className='font-semibold' href="/product">View</Link>
          </div>
        </div>

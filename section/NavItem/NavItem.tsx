@@ -1,6 +1,7 @@
 "use client"
 import { Button } from '@/components/ui/button'
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
+import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
+import { useStore } from '@/store/useStore'
 import {
   AppWindow,
   LayoutGrid,
@@ -12,24 +13,40 @@ import {
   User,
 } from 'lucide-react'
 import React from 'react'
+import CartItem from '../CartItem/CartItem'
 
 function NavItem() {
+
+  const { cart } = useStore();
+
   return (
     <div className="flex justify-between basis-[15%] w-full items-center ">
       <div className="relative">
         <Sheet>
           <SheetTrigger>
-        <ShoppingBag color="#000000" strokeWidth={1.75} />
-        <div className="absolute -top-1 -right-1 h-[8px] w-[8px] rounded-[50%] bg-red"></div>
+         <ShoppingBag color="#000000" strokeWidth={1.75} />
+        {/* <div className=""> */}
+          <span className='text-[6px] text-white absolute -top-1 -right-1  rounded-full bg-red px-[2px] py-[1px]'>{cart && cart.length > 0 ? cart.length : 0 }</span>
+        {/* </div> */}
          </SheetTrigger>
          <SheetContent>
-            <SheetHeader>
-      <SheetTitle>Cart</SheetTitle>
-      <SheetDescription>
-        This action cannot be undone. This will permanently delete your account
-        and remove your data from our servers.
-      </SheetDescription>
-    </SheetHeader>
+          <SheetHeader>
+       <SheetTitle>Cart</SheetTitle>
+        </SheetHeader>
+         <div className='cartItem w-full h-[85vh] overflow-y-auto'>
+          {
+            cart && cart.length > 0 ? (
+               cart.map((item) => <CartItem item={item} />)
+            ) : (
+              <div className='w-full text-center my-8'>Cart is empty.</div>
+            )
+          }
+          </div>
+        <SheetFooter>
+          <SheetClose asChild>
+            <Button className='w-full' type="submit">CheckOut</Button>
+          </SheetClose>
+        </SheetFooter>
          </SheetContent>
         </Sheet>
       </div>

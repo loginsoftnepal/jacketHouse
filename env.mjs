@@ -14,6 +14,10 @@ export const env = createEnv({
             (str) => process.env.VERCEL_URL ?? str,
             process.env.VERCEL ? z.string().min(1) : z.string().url()
         ),
+        SERVER_URL:
+            process.env.NODE_ENV === "production"
+              ? z.string().min(1)
+              : z.string().min(1).optional()
     },
 
     client: {
