@@ -26,9 +26,9 @@ export default function CategoryBar() {
   ]
 
   return (
-    <div className="flex px-12 py-4 shadow-md">
+    <div className="flex px-12 py-4 shadow-lg">
       <div className="basis-[15%] flex justify-center items-center">
-        <span className="text-[18px] font-semibold">OUR MAIN CATEGORIES</span>
+        <span className="text-[20px] font-semibold italic">OUR MAIN CATEGORIES</span>
       </div>
 
       <div className="basis-[80%] flex justify-around items-center">

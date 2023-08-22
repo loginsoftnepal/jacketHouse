@@ -6,15 +6,36 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import { GetServerSidePropsContext } from 'next';
 
 export const authOptions: NextAuthOptions = {
-    callbacks: {
-        session: ({session, user }) => ({
-            ...session,
-            user: {
-                ...session.user,
-                id: user.id,
-            },
-        }),
+    pages: {
+       signIn: '/auth/signin',
+       signOut: '/auth/signout',
+       error: '/auth/error',
+       verifyRequest: '/auth/verify-request',
+       newUser: '/auth/new-user',
     },
+   callbacks: {
+    session: ({ session, token }) => {
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          id: token.id,
+          randomKey: token.randomKey,
+        },
+      };
+    },
+    jwt: ({ token, user }) => {
+      if (user) {
+        const u = user as unknown as any;
+        return {
+          ...token,
+          id: u.id,
+          randomKey: u.randomKey,
+        };
+      }
+      return token;
+    },
+  },
     session: {
         strategy: 'jwt',
     },
@@ -35,6 +56,10 @@ export const authOptions: NextAuthOptions = {
       // e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
       // You can also use the `req` object to obtain additional parameters
       // (i.e., the request IP address)
+      if(!credentials?.username || !credentials?.password) {
+        return null;
+      }
+
       const res = await fetch("/your/endpoint", {
         method: 'POST',
         body: JSON.stringify(credentials),

@@ -1,10 +1,9 @@
 import { Button } from '@/components/ui/button';
 import React from 'react'
-import ReactStars from 'react-stars';
 
 function ProductDesc() {
 
-  const colors = ['#ff3322', '23aadd', '#ee2312'];
+  const colors = ['#252B48', '#F7E987', '#EA1179', '#8062D6'];
 
   return (
     <div className='basis-[40%] px-8 py-8 rounded-xl bg-wheat'>
@@ -26,7 +25,7 @@ function ProductDesc() {
              <div className='flex'>
                 {colors && colors.map((color, index) => {
                      return (
-                        <div key={index} className={`w-[14px] h-[14px] mr-3 rounded-full bg-[#ff2200]`}></div>
+                        <div style={{backgroundColor: color}} key={index} className={`w-[14px] h-[14px] mr-3 rounded-full hover:border-2 hover:border-red hover:offset-4`}></div>
                      )
                 })}
              </div>
@@ -36,11 +35,11 @@ function ProductDesc() {
          <div className='flex flex-col'>
             <span className='text-sm'>Select a size:</span>
             <span className='flex items-center'>
-                <span className='mx-2 p-2'>S</span>
-                <span className='mx-2 p-2'>L</span>
-                <span className='mx-2 p-2'>XL</span>
-                <span className='mx-2 p-2'>XXL</span>
-                <span className='mx-2 p-2'>XXXL</span>
+                <span className='mx-2 px-2 py-1 hover:border-2 hover:border-red border-2 border-transparent rounded-lg'>S</span>
+                <span className='mx-2 px-2 py-1 hover:border-2 hover:border-red border-2 border-transparent rounded-lg'>L</span>
+                <span className='mx-2 px-2 py-1 hover:border-2 hover:border-red border-2 border-transparent rounded-lg'>XL</span>
+                <span className='mx-2 px-2 py-1 hover:border-2 hover:border-red border-2 border-transparent rounded-lg'>XXL</span>
+                <span className='mx-2 px-2 py-1 hover:border-2 hover:border-red border-2 border-transparent rounded-lg'>XXXL</span>
             </span>
          </div>
 

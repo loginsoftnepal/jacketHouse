@@ -17,14 +17,14 @@ export const LandingBrands = () => {
   return (
     <div className="w-full mt-4">
       <div className="w-full my-4 flex justify-center items-center">
-        <span className="font-semibold text-[32px] uppercase mr-4">
+        <span className="font-semibold text-[24px] uppercase mr-4">
           {data &&
             data.title
               .split(' ')
               .filter((val, index) => data.title.split(' ').length - 1 != index)
               .join(' ')}
         </span>
-        <span className="font-bold text-[32px] text-red uppercase">
+        <span className="font-bold text-[24px] text-red uppercase">
           {data && data.title.split(' ')[data.title.split(' ').length - 1]}
         </span>
       </div>

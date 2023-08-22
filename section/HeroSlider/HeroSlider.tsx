@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function HeroSlider() {
 
     return (
-      <div className="w-[95%] mx-auto my-2">
+      <div className="w-[100%] mx-auto my-2"> 
         
          <Carousel loop>
             

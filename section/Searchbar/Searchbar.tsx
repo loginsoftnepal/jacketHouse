@@ -17,7 +17,7 @@ export default function Searchbar(props: Props) {
       </Button>
       <Input
         placeholder={`${props.placeholder ? props.placeholder : 'Search for anything...'}`}
-        className="border-0 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 outline-none shadow-none bg-transparent mr-2"
+        className="border-0 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 outline-none shadow-none bg-transparent text-md mr-2"
       />
       <Button className={`${props.buttonClasses}`} variant={'screen'} size={'sm'}>
         {`${props.buttonName ? props.buttonName : 'Search'}`}

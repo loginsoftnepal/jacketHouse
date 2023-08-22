@@ -24,7 +24,7 @@ export const Footer = () => {
           />
           <Button
             size={'lg'}
-            className="bg-wheat px-0 py-8 w-full max-w-[200px] font-bold text-lg text-brand hover:bg-primary hover:text-wheat"
+            className="bg-wheat px-0 py-8 w-full max-w-[200px] font-bold text-lg text-brand hover:bg-wheat hover:text-black"
           >
             Be a Member
           </Button>

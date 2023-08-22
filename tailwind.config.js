@@ -28,6 +28,7 @@ module.exports = {
         wheat: 'var(--light-white)',
         darkWheat: 'var(--dark-white)',
         collection: 'var(--collection-red)',
+        primarylight: 'var(--primarylight)',
         search: {
           DEFAULT: 'var(--search)',
           foreground: 'var(--search-foreground)',

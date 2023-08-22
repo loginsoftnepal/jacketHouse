@@ -14,7 +14,7 @@ function Collection(collection: ICollection) {
   return (
     <div className="w-[90%] mx-auto py-4">
       <div className="flex">
-        <span className="font-semibold text-black text-[32px] uppercase mr-4 mb-4">
+        <span className="text-black text-[24px] uppercase mr-2 mb-4">
           {collection &&
             collection.title
               .split(' ')
@@ -24,30 +24,34 @@ function Collection(collection: ICollection) {
               )
               .join(' ')}
         </span>
-        <span className="font-bold text-[red] text-[32px] uppercase">
+        <span className="font-bold text-[red] text-[24px] uppercase">
           {collection &&
             collection.title.split(' ')[collection.title.split(' ').length - 1]}
         </span>
       </div>
 
       <div className="w-full flex">
-        <div className="basis-[35%] relative bg-collection rounded-xl">
+        <div className='relative'>
+           <div className='absolute w-[100%] top-[20%] left-0 h-[70%] rounded-full blur-[95.5px] bg-gradient-to-br from-indigo-300 via-purple-400 to-red-400 -z-1'></div>
+        <div className="basis-[40%] h-full relative bg-collection rounded-xl">
           <Image
             className="w-full h-full object-cover object-center"
             src={collection && collection.collectionImage}
             alt=""
           />
           <div className="absolute top-[40%] left-[35%]">
-            <span className="font-bold text-white text-[22px] lg:text-[32px] 2xl:text-[40px] leading-0 uppercase">
+    
+            <span className="font-bold text-white text-[22px] lg:text-[32px] 2xl:text-[30px] leading-0 uppercase">
               Men Collection
             </span>
-            <Button className="bg-white text-black font-semibold rounded-none">
+            <Button size={'lg'} className="bg-white hover:text-white hover:bg-black text-black font-semibold rounded-none">
               View More
             </Button>
           </div>
         </div>
+        </div>
 
-        <div className="basis-[80%] px-2 py-2 flex justify-between flex-wrap">
+        <div className="basis-[80%] px-2 py-2 flex justify-between 2xl:gap-x-8 flex-wrap">
           {collection &&
             collection.product.map((val, index) => {
               return (

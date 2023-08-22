@@ -1,8 +1,10 @@
+"use client"
 import Image, { StaticImageData } from 'next/image'
 import React from 'react'
 import Image1 from '../../image/man 1.png';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { useStore } from '@/store/useStore';
 
 export interface IJacket {
     id: number,
@@ -12,35 +14,50 @@ export interface IJacket {
     name: string,
     price: number
 }
- export function JacketItem(props: IJacket) {
 
+const Product = {
+   id: 1,
+   title: "Jacket",
+   image: Image1,
+   description: "This jacket can only be found in jackethouse",
+   price: 2000,
+   size: 'xl',
+   color: 'red',
+   quantity: 1,
+   category: 'mens',
+   brand: 'legacy',
+}
+
+export function JacketItem(props: IJacket) {
+
+   const { addToCart } = useStore();
   return (
     <div className='flex flex-col items-center'>
-       <div className='w-[250px]'>
+       <div className='w-[230px] 2xl:w-[250px]'>
         <Image src={props.img} alt="" className='-w-full h-full object-cover object-center' />
        </div>
-       <div className='w-full flex flex-col'>
+       <div className='w-[80%] mx-auto flex flex-col'>
          <div className='flex justify-between items-center'>
             <span>{props.category}</span>
             <div className='flex'>
                 {props.colors.map((val, index) => {
                     return (
-                        <div key={index} className={`mr-2 w-[15px] h-[15px] rounded-full bg-[red]`}></div>
+                        <div key={index} style={{backgroundColor: val}} className={`mr-[2px] w-[10px] h-[10px] rounded-full`}></div>
                     )
                 })}
             </div>
          </div>
 
          <div>
-            <span>{props.name}</span>
+            <span className='font-semibold'>{props.name}</span>
          </div>
          <div>
-            <span>{props.price}</span>
+            <span className='text-md'>{`Rs.${props.price}`}</span>
          </div>
 
          <div className='w-full flex justify-between items-center'>
-            <Button className='px-0 font-semibold' variant={'link'}>Add to Cart</Button>
-            <Link className='font-semibold' href="/product">View</Link>
+            <Button className='px-0 font-bold' variant={'link'} onClick={() => addToCart(Product)}>Add to Cart</Button>
+            <Button className='font-bold' variant={'link'}><Link className='font-bold ' href="/home/product">View</Link></Button>
          </div>
        </div>
     </div>
