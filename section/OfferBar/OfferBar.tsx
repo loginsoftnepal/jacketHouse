@@ -14,7 +14,7 @@ function OfferBar() {
             <span>OFF</span>
             </div>
         </div>
-        <Button className='bg-white text-black hover:bg-white text-darkWheat'>Shop Now</Button>
+        <Button className='bg-white text-black hover:bg-white text-darkWheat hover:text-[red]'>Shop Now</Button>
     </div>
   )
 }

@@ -10,6 +10,10 @@ import PantImage from '../../image/Vector 6.svg';
 import ShirtImage from '../../image/ri_shirt-fill.svg';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { PiPantsFill } from 'react-icons/pi';
+import { FaTshirt } from 'react-icons/fa';
+import { RiShirtFill } from 'react-icons/ri';
+import { GiMonclerJacket, GiArmoredPants } from 'react-icons/gi';
 
 function BrandSidebar() {
    const pathname = usePathname();
@@ -32,24 +36,24 @@ function BrandSidebar() {
         </div>
 
          <div className='px-4 py-4'>
-            <Link className='flex my-4' href={'/home/brand/jacket'} > 
-                <Image src={JacketImage} color='black' alt='' />
+            <Link className='flex my-4 items-center' href={'/home/brand/jacket'} > 
+                <GiMonclerJacket color={`${pathname === '/home/brand/jacket' ? 'red' : 'black'}`} />
                 <span className={`ml-4 text-darkWheat font-semibold ${pathname === "/home/brand/jacket" && 'text-red'}`}>Jacket</span>
             </Link>
-            <Link className='flex my-4' href={'/home/brand/track'} >
-                <Image src={TrackImage} alt='' />
+            <Link className='flex my-4 items-center' href={'/home/brand/track'} >   
+                <PiPantsFill color={`${pathname === '/home/brand/track' ? 'red': 'black'}`} />
                 <span className={`ml-4 font-semibold text-darkWheat ${pathname === "/home/brand/track" && 'text-red'}`}>Track Suite</span>
             </Link>
-            <Link href={'/home/brand/tshirt'} className='flex my-4' > 
-                <ShirtIcon size={18} className={`${pathname === '/home/brand/tshirt' && 'text-red'}`} />
+            <Link href={'/home/brand/tshirt'} className='flex my-4 items-center' >   
+                <FaTshirt size={18} color={`${pathname === '/home/brand/tshirt' ? 'red' : 'black'}`} />    
                 <span className={`ml-4 text-darkWheat font-semibold ${pathname === "/home/brand/tshirt" && 'text-red'}`}>T-Shirt</span>
             </Link>
-            <Link href={'/home/brand/formal-pants'} className='flex my-4'>
-                <Image src={PantImage} alt='' color='red' />
+            <Link href={'/home/brand/formal-pants'} className='flex my-4 items-center'>
+                <GiArmoredPants color={`${pathname === '/home/brand/formal-pants' ? 'red' : 'black'}`} />
                 <span className={`ml-4 text-darkWheat font-semibold first-letter ${pathname === "/home/brand/formal-pants" && 'text-red'}`}>Formal Pants</span>
             </Link>
-            <Link href={'/home/brand/shirt'} className='flex my-4'> 
-                <Image src={ShirtImage} alt='' />
+            <Link href={'/home/brand/shirts'} className='flex my-4 items-center'> 
+                <RiShirtFill size={18} color={`${pathname === "/home/brand/shirts" ? 'red' : 'black'}`} />
                 <span className={`ml-4 font-semibold text-darkWheat ${pathname === "/home/brand/shirt" && 'text-red'}`}>Shirts</span>
             </Link>
          </div>

@@ -3,7 +3,7 @@
 @tailwind utilities;
 /* width */
 ::-webkit-scrollbar {
-    width: 7px;
+    width: 5px;
 }
   
 /* Track */
@@ -81,7 +81,7 @@
     --screen: #d2d2d2;
     --screen-foreground: #525252;
 
-    --red: #ee6060;
+    --red: #ff3939;
     --collection-red: #cf8888;
     --brand-black: #171717;
     --light-white: #d9d9d9;

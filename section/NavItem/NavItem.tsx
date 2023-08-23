@@ -31,7 +31,7 @@ function NavItem() {
           <SheetHeader>
        <SheetTitle>Cart</SheetTitle>
         </SheetHeader>
-         <div className='cartItem w-full h-[85vh] overflow-y-auto'>
+         <div className='cartItem w-full h-[85vh] overflow-y-auto pr-2 pb-2'>
           {
             cart && cart.length > 0 ? (
                cart.map((item, index) => <CartItem key={index} item={item} />)

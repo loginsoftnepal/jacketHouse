@@ -3,6 +3,9 @@ import LocationImage from '../../../../image/Rectangle 58.png';
 import { Contact, FacebookIcon, InstagramIcon} from "lucide-react";
 import LocationItem from "@/section/LocationItem/LocationItem";
 import LocationIcon from '../../../../image/Vector.png';
+import { FaSquareFacebook } from 'react-icons/fa6';
+import { FaTiktok } from 'react-icons/fa';
+ 
 
 export default function Location() {
    
@@ -36,8 +39,8 @@ export default function Location() {
                         <span className="ml-2 text-white">info@jackethouse.com</span>
                     </span>
 
-                    <span className="flex">
-                        <FacebookIcon color="white" />
+                    <span className="flex items-center">
+                        <FaSquareFacebook size={20} color="white" />
                         <span className="ml-2 text-white">Jacket House</span>
                     </span>
 
@@ -46,8 +49,8 @@ export default function Location() {
                         <span className="ml-2 text-white">1_jacket_house</span>
                     </span>
 
-                    <span className="flex">
-                        <FacebookIcon color="white" />
+                    <span className="flex items-start">
+                        <FaTiktok size={21} color="white" />
                         <span className="ml-2 text-white">Jacket House</span>
                     </span>
                    </div>
@@ -55,7 +58,7 @@ export default function Location() {
             </div>
 
             
-            <div className="mt-4 w-[88%] mx-auto">
+              <div className="mt-4 w-[88%] mx-auto">
                 <div className="flex items-center my-8">
                     <div className="text-6xl font-bold mr-4 text-darkWheat">Search for location</div>
                     <Image sizes="80px" src={LocationIcon}  alt="" />

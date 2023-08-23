@@ -18,7 +18,7 @@ export default function Navbar() {
         />
         </Link>
       </div>
-      <Searchbar buttonClasses='hover:bg-primary hover:text-white my-[2px] font-semibold' className='my-2' />
+      <Searchbar buttonClasses='hover:bg-[rgba(0,0,0,0.9)] hover:text-white my-[2px] font-semibold' className='my-2' />
       <NavMenu />
       <NavItem />
     </div>

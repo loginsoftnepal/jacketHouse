@@ -24,9 +24,9 @@ function CartItem({item}: CartItemProps) {
   const { removeFromCart } = useStore();
 
   return (
-    <div className='w-full flex relative rounded-lg border-[1px] border-[rgba(0,0,0,0.2)]'>
-      <div className='absolute top-0 right-0 border-[1px] border-[rgba(0,0,0,0.2)] m-[2px] rounded-xl'>
-        <X size={15} onClick={() => removeFromCart(item.id)} />
+    <div className='w-full flex relative rounded-lg  mb-2 bg-slate-50 hover:bg-slate-200'>
+      <div className='absolute top-0 right-0 m-[2px] rounded-full'>
+        <X className='bg-[#FF0000] rounded-full' color='white' size={15} onClick={() => removeFromCart(item.id)} />
       </div>
       <div className='basis-[30%] max-h-[100px] m-1 '>
          <Image className='w-full h-full object-contain' src={item.image} alt="" />

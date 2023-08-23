@@ -3,7 +3,9 @@ import { Input } from '@/components/ui/input'
 import Image from 'next/image'
 import LogoImage from '../../image/white-logo.png'
 import Link from 'next/link'
-import { FacebookIcon, InstagramIcon, WheatIcon } from 'lucide-react'
+import { FacebookIcon, InstagramIcon } from 'lucide-react'
+import { FaTiktok } from 'react-icons/fa'; 
+import { AiFillFacebook } from 'react-icons/ai';  
 
 export const Footer = () => {
   const data = {
@@ -24,7 +26,7 @@ export const Footer = () => {
           />
           <Button
             size={'lg'}
-            className="bg-wheat px-0 py-8 w-full max-w-[200px] font-bold text-lg text-brand hover:bg-wheat hover:text-black"
+            className="bg-wheat px-0 py-8 w-full max-w-[200px] font-bold text-lg text-brand hover:bg-wheat hover:text-[red]"
           >
             Be a Member
           </Button>
@@ -33,7 +35,7 @@ export const Footer = () => {
 
       <div className="w-[80%] mx-auto flex justify-between">
         <div className="firstCol basis-[30%] flex flex-col">
-          <div className="w-full h-[40px] mb-8">
+          <div className="w-full h-[40px] mb-6">
             <Image
               className="w-full h-full object-contain object-left"
               src={LogoImage}
@@ -50,15 +52,15 @@ export const Footer = () => {
             <span className='text-darkWheat hover:text-white'>+977 974761111</span>
           </div>
 
-          <div className='flex'>
+          <div className='flex items-center'>
             <Link href={'#'} className='mr-4'>
-              <FacebookIcon color='white' />
+              <AiFillFacebook size={25} color='white' />
             </Link>
             <Link href={'#'} className='mr-4'>
               <InstagramIcon color='white' />
             </Link>
             <Link href={'#'} className='mr-4'>
-              <WheatIcon color='white' />
+              <FaTiktok size={20} color='white' />
             </Link>
           </div>
         </div>
@@ -98,9 +100,9 @@ export const Footer = () => {
         </div>
       </div>
 
-      <div className='flex justify-between items-center w-[80%] mx-auto mt-4'>
+      <div className='flex justify-between items-center w-[80%] mx-auto mt-6'>
          <span  className='basis-[35%] text-darkWheat hover:text-white'>@Copyright 2023 | All Right Reserved</span>
-         <span className='basis-[60%] text-darkWheat hover:text-white'>Designed By <span className='text-red text-md font-semibold'>LOGIN SOFT</span></span>
+         <span className='basis-[60%] text-darkWheat hover:text-white'>Designed By <span className='text-red text-md font-semibold cursor-pointer hover:text-[red]'>LOGIN SOFT</span></span>
       </div>
     </div>
   )

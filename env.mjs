@@ -23,7 +23,7 @@ export const env = createEnv({
 
     client: {
         // NEXT_PUBLIC_CLIENTVAR:
-        NEXT_PUBLIC_VERCEL_URL: process.env.VERCEL_URL_URL, 
+        NEXT_PUBLIC_VERCEL_URL: z.string(), 
     },
      runtimeEnv: {
         DATABASE_URL: process.env.DATABASE_URL,

@@ -9,10 +9,10 @@ export default function ShopLayout({children,}: {children: React.ReactNode}) {
             <div className="flex w-full">
               <Sidebar />
               <div className="w-full flex flex-col">
-                <OfferBar />
-             <div className="w-full flex">
+                {/* <OfferBar /> */}
+             <div className="w-full flex mt-4">
 
-                <div className="basis-[65%]">{children}</div>
+                <div className="basis-[68%]">{children}</div>
                  <RightSidebar />
             </div>
          </div>

@@ -1,29 +1,41 @@
-import Jacket from '../../image/Rectangle 66.png'
-import CategoryItem from './CategoryItem'
+import Jacket from '../../image/Rectangle 66.png';
+import CategoryItem from './CategoryItem';
+import TrackSuitImage from '../../image/tracksuit.png';
+import TShirtImage from '../../image/tshirt.png';
+import FormalPants from '../../image/formalpants.png';
+import shirtImage from '../../image/shirt.png';
+
 
 export default function CategoryBar() {
+
   const data = [
     {
       img: Jacket,
       name: 'Jacket',
+      link: '/home/shop/jacket'
     },
     {
-      img: Jacket,
+      img: TrackSuitImage,
       name: 'TrackSuit',
+      link: '/home/shop/track'
     },
     {
-      img: Jacket,
+      img: TShirtImage,
       name: 'T-shirt',
+      link: '/home/shop/tshirt'
     },
     {
-      img: Jacket,
+      img: FormalPants,
       name: 'Formal Pants',
+      link: '/home/shop/formal-pants'
     },
     {
-      img: Jacket,
+      img: shirtImage,
       name: 'Shirts',
+      link: '/home/shop/shirts',
     },
   ]
+
 
   return (
     <div className="flex px-12 py-4 shadow-lg">
@@ -34,7 +46,7 @@ export default function CategoryBar() {
       <div className="basis-[80%] flex justify-around items-center">
         {data.map((category, key) => {
           return (
-            <CategoryItem key={key} img={category.img} name={category.name} />
+            <CategoryItem key={key} link={category.link} img={category.img} name={category.name} />
           )
         })}
       </div>

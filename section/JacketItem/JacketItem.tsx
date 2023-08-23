@@ -32,8 +32,8 @@ export function JacketItem(props: IJacket) {
 
    const { addToCart } = useStore();
   return (
-    <div className='flex flex-col items-center'>
-       <div className='w-[230px] 2xl:w-[250px]'>
+    <div className='basis-[45%] lg:basis-[30%] 2xl:basis-[23%] flex flex-col items-center rounded-md bg-slate-50 hover:bg-slate-200'>
+       <div className='w-full py-4'>
         <Image src={props.img} alt="" className='-w-full h-full object-cover object-center' />
        </div>
        <div className='w-[80%] mx-auto flex flex-col'>

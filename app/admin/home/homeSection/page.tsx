@@ -1,12 +1,15 @@
+"use client"
+import { useStore } from "@/store/useStore";
 import { Image, message, Table } from "antd";
 import React, { useContext, useState } from "react";
 
 
 const AdminContact = () => {
+ 
   let url = `/contact`
 
   const [selectedData, setSelectedData] = useState({});
-
+  const { setTopSheetContent, setTopSheet } = useStore()
   const tableItemEdit = (record: any) => {};
 
   const tableItemDelete = async (record: any) => {

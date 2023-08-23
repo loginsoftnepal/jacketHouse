@@ -2,15 +2,16 @@ import Image, { StaticImageData } from 'next/image'
 import Link from 'next/link'
 
 interface CategoryItemProps {
-  img: StaticImageData
-  name: string
+  img: StaticImageData;
+  name: string;
+  link: string;
 }
 
-export default function CategoryItem({ img, name }: CategoryItemProps) {
+export default function CategoryItem({link, img, name }: CategoryItemProps) {
   return (
-    <Link href={'/home/shop'}>
+    <Link href={link}>
     <div className="flex flex-col justify-center items-center my-2">
-      <div className="w-[80px] bg-search rounded-xl">
+      <div className="w-[80px] bg-slate-100 hover:bg-slate-200 rounded-xl">
         <Image
           className="w-full h-full object-cover object-center"
           src={img}

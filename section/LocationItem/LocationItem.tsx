@@ -3,6 +3,9 @@ import React from 'react'
 import LocationItemImage from '../../image/Rectangle 58.png';
 import Image from 'next/image';
 import { Contact, FacebookIcon, InstagramIcon } from 'lucide-react';
+import { FaTiktok } from 'react-icons/fa';
+import { FaFacebookSquare } from 'react-icons/fa';
+
 
 function LocationItem() {
 
@@ -29,8 +32,8 @@ function LocationItem() {
                         <span className="ml-2">info@jackethouse.com</span>
                     </span>
 
-                    <span className="flex">
-                        <FacebookIcon />
+                    <span className="flex items-center">
+                        <FaFacebookSquare size={20} />
                         <span className="ml-2">Jacket House</span>
                     </span>
 
@@ -40,7 +43,7 @@ function LocationItem() {
                     </span>
 
                     <span className="flex">
-                        <FacebookIcon />
+                        <FaTiktok />
                         <span className="ml-2">Jacket House</span>
                     </span>
                    </div>

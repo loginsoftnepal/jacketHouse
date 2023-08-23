@@ -40,7 +40,7 @@ export default function Carousel({ children, ...options }: Props) {
           onNext={() => emblaApi?.scrollNext()}
         /> */}
       </div>
-      <Dots itemsLength={length} selectedIndex={selectedIndex} />
+      {/* <Dots itemsLength={length} selectedIndex={selectedIndex} /> */}
     </>
   )
 }

@@ -7,6 +7,15 @@ import { SaleBanner } from '@/section/SaleBanner/SaleBanner'
 import { LandingBrands } from '@/section/LandingBrands/LandingBrands'
 import Navbar from '@/section/Navbar/Navbar'
 import { Footer } from '@/section/Footer/Footer'
+import secondJacketImage from '../../image/secondJacketImage.png';
+import thirdJacketImage from '../../image/thirdJacketImage.png';
+import fourthJacketImage from '../../image/fourthJacketImage.png';
+import fifthJacketImage from '../../image/fifthJacketImage.png';
+import sixthJacketImage from '../../image/sixthJacketImage.png';
+import seventhJacketImage from '../../image/seventhJacketImage.png';
+import eighthJacketImage from  '../../image/eighthJacketImage.png';
+import ninthJacketImage from '../../image/ninthJacketImage.png';
+import jacketGif from '../../image/gifJacket.gif';
 
 export default function Home() {
   const collection1 = {
@@ -16,7 +25,7 @@ export default function Home() {
     product: [
       {
         id: 1,
-        img: JacketImage,
+        img: jacketGif,
         category: 'Dress',
         name: 'Yellomel',
         price: 2300,
@@ -24,7 +33,7 @@ export default function Home() {
       },
       {
         id: 2,
-        img: JacketImage,
+        img: secondJacketImage,
         category: 'Dress',
         name: 'Yellomel',
         price: 2300,
@@ -32,7 +41,7 @@ export default function Home() {
       },
       {
         id: 3,
-        img: JacketImage,
+        img: thirdJacketImage,
         category: 'Dress',
         name: 'Yellomel',
         price: 2300,
@@ -40,7 +49,7 @@ export default function Home() {
       },
       {
         id: 3,
-        img: JacketImage,
+        img: fourthJacketImage,
         category: 'Dress',
         name: 'Yellomel',
         price: 2300,
@@ -48,7 +57,7 @@ export default function Home() {
       },
       {
         id: 3,
-        img: JacketImage,
+        img: fifthJacketImage,
         category: 'Dress',
         name: 'Yellomel',
         price: 2300,
@@ -56,7 +65,7 @@ export default function Home() {
       },
      {
         id: 3,
-        img: JacketImage,
+        img: sixthJacketImage,
         category: 'Dress',
         name: 'Yellomel',
         price: 2300,
@@ -72,7 +81,7 @@ export default function Home() {
     product: [
       {
         id: 1,
-        img: JacketImage,
+        img: seventhJacketImage,
         category: 'Dress',
         name: 'Yellomel',
         price: 2300,
@@ -80,7 +89,7 @@ export default function Home() {
       },
       {
         id: 2,
-        img: JacketImage,
+        img: eighthJacketImage,
         category: 'Dress',
         name: 'Yellomel',
         price: 2300,
@@ -88,7 +97,7 @@ export default function Home() {
       },
       {
         id: 3,
-        img: JacketImage,
+        img: ninthJacketImage,
         category: 'Dress',
         name: 'Yellomel',
         price: 2300,
@@ -104,7 +113,7 @@ export default function Home() {
       },
       {
         id: 3,
-        img: JacketImage,
+        img: jacketGif,
         category: 'Dress',
         name: 'Yellomel',
         price: 2300,
@@ -112,7 +121,7 @@ export default function Home() {
       },
         {
         id: 3,
-        img: JacketImage,
+        img: fourthJacketImage,
         category: 'Dress',
         name: 'Yellomel',
         price: 2300,
