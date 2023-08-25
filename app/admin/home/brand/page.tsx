@@ -96,14 +96,15 @@ const AdminHomeSection = () => {
     <div className="admin-store-category">
       <div className="page-heading">
         <button
-          className="np-admin-main-button add-button"
+          className="text-white p-2 border-2 m-2 border-white rounded-3xl"
           onClick={() => {
             setTopSheetContent(<AdminHomeSectionEdit method="POST" url={url} />);
             setTopSheet(true);
           }}
         >
-          Add Home Section
+          Add Brand
         </button>
+        {" "}
         <Table
           dataSource={[]}
           columns={columns}

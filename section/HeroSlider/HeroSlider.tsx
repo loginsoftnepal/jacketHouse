@@ -9,16 +9,16 @@ export default function HeroSlider() {
         
          <Carousel loop>
             
-           <div className="relative h-64 lg:h-80 2xl:h-96 flex-[0_0_100%]">
+           <div className="relative h-48 lg:h-80 2xl:h-96 flex-[0_0_100%]">
+             <Image className="w-full h-full object-cover object-center" src={SliderImage} alt="" />
+           </div>
+
+           <div className="relative h-48 lg:h-80 2xl:h-96 flex-[0_0_100%]">    
              <Image className="w-full h-full object-cover" src={SliderImage} alt="" />
            </div>
 
-           <div className="relative h-64 lg:h-80 2xl:h-96 flex-[0_0_100%]">    
-             <Image className="w-full h-full object-cover" src={SliderImage} alt="" />
-           </div>
-
-           <div className="relative h-64 lg:h-80 2xl:h-96 flex-[0_0_100%]">
-             <Image className="w-full h-full object-cover" src={SliderImage} alt=""  />
+           <div className="relative h-48 lg:h-80 2xl:h-96 flex-[0_0_100%]">
+             <Image className="w-full h-full object-cover object-center" src={SliderImage} alt=""  />
            </div>
          </Carousel>
       </div>

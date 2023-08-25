@@ -1,4 +1,4 @@
-"use client"
+import { useStore } from '@/store/useStore';
 import React, { useContext, useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai';
 // import { LayoutContext, createContextProps } from '../../context/LayoutContext';
@@ -9,9 +9,9 @@ interface LayoutBodyProps {
 }
 
 function LayoutBody(props: LayoutBodyProps) {
-    const  [topSheet, setTopSheet] = useState(false);
-    const [topSheetContent, setTopSheetContent] = useState(<div></div>)
-   
+
+  const {  topSheet, setTopSheet, topSheetContent } = useStore();
+   console.log(topSheet);
   return (
     <div className='body-container w-full h-full bg-primary p-[20px] relative z-10 flex bg-no-repeat bg-center bg-contain' style={{backgroundImage: 'url(/homeimg.png)'}}>
         <div className='basis-[80%] h-full z-10 relative'>

@@ -73,10 +73,10 @@ const items: MenuProps['items'] = [
         ]
    ),
    getItem(
-      <Link href="/admin/home/ourBrand">Our Brands</Link>, "ourBrand", <BsAppIndicator />
+      <Link href="/admin/home/brand">Our Brands</Link>, "ourBrand", <BsAppIndicator />
    ),
    getItem(
-     <Link href="/admin/home/ourProduct">Our Products</Link>, "ourProduct", <BsAppIndicator />
+     <Link href="/admin/home/product">Our Products</Link>, "ourProduct", <BsAppIndicator />
    ),
    getItem(
      <Link href={'/admin/home/membership'}>Membership</Link>, "membership", <BsAppIndicator />

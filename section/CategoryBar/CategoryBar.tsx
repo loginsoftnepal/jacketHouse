@@ -4,6 +4,7 @@ import TrackSuitImage from '../../image/tracksuit.png';
 import TShirtImage from '../../image/tshirt.png';
 import FormalPants from '../../image/formalpants.png';
 import shirtImage from '../../image/shirt.png';
+import Carousel from '../Carousel/Carousel';
 
 
 export default function CategoryBar() {
@@ -38,17 +39,19 @@ export default function CategoryBar() {
 
 
   return (
-    <div className="flex px-12 py-4 shadow-lg">
-      <div className="basis-[15%] flex justify-center items-center">
+    <div className="flex lg:px-12 lg:py-4 shadow-lg overflow-hidden px-2 py-2">
+      <div className="basis-[15%] justify-center items-center lg:flex hidden">
         <span className="text-[20px] font-semibold italic">OUR MAIN CATEGORIES</span>
       </div>
 
-      <div className="basis-[80%] flex justify-around items-center">
+      <div className="lg:basis-[80%] flex ">
+        <Carousel loop>
         {data.map((category, key) => {
           return (
             <CategoryItem key={key} link={category.link} img={category.img} name={category.name} />
           )
         })}
+        </Carousel>
       </div>
     </div>
   )

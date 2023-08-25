@@ -11,7 +11,7 @@ export const topsheetSlice: StateCreator<TopSheet> = (set, get) => ({
     topSheet: false,
     topSheetContent: null,
     setTopSheet: (val: boolean) => {
-        set({topSheet: true})
+        set({topSheet: val})
     },
     setTopSheetContent: (val: React.ReactNode) => {
         set({ topSheetContent: val })

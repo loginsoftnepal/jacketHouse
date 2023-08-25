@@ -1,32 +1,48 @@
 "use client"
-import Link from 'next/link'
+import React, { useState } from 'react'
+import { AlignJustify } from 'lucide-react'
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import NavItem from '../NavItem/NavItem';
+import { CloseOutlined } from '@ant-design/icons';
 
-export default function NavMenu() {
+function MobileMenu() {
 
-  const pathname = usePathname()
+    const [showMenu, setShowMenu] = useState(false);
+    const pathname = usePathname();
 
   return (
-    <div className="lg:flex basis-[35%] justify-between items-center px-4 hidden">
+    <div className='inline-block lg:hidden relative'> 
+
+     <div className={`${showMenu ? "flex flex-col" : "hidden" } z-10 fixed top-0 right-0 w-[100vw] h-full bg-white overflow-auto`}>
+        <div className='w-full px-2 flex justify-end my-2'><CloseOutlined onClick={() => setShowMenu((prev) => !prev)} /></div>
+      <div className='flex justify-between'>
+      <div className="flex flex-col px-4 py-4">
       <div className={`h-full flex items-center relative`}>
+
         <Link href={'/'} className={`${pathname === '/' ? 'text-primary' : 'text-darkWheat'} font-semibold`}  >Home</Link>
-        <div className={`${pathname === '/' ? 'w-full absolute h-[6px] rounded-tl-xl rounded-tr-xl bottom-0 bg-red visible' : 'invisible'}`}></div>
       </div>
 
       <div className={`h-full flex items-center relative`}>
         <Link href={'/home/shop/jacket'} className={`${pathname.split('/').includes("shop") ? 'text-primary' : 'text-darkWheat'} font-semibold`} >Our Shop</Link>
-      <div className={`${pathname.split('/').includes('shop') ? 'w-full absolute h-[6px] rounded-tl-xl rounded-tr-xl bottom-0 bg-red visible' : 'invisible'}`}></div>
       </div>
 
       <div className={`h-full flex items-center relative`}>
         <Link href={'/home/brand/jacket'} className={`${pathname.split('/').includes("brand") ? 'text-primary' : 'text-darkWheat'} font-semibold`} >Our Brands</Link>
-        <div className={`${pathname.split('/').includes('brand') ? 'w-full absolute h-[6px] rounded-tl-xl rounded-tr-xl bottom-0 bg-red visible' : 'invisible'}`}></div>
       </div>
 
       <div className={`h-full flex items-center relative`}>
         <Link href={'/home/location'} className={`${pathname === '/home/location' ? 'text-primary' : 'text-darkWheat'} font-semibold`}>Our Locations</Link>
-        <div className={`${pathname === '/home/location' ? 'w-full absolute h-[6px] rounded-tl-xl rounded-tr-xl bottom-0 bg-red visible' : 'invisible'}`}></div>
       </div>
+    </div>
+
+     <NavItem hidden={false} />
+     </div>
+    </div>
+
+     <div className='z-40'><AlignJustify onClick={() => setShowMenu((prev) => !prev)} /></div>
     </div>
   )
 }
+
+export default MobileMenu;

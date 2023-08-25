@@ -16,13 +16,13 @@ export default function Location() {
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
-            }} className="w-full flex justify-center py-16 bg-primary">
+            }} className="w-full lg:flex-row flex-col flex justify-center lg:py-16 bg-primary">
 
-                <div className="basis-[25%] h-[50vh]">
+                <div className="lg:basis-[25%] lg:h-[50vh] h-[30vh]">
                     <Image className="w-full h-full object-cover" src={LocationImage} alt="" />
                 </div>
 
-                 <div className="basis-[60%] pl-16">
+                 <div className="lg:basis-[60%] px-3 py-3 lg:px-0 lg:py-0 lg:pl-16">
                    <h1 className="text-4xl font-semibold mb-2 text-white">Head Office</h1>
                    <p className="text-lg text-darkWheat">Satdobato, Chapagaun Dobato, Kathmandu, Nepal</p>
                    <div className="text-lg mb-4">
@@ -33,7 +33,7 @@ export default function Location() {
                    <p className="text-white text-lg">We are the manufacture, we are the creator, we are the designer and we provide awesome shits.</p>
                    <h3 className="text-white text-lg mt-4 mb-8">We are the Legacy.</h3>
                    
-                   <div className="w-full flex justify-between">
+                   <div className="w-full flex lg:flex-row flex-col justify-between gap-2">
                     <span className="flex">
                         <Contact color="white" />
                         <span className="ml-2 text-white">info@jackethouse.com</span>
@@ -60,7 +60,7 @@ export default function Location() {
             
               <div className="mt-4 w-[88%] mx-auto">
                 <div className="flex items-center my-8">
-                    <div className="text-6xl font-bold mr-4 text-darkWheat">Search for location</div>
+                    <div className="text-3xl lg:text-6xl font-bold mr-4 text-darkWheat">Search for location</div>
                     <Image sizes="80px" src={LocationIcon}  alt="" />
                 </div>
 

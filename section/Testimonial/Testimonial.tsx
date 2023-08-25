@@ -30,9 +30,9 @@ function Testimonial() {
     ]
 
   return (
-    <div className='w-[80%] mx-auto pt-8 my-2 flex flex-col'>
+    <div className='w-[100%] lg:w-[80%] mx-auto pt-8 my-2 flex flex-col'>
         <div className='w-full flex justify-center mb-8'>
-            <span className='flex justify-center text-xl pb-2  font-semibold border-b-4 border-red'>WHAT OUR CUSTOMERS SAYS?</span>
+          <span className='flex justify-center text-xl pb-2  font-semibold border-b-4 border-red'>WHAT OUR CUSTOMERS SAYS?</span>
         </div>
 
       <Carousel loop>

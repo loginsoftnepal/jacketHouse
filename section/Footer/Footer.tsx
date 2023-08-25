@@ -14,26 +14,26 @@ export const Footer = () => {
   }
 
   return (
-    <div className="bg-brand pt-12 pb-8 w-full flex flex-col">
+    <div className="bg-brand pt-12 pb-8 w-full flex flex-col overflow-hidden">
       <div className="w-[80%] mx-auto flex flex-col justify-center items-center mb-16">
-        <h1 className="text-white text-[24px]">{data.offerHeader}</h1>
-        <span className="text-white text-[20px]">{data.offerSubHeading}</span>
+        <h1 className="text-white text-[20px] md:text-[20px] lg:text-[24px]">{data.offerHeader}</h1>
+        <span className="text-white text-[16px] md:text-[18px] lg:text-[20px]">{data.offerSubHeading}</span>
 
-        <div className="flex justify-around w-[70%] mx-auto my-8">
+        <div className="flex justify-around w-[100%] lg:w-[70%] mx-auto my-8">
           <Input
-            className="bg-wheat w-full h-16 mr-4 text-lg"
+            className="bg-wheat w-full   lg:h-16 mr-2 lg:mr-4 text-sm lg:text-lg"
             placeholder="Your Email?"
           />
           <Button
             size={'lg'}
-            className="bg-wheat px-0 py-8 w-full max-w-[200px] font-bold text-lg text-brand hover:bg-wheat hover:text-[red]"
+            className="bg-wheat px-0 py-2 lg:py-8 lg:w-full max-w-[150px] lg:max-w-[200px] font-bold text-sm lg:text-lg text-brand hover:bg-wheat hover:text-[red]"
           >
             Be a Member
           </Button>
         </div>
       </div>
 
-      <div className="w-[80%] mx-auto flex justify-between">
+      <div className="w-[80%] mx-auto flex flex-col lg:flex-row justify-between">
         <div className="firstCol basis-[30%] flex flex-col">
           <div className="w-full h-[40px] mb-6">
             <Image
@@ -65,7 +65,7 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="secondColumn basis-[15%] flex flex-col">
+        <div className="secondColumn basis-[15%] flex flex-col mt-4 lg:mt-0">
           <h3 className='mb-8 uppercase text-white'>COMPANY</h3>
           <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>About Us</Link>
           <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Shop</Link>
@@ -100,7 +100,7 @@ export const Footer = () => {
         </div>
       </div>
 
-      <div className='flex justify-between items-center w-[80%] mx-auto mt-6'>
+      <div className='flex lg:flex-row flex-col justify-between items-center w-[100%] lg:w-[80%] mx-auto mt-6'>
          <span  className='basis-[35%] text-darkWheat hover:text-white'>@Copyright 2023 | All Right Reserved</span>
          <span className='basis-[60%] text-darkWheat hover:text-white'>Designed By <span className='text-red text-md font-semibold cursor-pointer hover:text-[red]'>LOGIN SOFT</span></span>
       </div>

@@ -12,12 +12,15 @@ import Image from 'next/image'
 import CartSvg from '../../image/Group 3.svg';
 import User from '../../image/ion_person-outline.svg';
 
-function NavItem() {
+interface PropsType {
+  hidden: boolean
+}
+function NavItem(props: PropsType) {
 
   const { cart } = useStore();
 
   return (
-    <div className="flex justify-between basis-[15%] w-full items-center ">
+    <div className={`${props.hidden && 'hidden'}  flex justify-around lg:justify-between basis-[50%] lg:basis-[15%] w-full items-center`}>
       <div className="relative">
         <Sheet>
           <SheetTrigger>
@@ -56,7 +59,7 @@ function NavItem() {
         </Button>
       </div>
 
-      <div>
+      <div className={`hidden lg:inline-block`}>
         <LayoutGrid color="#000000" fill="#0f0f0f" strokeWidth={1.75} />
       </div>
     </div>

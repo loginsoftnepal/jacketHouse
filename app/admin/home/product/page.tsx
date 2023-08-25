@@ -1,5 +1,5 @@
 "use client"
-import AdminHomeSectionEdit from "@/section/AdminHomeSectionEdit/AdminHomeSectionEdit";
+import AdminProductSectionEdit from "@/section/AdminProductEdit/AdminProductEdit";
 import { useStore } from "@/store/useStore";
 import { Image, message, Table } from "antd";
 import { ColumnsType } from "antd/es/table";
@@ -65,7 +65,7 @@ const AdminHomeSection = () => {
           className="np-admin-main-button"
           onClick={() => {
             setTopSheetContent(
-              <AdminHomeSectionEdit
+              <AdminProductSectionEdit
                 method="PUT"
                 url={url}
               />
@@ -96,14 +96,15 @@ const AdminHomeSection = () => {
     <div className="admin-store-category">
       <div className="page-heading">
         <button
-          className="np-admin-main-button add-button"
+          className="text-white p-2 border-2 m-2 border-white rounded-3xl"
           onClick={() => {
-            setTopSheetContent(<AdminHomeSectionEdit method="POST" url={url} />);
+            setTopSheetContent(<AdminProductSectionEdit method="POST" url={url} />);
             setTopSheet(true);
           }}
         >
-          Add Home Section
+          Add Product
         </button>
+        {" "}
         <Table
           dataSource={[]}
           columns={columns}

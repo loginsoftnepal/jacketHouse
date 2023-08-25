@@ -515,7 +515,7 @@ export default function Brand({params}:{params: {category: string}}) {
 
    return (
     <div className="flex flex-col w-full my-8">
-      <div className="w-full h-screen mx-4 overflow-y-auto p-4 flex gap-4 justify-between flex-wrap">
+      <div className="w-full h-screen mx-2 lg:mx-4 overflow-y-auto  lg:p-4 flex gap-2 lg:gap-4 justify-between flex-wrap">
         {
           targetProduct && targetProduct.map((val, index) => {
             return (

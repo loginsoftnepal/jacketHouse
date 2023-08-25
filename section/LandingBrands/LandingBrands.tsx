@@ -24,7 +24,7 @@ export const LandingBrands = () => {
   return (
     <div className="w-full mt-4">
       <div className="w-full my-4 flex justify-center items-center">
-        <span className="font-semibold text-[24px] uppercase mr-4">
+        <span className="font-semibold text-[24px] uppercasemr-4">
           {data &&
             data.title
               .split(' ')
@@ -36,12 +36,12 @@ export const LandingBrands = () => {
         </span>
       </div>
 
-      <div className="w-full flex py-12 px-4 justify-around items-center bg-brand border-b-8 border-wheat">
+      <div className="w-full flex py-4 lg:py-12 px-4 justify-around items-center bg-brand border-b-8 border-wheat">
         <Marquee autoFill>
         {data &&
           data.img.map((val, index) => {
             return (
-              <div key={index} className="w-[150px] h-full mx-8">
+              <div key={index} className="w-[100px] lg:w-[150px] h-full mx-4 lg:mx-8">
                 <Image
                   src={val}
                   alt=""

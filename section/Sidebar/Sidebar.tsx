@@ -19,7 +19,7 @@ function Sidebar() {
   const pathname = usePathname()
 
   return (
-    <div className='basis-[20%] flex flex-col items-center' >
+    <div className='hidden lg:basis-[20%] lg:flex lg:flex-col items-center' >
      {/* <div className='py-4 w-full flex justify-center'>
       <Button className='rounded-none py-2 px-4' size={'lg'}>
         <MoveLeftIcon className='mr-2' />

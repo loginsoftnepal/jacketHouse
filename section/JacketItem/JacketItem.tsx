@@ -5,6 +5,7 @@ import Image1 from '../../image/man 1.png';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useStore } from '@/store/useStore';
+import { useMediaQuery } from 'react-responsive';
 
 export interface IJacket {
     id: number,
@@ -31,8 +32,10 @@ const Product = {
 export function JacketItem(props: IJacket) {
 
    const { addToCart } = useStore();
+   const isMobile = useMediaQuery({query: "(max-width: 992px)"})
+
   return (
-    <div className='basis-[45%] lg:basis-[30%] 2xl:basis-[23%] flex flex-col items-center rounded-md bg-slate-50 hover:bg-slate-200'>
+    <div className='basis-[48%] lg:basis-[30%] 2xl:basis-[23%] flex flex-col items-center rounded-md bg-slate-50 hover:bg-slate-200'>
        <div className='w-full py-4'>
         <Image src={props.img} alt="" className='-w-full h-full object-cover object-center' />
        </div>
@@ -56,8 +59,8 @@ export function JacketItem(props: IJacket) {
          </div>
 
          <div className='w-full flex justify-between items-center'>
-            <Button className='px-0 font-bold' variant={'link'} onClick={() => addToCart(Product)}>Add to Cart</Button>
-            <Button className='font-bold' variant={'link'}><Link className='font-bold ' href="/home/product">View</Link></Button>
+            <Button className='px-0 font-bold text-sm' variant={'link'} onClick={() => addToCart(Product)}>{isMobile ? 'Add' : 'Add to Cart'}</Button>
+            <Button className='font-bold text-sm' variant={'link'}><Link className='font-bold ' href="/home/product">View</Link></Button>
          </div>
        </div>
     </div>

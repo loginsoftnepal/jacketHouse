@@ -4,11 +4,13 @@ import Logo from '../../image/Logo.png'
 import NavMenu from '../NavMenu/NavMenu'
 import NavItem from '../NavItem/NavItem'
 import Link from 'next/link'
+import MobileMenu from '../MobileMenu/MobileMenu'
 
 export default function Navbar() {
+
   return (
-    <div className="flex px-12 2xl:px-16 w-full justify-between shadow-xl">
-      <div className="w-[130px]">
+    <div className="flex px-4 md:px-12 2xl:px-16 w-full justify-between items-center shadow-xl overflow-hidden">
+      <div className="w-[60px] md:w-[90px] lg:w-[130px]">
         <Link href={'/'}>
         <Image
           className="w-full h-full object-center object-contain"
@@ -18,9 +20,10 @@ export default function Navbar() {
         />
         </Link>
       </div>
-      <Searchbar buttonClasses='hover:bg-[rgba(0,0,0,0.9)] hover:text-white my-[2px] font-semibold' className='my-2' />
+      <Searchbar buttonClasses='hover:bg-[rgba(0,0,0,0.9)] hover:text-white my-[1px] lg:my-[2px] font-semibold text-sm ' className='my-2' />
       <NavMenu />
-      <NavItem />
+      <NavItem hidden={true} />
+      <MobileMenu />
     </div>
   )
 }
