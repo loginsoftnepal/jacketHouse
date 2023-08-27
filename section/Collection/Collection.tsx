@@ -49,7 +49,7 @@ function Collection(collection: ICollection) {
           </div>
          </div>
         </div>
-        <div className="basis-[100%] lg:basis-[65%] flex justify-around gap-y-2 lg:gap-4 flex-wrap">
+        <div className="basis-[100%] lg:basis-[65%] flex justify-around  2xl:pl-8 2xl:justify-start gap-y-2 lg:gap-4 flex-wrap">
           {collection &&
             collection.product.map((val, index) => {
               return (

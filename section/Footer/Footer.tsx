@@ -66,7 +66,7 @@ export const Footer = () => {
         </div>
 
         <div className="secondColumn basis-[15%] flex flex-col mt-4 lg:mt-0">
-          <h3 className='mb-8 uppercase text-white'>COMPANY</h3>
+          <h3 className='mb-4 lg:mb-8 uppercase text-white'>COMPANY</h3>
           <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>About Us</Link>
           <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Shop</Link>
           <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Career</Link>
@@ -74,7 +74,7 @@ export const Footer = () => {
         </div>
 
         <div className='thirdColumn text-white basis-[15%] flex flex-col'>
-          <h3 className='mb-8 uppercase'>SHOP</h3>
+          <h3 className='mb-4 lg:mb-8 uppercase'>SHOP</h3>
           <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Women</Link>
           <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Men</Link>
           <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Jacket</Link>
@@ -82,7 +82,7 @@ export const Footer = () => {
         </div>
 
         <div className='fouthColumn text-white basis-[15%] flex flex-col'>
-          <h3 className='mb-8 uppercase'>Our Locations</h3>
+          <h3 className='lg:mb-8 mb-4  uppercase'>Our Locations</h3>
 
           <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Satdobato</Link>
           <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Samakhushi</Link>
@@ -91,8 +91,8 @@ export const Footer = () => {
           <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Pokhara</Link>
         </div>
 
-        <div className='fifthColumn text-white basis-[15%] flex flex-col'>
-          <h3 className='mb-8 uppercase'>Help</h3>
+        <div className='fifthColumn text-white basis-[15%] flex flex-col lg:mb-0 mb-2'>
+          <h3 className='mb-4 lg:mb-8 uppercase'>Help</h3>
           <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Customer Service</Link>
           <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Legal Privacy</Link>
           <Link className='text-darkWheat hover:text-white mb-2' href={'#'}>Contract</Link>

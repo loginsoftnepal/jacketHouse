@@ -515,7 +515,7 @@ export default function Shop({ params }: {params: { category: string }}) {
 
    return (
     <div className="flex flex-col w-full">
-      <div className="w-full h-screen lg:mx-4 overflow-y-auto lg:p-4 flex justify-between gap-2 lg:gap-4 flex-wrap">
+      <div className="w-full h-screen lg:mx-4 overflow-y-auto lg:p-4 flex justify-between gap-2 lg:gap-4 2xl:justify-start flex-wrap">
         {
           targetProduct && targetProduct.map((val, index) => {
             return (

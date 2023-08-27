@@ -9,8 +9,8 @@ interface CategoryItemProps {
 
 export default function CategoryItem({link, img, name }: CategoryItemProps) {
   return (
-    <Link href={link} className='flex flex-[0_0_33%]'>
-    <div className="flex flex-col justify-center items-center basis-[33%]">
+    <Link href={link} className='flex flex-[0_0_33%] lg:flex-[0_0_20%]'>
+    <div className="flex flex-col justify-center items-center w-full">
       <div className="w-[60px] lg:w-[80px] bg-slate-100 hover:bg-slate-200 rounded-xl">
         <Image
           className="w-full h-full object-cover object-center"

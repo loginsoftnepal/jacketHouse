@@ -15,12 +15,13 @@ import User from '../../image/ion_person-outline.svg';
 interface PropsType {
   hidden: boolean
 }
+
 function NavItem(props: PropsType) {
 
   const { cart } = useStore();
 
   return (
-    <div className={`${props.hidden && 'hidden'}  flex justify-around lg:justify-between basis-[50%] lg:basis-[15%] w-full items-center`}>
+    <div className={`hidden lg:flex justify-around lg:justify-between basis-[50%] lg:basis-[15%] 2xl:basis-[10%] w-full items-center`}>
       <div className="relative">
         <Sheet>
           <SheetTrigger>

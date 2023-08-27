@@ -31,7 +31,7 @@ export default function Carousel({ children, ...options }: Props) {
 
   return (
     <>
-      <div className="overflow-hidden relative" ref={emblaRef}>
+      <div className="overflow-hidden relative w-full" ref={emblaRef}>
         <div className="flex">{children}</div>
         {/* <CarouselControls
           canScrollPrev={canScrollPrev}

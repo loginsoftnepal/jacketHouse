@@ -39,12 +39,12 @@ export default function CategoryBar() {
 
 
   return (
-    <div className="flex lg:px-12 lg:py-4 shadow-lg overflow-hidden px-2 py-2">
+    <div className="flex lg:px-12 lg:py-4 shadow-lg  px-2 py-2">
       <div className="basis-[15%] justify-center items-center lg:flex hidden">
         <span className="text-[20px] font-semibold italic">OUR MAIN CATEGORIES</span>
       </div>
 
-      <div className="lg:basis-[80%] flex ">
+      <div className="basis-[100%] lg:basis-[80%] flex w-full">
         <Carousel loop>
         {data.map((category, key) => {
           return (

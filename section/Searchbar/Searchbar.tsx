@@ -11,7 +11,7 @@ export interface Props {
 
 export default function Searchbar(props: Props) {
   return (
-    <div className={`flex basis-[60%] md:basis-[50%] lg:basis-[30%] bg-search px-2 md:py-1 w-full ${props.className}`}>
+    <div className={`flex basis-[60%] md:basis-[50%] lg:basis-[30%] 2xl:basis-[40%] bg-search px-2 md:py-1 w-full ${props.className}`}>
       <Button className="mx-1 lg:mx-2" variant={'search'} size={'icon'}>
         <SearchIcon className='w-[20px] md:w-[30px] lg:w-[40px]' />
       </Button>
