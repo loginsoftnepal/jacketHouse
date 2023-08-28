@@ -1,16 +1,15 @@
-import React from "react";
+import React from 'react'
 
 interface InputFieldProps {
-    inputValue: any,
-    setInputValue: React.Dispatch<React.SetStateAction<any>>,
-    name: string,
-    textArea?: boolean,
-    label: string,
-    type: string,
-    placeholder: string,
-    client?: boolean,
+  inputValue: any
+  setInputValue: React.Dispatch<React.SetStateAction<any>>
+  name: string
+  textArea?: boolean
+  label: string
+  type: string
+  placeholder: string
+  client?: boolean
 }
-
 
 const InputField = (props: InputFieldProps) => {
   const {
@@ -21,18 +20,22 @@ const InputField = (props: InputFieldProps) => {
     label,
     type,
     placeholder,
-    client
-  } = props;
+    client,
+  } = props
   return (
-    <div className={`${client ? "client-input-field" : ''} mb-[20px] mr-[10px] w-full`}>
+    <div
+      className={`${
+        client ? 'client-input-field' : ''
+      } mb-[20px] mr-[10px] w-full`}
+    >
       <div className="mb-[5px] text-white">{label}</div>
       {textArea ? (
         <textarea
-         className="border-[1px] border-[rgba(255, 255, 255, 0.189)] rounded-[12px] outline-none p-[20px] w-full bg-transparent text-white"
+          className="border-[1px] border-[rgba(255, 255, 255, 0.189)] rounded-[12px] outline-none p-[20px] w-full bg-transparent text-white"
           rows={4}
           value={inputValue[name]}
-          onChange={(e:React.ChangeEvent<HTMLTextAreaElement>) => {
-            setInputValue((prev: any)=>({...prev, [name]: e.target.value }));
+          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
+            setInputValue((prev: any) => ({ ...prev, [name]: e.target.value }))
           }}
           placeholder={placeholder}
         />
@@ -40,15 +43,15 @@ const InputField = (props: InputFieldProps) => {
         <input
           className="h-[40px] bg-transparent border-[1px] border-[rgba(255, 255, 255, 0.189)] rounded-[12px] outline-none p-[20px] w-full text-white"
           value={inputValue[name]}
-          onChange={(e:React.ChangeEvent<HTMLInputElement>) => {
-            setInputValue((prev: any)=>({...prev, [name]: e.target.value }));
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setInputValue((prev: any) => ({ ...prev, [name]: e.target.value }))
           }}
           type={type}
           placeholder={placeholder}
         />
       )}
     </div>
-  );
-};
+  )
+}
 
-export default InputField;
+export default InputField

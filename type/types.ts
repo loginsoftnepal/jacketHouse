@@ -1,4 +1,4 @@
 export type SessionByDevice = {
-    dimensionValues: {value: any}[],
-    metricValues: {value: any}[],
+  dimensionValues: { value: any }[]
+  metricValues: { value: any }[]
 }

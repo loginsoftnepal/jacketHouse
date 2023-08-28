@@ -1,11 +1,10 @@
-"use client"
-import * as React from "react"
-import { cn } from "@/lib/utils"
-import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Icons } from "@/components/Icons/Icons"
-
+'use client'
+import * as React from 'react'
+import { cn } from '@/lib/utils'
+import { Label } from '@/components/ui/label'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { Icons } from '@/components/Icons/Icons'
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -22,7 +21,7 @@ export function UserRegisterForm({ className, ...props }: UserAuthFormProps) {
   }
 
   return (
-    <div className={cn("grid gap-6", className)} {...props}>
+    <div className={cn('grid gap-6', className)} {...props}>
       <form method="post" action="/api/auth/signin/email" onSubmit={onSubmit}>
         <div className="grid gap-2">
           <div className="grid gap-1">
@@ -39,23 +38,23 @@ export function UserRegisterForm({ className, ...props }: UserAuthFormProps) {
               disabled={isLoading}
             />
             <Input
-            id="password"
-            placeholder="Enter Password"
-            type="password"
-            autoCapitalize="none"
-            autoComplete="password"
-            autoCorrect="off"
-            disabled={isLoading}
+              id="password"
+              placeholder="Enter Password"
+              type="password"
+              autoCapitalize="none"
+              autoComplete="password"
+              autoCorrect="off"
+              disabled={isLoading}
             />
             <Input
-             id="confirmPassword"
-             placeholder="Confirm Password"
-             type="password"
-             disabled={isLoading}
-             autoCorrect="off"
-             autoCapitalize="none"
-             autoComplete="password"
-             />
+              id="confirmPassword"
+              placeholder="Confirm Password"
+              type="password"
+              disabled={isLoading}
+              autoCorrect="off"
+              autoCapitalize="none"
+              autoComplete="password"
+            />
           </div>
           <Button disabled={isLoading}>
             {isLoading && (
@@ -80,7 +79,7 @@ export function UserRegisterForm({ className, ...props }: UserAuthFormProps) {
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (
           <Icons.google className="mr-2 h-4 w-4" />
-        )}{" "}
+        )}{' '}
         Google
       </Button>
     </div>

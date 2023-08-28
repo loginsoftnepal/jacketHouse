@@ -1,22 +1,21 @@
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { UserAuthForm } from "@/section/UserAuthForm/UserAuthForm";
-import Image from "next/image";
-import Link from "next/link";
-import Image1 from '../../../image/Logo.png';
-import { UserRegisterForm } from "@/section/UserRegisterForm/UserRegisterForm";
+import { buttonVariants } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
+import { UserAuthForm } from '@/section/UserAuthForm/UserAuthForm'
+import Image from 'next/image'
+import Link from 'next/link'
+import Image1 from '../../../image/Logo.png'
+import { UserRegisterForm } from '@/section/UserRegisterForm/UserRegisterForm'
 
 export default function Register() {
-    return (
-        <>
-          <div className="">
-      </div>
+  return (
+    <>
+      <div className=""></div>
       <div className="container relative hidden h-[100vh] flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
         <Link
           href="/auth/signin"
           className={cn(
-            buttonVariants({ variant: "ghost" }),
-            "absolute right-4 top-4 md:right-8 md:top-8"
+            buttonVariants({ variant: 'ghost' }),
+            'absolute right-4 top-4 md:right-8 md:top-8',
           )}
         >
           Login
@@ -25,26 +24,26 @@ export default function Register() {
           <div className="absolute inset-0 bg-zinc-900" />
           <div className="relative z-20 flex items-center text-lg font-medium">
             <Link href={'/'} className="flex">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="mr-2 h-6 w-6"
-            >
-              <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
-            </svg>
-            Jacket House
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="mr-2 h-6 w-6"
+              >
+                <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
+              </svg>
+              Jacket House
             </Link>
           </div>
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-2">
               <p className="text-lg">
-                &ldquo;Get up to 15% Membership Offer
-                Be our regular buyer and get amazing gift hampers&rdquo;
+                &ldquo;Get up to 15% Membership Offer Be our regular buyer and
+                get amazing gift hampers&rdquo;
               </p>
               <footer className="text-sm">Login Soft</footer>
             </blockquote>
@@ -82,5 +81,5 @@ export default function Register() {
         </div>
       </div>
     </>
-    )
+  )
 }

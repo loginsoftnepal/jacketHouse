@@ -4,7 +4,7 @@ import { PropsWithChildren, useEffect, useState } from 'react'
 import { Dots } from './Dots'
 import React from 'react'
 import { CarouselControls } from './CarouselControls'
-import AutoPlay from 'embla-carousel-autoplay';
+import AutoPlay from 'embla-carousel-autoplay'
 
 type Props = PropsWithChildren & EmblaOptionsType
 

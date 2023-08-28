@@ -1,76 +1,75 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import { useContext } from "react";
-import { Pie } from "@ant-design/plots";
-import { SessionByDevice } from "@/type/types";
+import { useEffect } from 'react'
+import { useState } from 'react'
+import { useContext } from 'react'
+import { Pie } from '@ant-design/plots'
+import { SessionByDevice } from '@/type/types'
 
 type countryBasedType = {
-  type: string,
-  value: number,
+  type: string
+  value: number
 }
 const WorldMap = () => {
-
-  const [myMap, setMyMap] = useState<countryBasedType[]>([]);
-  const [countryBasedUser, setCountryBasedUser] = useState<SessionByDevice[]>([])
+  const [myMap, setMyMap] = useState<countryBasedType[]>([])
+  const [countryBasedUser, setCountryBasedUser] = useState<SessionByDevice[]>(
+    [],
+  )
 
   const config = {
     appendPadding: 10,
     data: myMap,
-    angleField: "value",
-    colorField: "type",
+    angleField: 'value',
+    colorField: 'type',
     radius: 0.8,
     label: {
-      type: "outer",
-      content: "{name} {percentage}",
+      type: 'outer',
+      content: '{name} {percentage}',
     },
     interactions: [
       {
-        type: "pie-legend-active",
+        type: 'pie-legend-active',
       },
       {
-        type: "element-active",
+        type: 'element-active',
       },
     ],
-  };
+  }
   useEffect(() => {
     if (countryBasedUser && countryBasedUser?.length > 0) {
-      
       const newArr = countryBasedUser.map((pg) => {
         return {
           type: pg.dimensionValues[0].value.toUpperCase(),
           value: parseInt(pg.metricValues[0].value),
-        };
-      });
-      setMyMap([...newArr]);
+        }
+      })
+      setMyMap([...newArr])
     }
-  }, [countryBasedUser, countryBasedUser?.length]);
+  }, [countryBasedUser, countryBasedUser?.length])
 
   useEffect(() => {
     if (myMap && myMap?.length > 0) {
       console.log(myMap)
-      const myTags = document.querySelector("#mapSvg")?.children;
-      if(myTags) {
-       for (let i = 0; i < myTags?.length; i++) {
-        const tableChild = myTags[i];
-        // console.log("my tages", tableChild.getAttribute("name"));
-        if (tableChild.getAttribute("name")) {
-          let goneCon = myMap.find(
-            (m) =>
-              m.type.toLowerCase() ==
-              tableChild?.getAttribute("name")?.toLowerCase()
-          );
-          if (goneCon) {
-            tableChild.classList.add("fillRed");
+      const myTags = document.querySelector('#mapSvg')?.children
+      if (myTags) {
+        for (let i = 0; i < myTags?.length; i++) {
+          const tableChild = myTags[i]
+          // console.log("my tages", tableChild.getAttribute("name"));
+          if (tableChild.getAttribute('name')) {
+            let goneCon = myMap.find(
+              (m) =>
+                m.type.toLowerCase() ==
+                tableChild?.getAttribute('name')?.toLowerCase(),
+            )
+            if (goneCon) {
+              tableChild.classList.add('fillRed')
+            }
           }
         }
       }
     }
-    }
-  }, [myMap, myMap?.length]);
+  }, [myMap, myMap?.length])
 
   return (
     <div>
-
       <svg
         baseProfile="tiny"
         fill="#ececec"
@@ -2143,9 +2142,8 @@ const WorldMap = () => {
       </svg>
 
       <div>{myMap && myMap.length > 0 ? <Pie {...config} /> : null} </div>
-
     </div>
-  );
-};
+  )
+}
 
-export default WorldMap;
+export default WorldMap

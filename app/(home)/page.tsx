@@ -7,15 +7,15 @@ import { SaleBanner } from '@/section/SaleBanner/SaleBanner'
 import { LandingBrands } from '@/section/LandingBrands/LandingBrands'
 import Navbar from '@/section/Navbar/Navbar'
 import { Footer } from '@/section/Footer/Footer'
-import secondJacketImage from '../../image/secondJacketImage.png';
-import thirdJacketImage from '../../image/thirdJacketImage.png';
-import fourthJacketImage from '../../image/fourthJacketImage.png';
-import fifthJacketImage from '../../image/fifthJacketImage.png';
-import sixthJacketImage from '../../image/sixthJacketImage.png';
-import seventhJacketImage from '../../image/seventhJacketImage.png';
-import eighthJacketImage from  '../../image/eighthJacketImage.png';
-import ninthJacketImage from '../../image/ninthJacketImage.png';
-import jacketGif from '../../image/gifJacket.gif';
+import secondJacketImage from '../../image/secondJacketImage.png'
+import thirdJacketImage from '../../image/thirdJacketImage.png'
+import fourthJacketImage from '../../image/fourthJacketImage.png'
+import fifthJacketImage from '../../image/fifthJacketImage.png'
+import sixthJacketImage from '../../image/sixthJacketImage.png'
+import seventhJacketImage from '../../image/seventhJacketImage.png'
+import eighthJacketImage from '../../image/eighthJacketImage.png'
+import ninthJacketImage from '../../image/ninthJacketImage.png'
+import jacketGif from '../../image/gifJacket.gif'
 
 export default function Home() {
   const collection1 = {
@@ -63,7 +63,7 @@ export default function Home() {
         price: 2300,
         colors: ['#252B48', '#F7E987', '#EA1179', '#8062D6'],
       },
-     {
+      {
         id: 3,
         img: sixthJacketImage,
         category: 'Dress',
@@ -103,7 +103,7 @@ export default function Home() {
         price: 2300,
         colors: ['#252B48', '#F7E987', '#EA1179', '#8062D6'],
       },
-         {
+      {
         id: 3,
         img: JacketImage,
         category: 'Dress',
@@ -119,7 +119,7 @@ export default function Home() {
         price: 2300,
         colors: ['#252B48', '#F7E987', '#EA1179', '#8062D6'],
       },
-        {
+      {
         id: 3,
         img: fourthJacketImage,
         category: 'Dress',
@@ -132,7 +132,7 @@ export default function Home() {
 
   return (
     <div>
-      <Navbar /> 
+      <Navbar />
       <CategoryBar />
       <HeroSlider />
       <Collection {...collection1} />

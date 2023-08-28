@@ -1,12 +1,11 @@
 import Image from 'next/image'
 import firstBrandImage from '../../image/Mt.Everest.png'
 import secondBrandImage from '../../image/Northplace.png'
-import thirdBrandImage from '../../image/Adibaba.png';
-import fourthBrandImage from '../../image/Legacy.png';
-import fifthBrandImage from '../../image/NorgeyFashion.png';
+import thirdBrandImage from '../../image/Adibaba.png'
+import fourthBrandImage from '../../image/Legacy.png'
+import fifthBrandImage from '../../image/NorgeyFashion.png'
 // import sixthBrandImage from '../../image/mike.png';
-import Marquee from "react-fast-marquee";
-
+import Marquee from 'react-fast-marquee'
 
 export const LandingBrands = () => {
   const data = {
@@ -38,19 +37,22 @@ export const LandingBrands = () => {
 
       <div className="w-full flex py-4 lg:py-12 px-4 justify-around items-center bg-brand border-b-8 border-wheat">
         <Marquee autoFill>
-        {data &&
-          data.img.map((val, index) => {
-            return (
-              <div key={index} className="w-[100px] lg:w-[150px] h-full mx-4 lg:mx-8">
-                <Image
-                  src={val}
-                  alt=""
-                  className="w-full h-full object-contain object-center"
-                />
-              </div>
-            )
-          })}
-          </Marquee>
+          {data &&
+            data.img.map((val, index) => {
+              return (
+                <div
+                  key={index}
+                  className="w-[100px] lg:w-[150px] h-full mx-4 lg:mx-8"
+                >
+                  <Image
+                    src={val}
+                    alt=""
+                    className="w-full h-full object-contain object-center"
+                  />
+                </div>
+              )
+            })}
+        </Marquee>
       </div>
     </div>
   )

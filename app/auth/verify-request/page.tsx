@@ -1,6 +1,3 @@
-
 export default function VerifyRequest() {
-    return (
-        <div></div>
-    )
+  return <div></div>
 }

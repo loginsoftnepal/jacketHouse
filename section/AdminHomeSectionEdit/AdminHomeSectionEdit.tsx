@@ -1,26 +1,26 @@
-import InputField from "@/components/InputField/InputField";
-import { message, Select } from "antd";
-import React from "react";
-import { useState } from "react";
+import InputField from '@/components/InputField/InputField'
+import { message, Select } from 'antd'
+import React from 'react'
+import { useState } from 'react'
 
 export interface SectionEditProps {
-    url: string;
-    method: string;
+  url: string
+  method: string
 }
 
 const AdminHomeSectionEdit = (props: SectionEditProps) => {
-  const { url } = props;
+  const { url } = props
 
   const [dataValues, setDataValues] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    message: "",
-  });
+    name: '',
+    phone: '',
+    email: '',
+    message: '',
+  })
 
   return (
     <div>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: 'flex' }}>
         <InputField
           inputValue={dataValues}
           setInputValue={setDataValues}
@@ -39,7 +39,7 @@ const AdminHomeSectionEdit = (props: SectionEditProps) => {
           label="Email"
         />
       </div>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: 'flex' }}>
         <InputField
           inputValue={dataValues}
           setInputValue={setDataValues}
@@ -49,7 +49,7 @@ const AdminHomeSectionEdit = (props: SectionEditProps) => {
           label="Phone"
         />
       </div>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: 'flex' }}>
         <InputField
           inputValue={dataValues}
           setInputValue={setDataValues}
@@ -61,12 +61,11 @@ const AdminHomeSectionEdit = (props: SectionEditProps) => {
         />
       </div>
 
-      <button  className="np-admin-main-button">
-        {props.method == "POST" ? "Add" : "Update"}
+      <button className="np-admin-main-button">
+        {props.method == 'POST' ? 'Add' : 'Update'}
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default AdminHomeSectionEdit;
-
+export default AdminHomeSectionEdit

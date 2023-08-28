@@ -1,15 +1,15 @@
-import { SessionByDevice } from "@/type/types";
-import { Table } from "antd";
-import { useEffect } from "react";
-import { useState } from "react";
+import { SessionByDevice } from '@/type/types'
+import { Table } from 'antd'
+import { useEffect } from 'react'
+import { useState } from 'react'
 
 type myPageType = {
-  page: any, 
-  views: any,
+  page: any
+  views: any
 }
 
 const PagesView = () => {
-  const [myViews, setMyViews] = useState<myPageType[]>([]);
+  const [myViews, setMyViews] = useState<myPageType[]>([])
   const [pageViews, setPageViews] = useState<SessionByDevice[]>([])
   // console.log(pageViews, "pageViews")
   useEffect(() => {
@@ -18,27 +18,27 @@ const PagesView = () => {
         return {
           page: pg.dimensionValues[0].value,
           views: pg.metricValues[0].value,
-        };
-      });
-      setMyViews([...newArr]);
+        }
+      })
+      setMyViews([...newArr])
     }
-  }, [pageViews, pageViews?.length]);
+  }, [pageViews, pageViews?.length])
   const columns = [
     {
-      title: "Page Name",
-      dataIndex: "page",
-      key: "page",
-      render: (text:string) => (
+      title: 'Page Name',
+      dataIndex: 'page',
+      key: 'page',
+      render: (text: string) => (
         <div className="category-table-name">{text}</div>
       ),
     },
 
     {
-      title: "Views",
-      dataIndex: "views",
-      key: "views",
+      title: 'Views',
+      dataIndex: 'views',
+      key: 'views',
     },
-  ];
+  ]
   return (
     <div>
       <Table
@@ -47,7 +47,7 @@ const PagesView = () => {
         pagination={{ pageSize: 5 }}
       />
     </div>
-  );
-};
+  )
+}
 
-export default PagesView;
+export default PagesView

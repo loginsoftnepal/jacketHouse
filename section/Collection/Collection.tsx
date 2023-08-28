@@ -31,23 +31,26 @@ function Collection(collection: ICollection) {
       </div>
 
       <div className="w-full flex">
-        <div className='hidden lg:inline-block relative basis-[35%]'>
-           <div className='absolute w-[100%] top-[20%] left-0 h-[70%] rounded-full blur-[95.5px] bg-gradient-to-br from-indigo-300 via-purple-400 to-red-400 -z-1'></div>
-        <div className="w-full h-full relative bg-collection rounded-xl">
-          <Image
-            className="w-full h-full object-cover object-center"
-            src={collection && collection.collectionImage}
-            alt=""
-          />
-          <div className="absolute top-[40%] left-[35%]">
-            <span className="font-bold text-white text-[22px] lg:text-[32px] 2xl:text-[30px] leading-0 uppercase">
-              Men Collection
-            </span>
-            <Button size={'lg'} className="bg-white hover:text-white hover:bg-black text-black font-semibold rounded-none">
-              View More
-            </Button>
+        <div className="hidden lg:inline-block relative basis-[35%]">
+          <div className="absolute w-[100%] top-[20%] left-0 h-[70%] rounded-full blur-[95.5px] bg-gradient-to-br from-indigo-300 via-purple-400 to-red-400 -z-1"></div>
+          <div className="w-full h-full relative bg-collection rounded-xl">
+            <Image
+              className="w-full h-full object-cover object-center"
+              src={collection && collection.collectionImage}
+              alt=""
+            />
+            <div className="absolute top-[40%] left-[35%]">
+              <span className="font-bold text-white text-[22px] lg:text-[32px] 2xl:text-[30px] leading-0 uppercase">
+                Men Collection
+              </span>
+              <Button
+                size={'lg'}
+                className="bg-white hover:text-white hover:bg-black text-black font-semibold rounded-none"
+              >
+                View More
+              </Button>
+            </div>
           </div>
-         </div>
         </div>
         <div className="basis-[100%] lg:basis-[65%] flex justify-around  2xl:pl-8 2xl:justify-start gap-y-2 lg:gap-4 flex-wrap">
           {collection &&
@@ -69,4 +72,4 @@ function Collection(collection: ICollection) {
     </div>
   )
 }
-export default Collection;
+export default Collection

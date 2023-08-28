@@ -1,128 +1,132 @@
-"use client"
+'use client'
 import React, { use, useContext, useEffect, useState } from 'react'
-import { AiOutlineMail, AiOutlineSolution, AiFillExperiment } from 'react-icons/ai'
+import {
+  AiOutlineMail,
+  AiOutlineSolution,
+  AiFillExperiment,
+} from 'react-icons/ai'
 // import { AuthContext } from '../../context/AuthContext'
-import WorldMap from './WorldMap';
-import AnalyticsBox from './AnalyticsBox';
-import DeviceChart from './DeviceChart';
-import SourceChart from './SourceChart';
-import { BsNewspaper } from 'react-icons/bs';
-import { MdOutlineTimer } from 'react-icons/md';
-import { FaPeopleGroup, FaPersonRunning } from 'react-icons/fa6';
-import { Josefin_Slab } from 'next/font/google';
-
+import WorldMap from './WorldMap'
+import AnalyticsBox from './AnalyticsBox'
+import DeviceChart from './DeviceChart'
+import SourceChart from './SourceChart'
+import { BsNewspaper } from 'react-icons/bs'
+import { MdOutlineTimer } from 'react-icons/md'
+import { FaPeopleGroup, FaPersonRunning } from 'react-icons/fa6'
+import { Josefin_Slab } from 'next/font/google'
 
 export interface AnalyticsData {
-  icon: React.ReactNode,
-  title: string,
-  id?: string,
-  data: number | null | 0 | undefined | string,
+  icon: React.ReactNode
+  title: string
+  id?: string
+  data: number | null | 0 | undefined | string
   background: string
 }
 function Analytics() {
+  const [contactMessage, setContactMessage] = useState([])
+  const [news, setNews] = useState([])
+  const [jobs, setJobs] = useState([])
+  const [activeUsers, setActiveUsers] = useState([])
+  const [bounceRate, setBounceRate] = useState([])
+  const [sessionPerUser, setSessionPerUser] = useState([])
+  const [sessionDuration, setSessionDuration] = useState([])
 
-    const [contactMessage, setContactMessage]  = useState([]);
-    const [news, setNews] = useState([])
-    const [jobs, setJobs] = useState([])
-    const [activeUsers, setActiveUsers] = useState([]);
-    const [bounceRate, setBounceRate] = useState([]);
-    const [sessionPerUser,setSessionPerUser] = useState([]);
-    const [sessionDuration, setSessionDuration] = useState([]);
-
-    const [dashboardAnalyticsData, setDashboardAnalyticsData] = useState<AnalyticsData[]>([
-        {
-            icon: <AiOutlineMail  />,
-            title: 'Contacts',
-            data: contactMessage ? contactMessage.length : 0,
-            background: 'blue'
-        },
-        {
-            icon: <BsNewspaper />,
-            title: "News",
-            data: news ? news.length : 0,
-            background: 'red'
-        },
-        {
-           icon: <BsNewspaper />,
-           title: "Jobs",
-           data: jobs ? jobs.length : 0,
-           background: 'red'
-        },
-         {
+  const [dashboardAnalyticsData, setDashboardAnalyticsData] = useState<
+    AnalyticsData[]
+  >([
+    {
+      icon: <AiOutlineMail />,
+      title: 'Contacts',
+      data: contactMessage ? contactMessage.length : 0,
+      background: 'blue',
+    },
+    {
+      icon: <BsNewspaper />,
+      title: 'News',
+      data: news ? news.length : 0,
+      background: 'red',
+    },
+    {
+      icon: <BsNewspaper />,
+      title: 'Jobs',
+      data: jobs ? jobs.length : 0,
+      background: 'red',
+    },
+    {
       icon: <FaPeopleGroup />,
-      title: "Active Users",
-      id: "users",
+      title: 'Active Users',
+      id: 'users',
       data: 0,
-      background: "blue",
+      background: 'blue',
     },
     {
       icon: <FaPersonRunning />,
-      title: "Bounce Rate",
-      id: "bounce",
-      data: "0%",
-      background: "red",
+      title: 'Bounce Rate',
+      id: 'bounce',
+      data: '0%',
+      background: 'red',
     },
     {
-      icon: <AiFillExperiment /> ,
-      title: "Session Per User",
-      id: "sessionPerUser",
+      icon: <AiFillExperiment />,
+      title: 'Session Per User',
+      id: 'sessionPerUser',
       data: 0,
-      background: "lightgreen",
+      background: 'lightgreen',
     },
     {
       icon: <MdOutlineTimer />,
-      title: "Session Duration",
-      id: "sessionDuration",
+      title: 'Session Duration',
+      id: 'sessionDuration',
       data: 0,
-      background: "orange",
+      background: 'orange',
     },
-]);
+  ])
 
-useEffect(() => {
-   if(jobs && jobs.length > 0) {
-     let cc = dashboardAnalyticsData.map((da) => {
-        if (da.title == "Vacancy") {
-          console.log(jobs.length);
+  useEffect(() => {
+    if (jobs && jobs.length > 0) {
+      let cc = dashboardAnalyticsData.map((da) => {
+        if (da.title == 'Vacancy') {
+          console.log(jobs.length)
           return {
             ...da,
-            data: jobs.length
-          };
+            data: jobs.length,
+          }
         }
-        return da;
-      });
-      setDashboardAnalyticsData([...cc]);
-   }
-}, [jobs])
+        return da
+      })
+      setDashboardAnalyticsData([...cc])
+    }
+  }, [jobs])
 
-useEffect(() => {
-   if(news && news.length > 0) {
-     let cc = dashboardAnalyticsData.map((da) => {
-        if (da.title == "News") {
+  useEffect(() => {
+    if (news && news.length > 0) {
+      let cc = dashboardAnalyticsData.map((da) => {
+        if (da.title == 'News') {
           return {
             ...da,
-            data: news.length
-          };
+            data: news.length,
+          }
         }
-        return da;
-      });
-      setDashboardAnalyticsData([...cc]);
-   }
-}, [news])
+        return da
+      })
+      setDashboardAnalyticsData([...cc])
+    }
+  }, [news])
 
-useEffect(() => {
-   if(contactMessage && contactMessage.length > 0) {
-     let cc = dashboardAnalyticsData.map((da) => {
-        if (da.title == "Contacts") {
+  useEffect(() => {
+    if (contactMessage && contactMessage.length > 0) {
+      let cc = dashboardAnalyticsData.map((da) => {
+        if (da.title == 'Contacts') {
           return {
             ...da,
-            data: contactMessage.length
-          };
+            data: contactMessage.length,
+          }
         }
-        return da;
-      });
-      setDashboardAnalyticsData([...cc]);
-   }
-}, [contactMessage])
+        return da
+      })
+      setDashboardAnalyticsData([...cc])
+    }
+  }, [contactMessage])
 
   useEffect(() => {
     // if (bounceRate && bounceRate.length > 0) {
@@ -139,9 +143,9 @@ useEffect(() => {
     //   });
     //   setDashboardAnalyticsData([...cc]);
     // }
-  }, [bounceRate]);
+  }, [bounceRate])
 
-   useEffect(() => {
+  useEffect(() => {
     // if (activeUsers && activeUsers.length > 0) {
     //   let cc = dashboardAnalyticsData.map((da) => {
     //     if (da.id == "users") {
@@ -151,7 +155,7 @@ useEffect(() => {
     //   });
     //   setDashboardAnalyticsData([...cc]);
     // }
-  }, [activeUsers]);
+  }, [activeUsers])
 
   useEffect(() => {
     // if (sessionPerUser && sessionPerUser.length > 0) {
@@ -168,7 +172,7 @@ useEffect(() => {
     //   });
     //   setDashboardAnalyticsData([...cc]);
     // }
-  }, [sessionPerUser]);
+  }, [sessionPerUser])
 
   useEffect(() => {
     // if (sessionDuration && sessionDuration.length > 0) {
@@ -185,9 +189,9 @@ useEffect(() => {
     //   });
     //   setDashboardAnalyticsData([...cc]);
     // }
-  }, [sessionDuration]);
+  }, [sessionDuration])
 
-  //fetching analytics data 
+  //fetching analytics data
 
   useEffect(() => {
     //  axiosInstance.get('/analytics/activeUsers').then((res) => {
@@ -199,8 +203,6 @@ useEffect(() => {
     //  })
   }, [])
 
- 
-
   useEffect(() => {
     //  axiosInstance.get('/analytics/bounce-rate').then((res) => {
     //    if(res?.data && setBounceRate) {
@@ -209,9 +211,9 @@ useEffect(() => {
     //  }).catch((err) => {
     //     console.log('failed to fetch bounce rate', err);
     //  })
-   }, [])
+  }, [])
 
-   useEffect(() => {
+  useEffect(() => {
     //  axiosInstance.get('/analytics/averageSession').then((res) => {
     //    if(res?.data && setSessionDuration) {
     //      setSessionDuration(res.data);
@@ -219,9 +221,9 @@ useEffect(() => {
     //  }).catch((err) => {
     //     console.log('failed to fetch session duration', err)
     //  } )
-   }, [])
+  }, [])
 
-   useEffect(() => {
+  useEffect(() => {
     //  axiosInstance.get('/analytics/user-based-country').then((res) => {
     //    if(res?.data && setCountryBasedUser) {
     //      setCountryBasedUser(res.data);
@@ -229,9 +231,9 @@ useEffect(() => {
     //  }).catch((err) => {
     //    console.log('failed to fetch country based user', err);
     //  })
-   }, [])
+  }, [])
 
-   useEffect(() => {
+  useEffect(() => {
     // axiosInstance.get('/analytics/source').then((res) => {
     //    if(res?.data && setTrafficSource) {
     //     setTrafficSource(res.data);
@@ -239,9 +241,9 @@ useEffect(() => {
     // }).catch((err) => {
     //    console.log('failed to fetch traffic source', err);
     // })
-   }, [])
+  }, [])
 
-   useEffect(() => {
+  useEffect(() => {
     //   axiosInstance.get('/analytics/session-per-user').then((res) => {
     //      if(res?.data && setSessionPerUser) {
     //        setSessionPerUser(res.data);
@@ -249,9 +251,9 @@ useEffect(() => {
     //   }).catch((err) => {
     //      console.log('failed to fetch session-per-user', err);
     //   })
-   }, [])
-  
-   useEffect(() => {
+  }, [])
+
+  useEffect(() => {
     //  axiosInstance.get('/analytics/session-by-device').then((res) => {
     //    if(res?.data && setSessionsByDevice) {
     //      setSessionsByDevice(res.data);
@@ -259,7 +261,7 @@ useEffect(() => {
     //  }).catch((err) => {
     //    console.log('failed to fetch session by device', err);
     //  })
-   }, [])
+  }, [])
 
   return (
     <div>
@@ -267,10 +269,13 @@ useEffect(() => {
         <div className="flex flex-wrap items-center  gap-2">
           {dashboardAnalyticsData.map((data, index) => {
             return (
-              <div key={index} className="lg:basis-[30%] md:basis-[32%] sm:basis-1/2 basis-1/2">
+              <div
+                key={index}
+                className="lg:basis-[30%] md:basis-[32%] sm:basis-1/2 basis-1/2"
+              >
                 <AnalyticsBox items={data} />
               </div>
-            );
+            )
           })}
         </div>
         <div className="flex flex-col">
@@ -291,4 +296,4 @@ useEffect(() => {
   )
 }
 
-export default Analytics;
+export default Analytics
