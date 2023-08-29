@@ -1,5 +1,4 @@
 "use client"
-import { useStore } from '@/store/useStore'
 import React from 'react'
 
 interface AdminButtonProps {
@@ -8,8 +7,6 @@ interface AdminButtonProps {
 }
 
 function AdminButton({ onClick, text }: AdminButtonProps) {
-   
-  
 
   return (
         <button

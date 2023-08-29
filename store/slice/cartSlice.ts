@@ -17,8 +17,8 @@ export const CreateCartSlice: StateCreator<CartSlice> = (set, get) => ({
       image: Image1,
       description: 'This jacket can only be found in jackethouse',
       price: 2000,
-      size: 'xl',
-      color: 'red',
+      sizes: 'xl',
+      colors: 'red',
       quantity: 1,
       category: 'mens',
       brand: 'legacy',
@@ -29,8 +29,8 @@ export const CreateCartSlice: StateCreator<CartSlice> = (set, get) => ({
       image: Image1,
       description: 'This jacket can only be found in jackethouse',
       price: 2000,
-      size: 'xl',
-      color: 'red',
+      sizes: 'xl',
+      colors: 'red',
       quantity: 1,
       category: 'mens',
       brand: 'legacy',
@@ -41,8 +41,8 @@ export const CreateCartSlice: StateCreator<CartSlice> = (set, get) => ({
       image: Image1,
       description: 'This jacket can only be found in jackethouse',
       price: 2000,
-      size: 'xl',
-      color: 'red',
+      sizes: 'xl',
+      colors: 'red',
       quantity: 1,
       category: 'mens',
       brand: 'legacy',
@@ -53,8 +53,8 @@ export const CreateCartSlice: StateCreator<CartSlice> = (set, get) => ({
       image: Image1,
       description: 'This jacket can only be found in jackethouse',
       price: 2000,
-      size: 'xl',
-      color: 'red',
+      sizes: 'xl',
+      colors: 'red',
       quantity: 1,
       category: 'mens',
       brand: 'legacy',
@@ -65,8 +65,8 @@ export const CreateCartSlice: StateCreator<CartSlice> = (set, get) => ({
       image: Image1,
       description: 'This jacket can only be found in jackethouse',
       price: 2000,
-      size: 'xl',
-      color: 'red',
+      sizes: 'xl',
+      colors: 'red',
       quantity: 1,
       category: 'mens',
       brand: 'legacy',
@@ -77,8 +77,8 @@ export const CreateCartSlice: StateCreator<CartSlice> = (set, get) => ({
       image: Image1,
       description: 'This jacket can only be found in jackethouse',
       price: 2000,
-      size: 'xl',
-      color: 'red',
+      sizes: 'xl',
+      colors: 'red',
       quantity: 1,
       category: 'mens',
       brand: 'legacy',
@@ -89,8 +89,8 @@ export const CreateCartSlice: StateCreator<CartSlice> = (set, get) => ({
       image: Image1,
       description: 'This jacket can only be found in jackethouse',
       price: 2000,
-      size: 'xl',
-      color: 'red',
+      sizes: 'xl',
+      colors: 'red',
       quantity: 1,
       category: 'mens',
       brand: 'legacy',
@@ -101,8 +101,8 @@ export const CreateCartSlice: StateCreator<CartSlice> = (set, get) => ({
       image: Image1,
       description: 'This jacket can only be found in jackethouse',
       price: 2000,
-      size: 'xl',
-      color: 'red',
+      sizes: 'xl',
+      colors: 'red',
       quantity: 1,
       category: 'mens',
       brand: 'legacy',
@@ -111,7 +111,7 @@ export const CreateCartSlice: StateCreator<CartSlice> = (set, get) => ({
   addToCart: (product: Product) => {
     const cart = get().cart
     const findProduct = cart.find((p) => p.id == product.id)
-    if (findProduct) {
+    if (findProduct && findProduct.quantity) {
       findProduct.quantity += 1
     } else {
       cart.push({ ...product, quantity: 1 })    
@@ -124,12 +124,12 @@ export const CreateCartSlice: StateCreator<CartSlice> = (set, get) => ({
   updateQuantity: (productId: number, action: 'increase' | 'decrease') => {
     const cart = get().cart
     const findProduct = cart.find((p) => p.id === productId)
-    if (findProduct) {
+    if (findProduct && findProduct.quantity) {
       if (action === 'decrease') {
         findProduct.quantity =
           findProduct.quantity > 1
             ? findProduct.quantity + 1
-            : findProduct.quantity
+            : findProduct?.quantity
       } else {
         findProduct.quantity += 1
       }

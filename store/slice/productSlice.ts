@@ -2,16 +2,17 @@ import { StaticImageData } from 'next/image'
 import { StateCreator } from 'zustand'
 
 export interface Product {
-  id: number
+  id: number 
   title: string
   image: string | StaticImageData
   price: number
-  quantity: number
+  available?: number
   description: string
   category: string
   brand: string
-  color?: string
-  size?: string
+  colors?: string
+  sizes?: string
+  quantity?: number
 }
 
 export interface IProductSlice {
@@ -21,8 +22,8 @@ export interface IProductSlice {
 
 export const createProductSlice: StateCreator<IProductSlice> = (set, get) => ({
   products: [],
-  fetchProducts: async () => {
-    const res = await fetch(`${process.env.SERVER_URL}/product`)
+  fetchProducts: async () => { 
+    const res = await fetch(`http://localhost:3000/api/product`)
     set({ products: await res.json() })
   },
   setProducts: (products: Product[]) => {

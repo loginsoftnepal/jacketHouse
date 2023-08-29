@@ -1,8 +1,10 @@
+"use client"
 import AdminProductSectionEdit from '@/section/AdminProductEdit/AdminProductEdit'
+import { Product } from '@/store/slice/productSlice'
 import { useStore } from '@/store/useStore'
 import { Image, message, Table } from 'antd'
 import { ColumnsType } from 'antd/es/table'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 interface DataType {
   key: string
@@ -11,11 +13,14 @@ interface DataType {
 }
 
 const AdminHomeSection = () => {
-
   let url = `/contact`
-  const { setTopSheet, setTopSheetContent } = useStore()
-
+  const { setTopSheet, setTopSheetContent, fetchProducts, products } = useStore()
+  
   const tableItemEdit = (record: any) => {}
+
+  useEffect(() => {
+     fetchProducts()
+  }, [])
 
   const tableItemDelete = async (record: any) => {
     try {
@@ -37,7 +42,7 @@ const AdminHomeSection = () => {
     }
   }
 
-  const columns: ColumnsType<DataType> = [
+  const columns: ColumnsType<DataType | Product> = [
     {
       title: 'Title',
       dataIndex: 'title',
@@ -88,7 +93,15 @@ const AdminHomeSection = () => {
   return (
     <div className="admin-store-category">
       <div className="page-heading">
-    
+          <button
+          className="text-white p-2 border-2 m-2 border-white rounded-3xl"
+          onClick={() => {
+            setTopSheetContent(<AdminProductSectionEdit url={url} method='POST' />)
+            setTopSheet(true)
+          }}
+        >
+          Add Product
+        </button>
         <Table dataSource={[]} columns={columns} />
       </div>
     </div>

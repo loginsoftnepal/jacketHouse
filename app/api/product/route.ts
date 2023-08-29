@@ -9,11 +9,12 @@ export async function GET(request: NextRequest) {
   const limit = limit_str ? parseInt(limit_str, 10) : 10
   const skip = (page - 1) * limit
 
+  console.log('we are here');
   const products = await prisma.product.findMany({
     skip,
     take: limit,
   })
-
+console.log(products);
   let json_response = {
     status: 'success',
     results: products.length,

@@ -15,7 +15,7 @@ export interface CartItemProps {
     image: StaticImageData | string
     category: string
     brand: string
-    quantity: number
+    quantity?: number
   }
 }
 

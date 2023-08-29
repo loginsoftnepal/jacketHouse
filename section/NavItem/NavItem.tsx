@@ -20,7 +20,7 @@ import CartSvg from '../../image/Group 3.svg'
 import User from '../../image/ion_person-outline.svg'
 
 interface PropsType {
-  hidden: boolean
+  hidden?: boolean
 }
 
 function NavItem(props: PropsType) {

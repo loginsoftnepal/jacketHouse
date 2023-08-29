@@ -4,20 +4,33 @@ import {
   apiUpdateProduct,
 } from '@/app/api-request/productCalls'
 import InputField from '@/components/InputField/InputField'
+import { Product } from '@/store/slice/productSlice'
 import { message, Select } from 'antd'
 import React from 'react'
 import { useState } from 'react'
 
 export interface SectionEditProps {
-  url: string
-  method: string
+  url: string;
+  method: string;
 }
 
+export interface ProductType {
+   title: string,
+   category: string,
+   price: number|string,
+   colors: string,
+   sizes: string,
+   available: number|string,
+   brand: string,
+   description: string,
+}
 const AdminProductSectionEdit = (props: SectionEditProps) => {
   const { url, method } = props
 
-  const [dataValues, setDataValues] = useState({
-    name: '',
+  const [isCreated, setIsCreated] = useState(false)
+
+  const [dataValues, setDataValues] = useState<ProductType>({
+    title: '',
     category: '',
     price: '',
     colors: '',
@@ -28,15 +41,17 @@ const AdminProductSectionEdit = (props: SectionEditProps) => {
   })
 
   const handleSubmit = async () => {
+    console.log(dataValues)
     if (
-      !dataValues.name ||
+      !dataValues.title ||
       !dataValues.price ||
       !dataValues.colors ||
       !dataValues.available ||
       !dataValues.brand ||
-      !dataValues.description
+      !dataValues.description ||
+      !dataValues.sizes 
     ) {
-      message.error('Please fill all the fields.')
+     return message.error('Please fill all the fields.')
     }
 
     const productData = JSON.stringify(dataValues)
@@ -56,10 +71,11 @@ const AdminProductSectionEdit = (props: SectionEditProps) => {
   return (
     <div>
       <div style={{ display: 'flex' }}>
+
         <InputField
           inputValue={dataValues}
           setInputValue={setDataValues}
-          name="name"
+          name="title"
           type="text"
           placeholder="Enter Product Name..."
           label="Product Name"
@@ -69,7 +85,7 @@ const AdminProductSectionEdit = (props: SectionEditProps) => {
           inputValue={dataValues}
           setInputValue={setDataValues}
           name="price"
-          type="text"
+          type="number"
           placeholder="Enter Price..."
           label="Price"
         />
@@ -83,7 +99,44 @@ const AdminProductSectionEdit = (props: SectionEditProps) => {
           placeholder="Enter Category..."
           label="Category"
         />
+        <InputField
+          inputValue={dataValues}
+          setInputValue={setDataValues}
+          name='colors'
+          type='text'
+          placeholder='Enter Colors...'
+          label='Color'
+        />
       </div>
+      <div style={{ display: 'flex'}} >
+       <InputField
+        inputValue={dataValues}
+        setInputValue={setDataValues} 
+        name="sizes"
+        type="text"
+        placeholder="Enter Sizes"
+        label= 'Sizes'
+       />
+       <InputField 
+        inputValue={dataValues} 
+        setInputValue={setDataValues}
+        name='available'
+        type='number'
+        placeholder='Enter Available'
+        label="Available"
+       />
+      </div>
+      <div>
+        <InputField
+         inputValue={dataValues} 
+         setInputValue={setDataValues}
+         name="brand"
+         type='text'
+         placeholder='Enter Brand'
+         label='Brand'
+         />
+      </div>
+
       <div style={{ display: 'flex' }}>
         <InputField
           inputValue={dataValues}
