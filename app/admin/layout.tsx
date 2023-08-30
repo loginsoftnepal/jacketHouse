@@ -1,12 +1,10 @@
-import { ConfigProvider } from "antd";
-import theme from '../theme/themeConfig';
+import { ConfigProvider } from 'antd'
+import theme from '../theme/themeConfig'
 
 export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  return (
-  <ConfigProvider theme={theme}>{children}</ConfigProvider>
-  )
+  return <ConfigProvider theme={theme}>{children}</ConfigProvider>
 }

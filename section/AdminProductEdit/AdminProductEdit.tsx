@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import {
   apiCreateProduct,
   apiUpdateProduct,
@@ -12,22 +12,22 @@ import { useState } from 'react'
 import AdminUploadPhoto from '../AdminUploadPhoto/AdminUploadPhoto'
 
 export interface SectionEditProps {
-  url: string;
-  method: string;
-  updateData?: Product;
+  url: string
+  method: string
+  updateData?: Product
 }
 
 export interface ProductType {
-   id?: number,
-   title: string,
-   image?:string | null,
-   category: string,
-   price: number,
-   colors?: string | null,
-   sizes?: string | null,
-   available?: number | null,
-   brand: string,
-   description: string,
+  id?: number
+  title: string
+  image?: string | null
+  category: string
+  price: number
+  colors?: string | null
+  sizes?: string | null
+  available?: number | null
+  brand: string
+  description: string
 }
 
 const AdminProductSectionEdit = (props: SectionEditProps) => {
@@ -46,10 +46,10 @@ const AdminProductSectionEdit = (props: SectionEditProps) => {
   })
 
   useEffect(() => {
-      if(props.updateData) {
-        setDataValues(props.updateData)
-        setIsCreated(true);
-      }
+    if (props.updateData) {
+      setDataValues(props.updateData)
+      setIsCreated(true)
+    }
   }, [])
   const handleSubmit = async () => {
     console.log(dataValues)
@@ -60,9 +60,9 @@ const AdminProductSectionEdit = (props: SectionEditProps) => {
       !dataValues.available ||
       !dataValues.brand ||
       !dataValues.description ||
-      !dataValues.sizes 
+      !dataValues.sizes
     ) {
-     return message.error('Please fill all the fields.')
+      return message.error('Please fill all the fields.')
     }
 
     const productData = JSON.stringify(dataValues)
@@ -73,8 +73,8 @@ const AdminProductSectionEdit = (props: SectionEditProps) => {
           ? await apiCreateProduct(productData)
           : await apiUpdateProduct(productData)
       message.success('Product created successfully.')
-      setDataValues(product);
-      setIsCreated(true);
+      setDataValues(product)
+      setIsCreated(true)
     } catch (error: any) {
       message.error(error.toString())
       console.log(error)
@@ -84,16 +84,16 @@ const AdminProductSectionEdit = (props: SectionEditProps) => {
   return (
     <div>
       {isCreated && (
-       <div>
-         <AdminUploadPhoto
-           action={`/api/product/${dataValues.id}/upload`}
-           listType='picture-card'
-           name='productPhoto'
-           multiple={true}
-           productId={dataValues.id}
+        <div>
+          <AdminUploadPhoto
+            action={`/api/product/${dataValues.id}/upload`}
+            listType="picture-card"
+            name="productPhoto"
+            multiple={true}
+            productId={dataValues.id}
           />
-       </div>
-     )}
+        </div>
+      )}
       <div style={{ display: 'flex' }}>
         <InputField
           inputValue={dataValues}
@@ -125,39 +125,39 @@ const AdminProductSectionEdit = (props: SectionEditProps) => {
         <InputField
           inputValue={dataValues}
           setInputValue={setDataValues}
-          name='colors'
-          type='text'
-          placeholder='Enter Colors...'
-          label='Color'
+          name="colors"
+          type="text"
+          placeholder="Enter Colors..."
+          label="Color"
         />
       </div>
-      <div style={{ display: 'flex'}} >
-       <InputField
-        inputValue={dataValues}
-        setInputValue={setDataValues} 
-        name="sizes"
-        type="text"
-        placeholder="Enter Sizes"
-        label= 'Sizes'
-       />
-       <InputField 
-        inputValue={dataValues} 
-        setInputValue={setDataValues}
-        name='available'
-        type='number'
-        placeholder='Enter Available'
-        label="Available"
-       />
+      <div style={{ display: 'flex' }}>
+        <InputField
+          inputValue={dataValues}
+          setInputValue={setDataValues}
+          name="sizes"
+          type="text"
+          placeholder="Enter Sizes"
+          label="Sizes"
+        />
+        <InputField
+          inputValue={dataValues}
+          setInputValue={setDataValues}
+          name="available"
+          type="number"
+          placeholder="Enter Available"
+          label="Available"
+        />
       </div>
       <div>
         <InputField
-         inputValue={dataValues} 
-         setInputValue={setDataValues}
-         name="brand"
-         type='text'
-         placeholder='Enter Brand'
-         label='Brand'
-         />
+          inputValue={dataValues}
+          setInputValue={setDataValues}
+          name="brand"
+          type="text"
+          placeholder="Enter Brand"
+          label="Brand"
+        />
       </div>
 
       <div style={{ display: 'flex' }}>

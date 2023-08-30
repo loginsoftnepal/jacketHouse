@@ -44,8 +44,11 @@ const InputField = (props: InputFieldProps) => {
           className="h-[40px] bg-transparent border-[1px] border-[rgba(255, 255, 255, 0.189)] rounded-[12px] outline-none p-[20px] w-full text-white"
           value={inputValue[name]}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-           
-            setInputValue((prev: any) => ({ ...prev, [name]: type == 'number' ? parseFloat(e.target.value) : e.target.value }))
+            setInputValue((prev: any) => ({
+              ...prev,
+              [name]:
+                type == 'number' ? parseFloat(e.target.value) : e.target.value,
+            }))
           }}
           type={type}
           placeholder={placeholder}

@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import AdminProductSectionEdit from '@/section/AdminProductEdit/AdminProductEdit'
 import { IProduct } from '@/store/slice/productSlice'
 import { useStore } from '@/store/useStore'
@@ -15,23 +15,23 @@ interface DataType {
 const AdminHomeSection = () => {
   let url = `/api/product`
   const { setTopSheet, setTopSheetContent, products } = useStore()
-  const [product, setProduct] = useState<IProduct[]>([]);
+  const [product, setProduct] = useState<IProduct[]>([])
 
   useEffect(() => {
-     fetch(`http://localhost:3000/api/product`)
-     .then((res) => {
-       if(!res.ok){
-         throw new Error('Network response was not ok');
-       }
-       return res.json()
-     })
-     .then((data) => {
-      console.log(data)
+    fetch(`http://localhost:3000/api/product`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Network response was not ok')
+        }
+        return res.json()
+      })
+      .then((data) => {
+        console.log(data)
         setProduct(data.products)
-     })
-     .catch((error) => {
-      console.log(error)
-     })
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }, [])
 
   const tableItemDelete = async (record: any) => {
@@ -79,10 +79,13 @@ const AdminHomeSection = () => {
           className="font-semibold p-2 rounded-3xl border-[1px] border-black"
           onClick={() => {
             setTopSheetContent(
-              <AdminProductSectionEdit updateData={record} method="PUT" url={url} />,
+              <AdminProductSectionEdit
+                updateData={record}
+                method="PUT"
+                url={url}
+              />,
             )
             setTopSheet(true)
-            
           }}
         >
           View
@@ -106,20 +109,22 @@ const AdminHomeSection = () => {
   return (
     <div className="admin-store-category">
       <div className="page-heading">
-          <button
+        <button
           className="text-white p-2 border-2 m-2 border-white rounded-3xl"
           onClick={() => {
-            setTopSheetContent(<AdminProductSectionEdit url={url} method='POST' />)
+            setTopSheetContent(
+              <AdminProductSectionEdit url={url} method="POST" />,
+            )
             setTopSheet(true)
           }}
         >
           Add Product
         </button>
         <Table
-         dataSource={product}
-         columns={columns}
-         rowKey={(record) => record.id}
-           />
+          dataSource={product}
+          columns={columns}
+          rowKey={(record) => record.id}
+        />
       </div>
     </div>
   )

@@ -1,8 +1,8 @@
 {
   "extends": [
     "next/babel",
-   "next/core-web-vitals",
-   "plugin:testing-library/react",
-   "plugin:jest-dom/recommend"
- ]
+    "next/core-web-vitals",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommend"
+  ]
 }
