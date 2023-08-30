@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
-import { Layout, Menu } from 'antd'
+import Layout, { Menu } from 'antd'
 import Link from 'next/link'
-const { Sider } = Layout
 import type { MenuProps } from 'antd'
 import {
   MailOutlined,
@@ -18,6 +17,7 @@ import {
   AppstoreAddOutlined,
 } from '@ant-design/icons'
 import { BsAppIndicator } from 'react-icons/bs'
+import Sider from 'antd/es/layout/Sider'
 
 type MenuItem = Required<MenuProps>['items'][number]
 interface SliderProps {

@@ -4,42 +4,53 @@ import {
   apiUpdateProduct,
 } from '@/app/api-request/productCalls'
 import InputField from '@/components/InputField/InputField'
-import { Product } from '@/store/slice/productSlice'
+import { Product } from '@prisma/client'
 import { message, Select } from 'antd'
-import React from 'react'
+import { RcFile } from 'antd/es/upload'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
+import AdminUploadPhoto from '../AdminUploadPhoto/AdminUploadPhoto'
 
 export interface SectionEditProps {
   url: string;
   method: string;
+  updateData?: Product;
 }
 
 export interface ProductType {
+   id?: number,
    title: string,
+   image?:string | null,
    category: string,
-   price: number|string,
-   colors: string,
-   sizes: string,
-   available: number|string,
+   price: number,
+   colors?: string | null,
+   sizes?: string | null,
+   available?: number | null,
    brand: string,
    description: string,
 }
+
 const AdminProductSectionEdit = (props: SectionEditProps) => {
   const { url, method } = props
-
   const [isCreated, setIsCreated] = useState(false)
 
   const [dataValues, setDataValues] = useState<ProductType>({
     title: '',
     category: '',
-    price: '',
+    price: 0,
     colors: '',
     sizes: '',
-    available: '',
+    available: 0,
     brand: '',
     description: '',
   })
 
+  useEffect(() => {
+      if(props.updateData) {
+        setDataValues(props.updateData)
+        setIsCreated(true);
+      }
+  }, [])
   const handleSubmit = async () => {
     console.log(dataValues)
     if (
@@ -62,6 +73,8 @@ const AdminProductSectionEdit = (props: SectionEditProps) => {
           ? await apiCreateProduct(productData)
           : await apiUpdateProduct(productData)
       message.success('Product created successfully.')
+      setDataValues(product);
+      setIsCreated(true);
     } catch (error: any) {
       message.error(error.toString())
       console.log(error)
@@ -70,8 +83,18 @@ const AdminProductSectionEdit = (props: SectionEditProps) => {
 
   return (
     <div>
+      {isCreated && (
+       <div>
+         <AdminUploadPhoto
+           action={`/api/product/${dataValues.id}/upload`}
+           listType='picture-card'
+           name='productPhoto'
+           multiple={true}
+           productId={dataValues.id}
+          />
+       </div>
+     )}
       <div style={{ display: 'flex' }}>
-
         <InputField
           inputValue={dataValues}
           setInputValue={setDataValues}

@@ -23,6 +23,7 @@ export const env = createEnv({
   client: {
     // NEXT_PUBLIC_CLIENTVAR:
     NEXT_PUBLIC_VERCEL_URL: z.string(),
+    NEXT_PUBLIC_SERVER_URL: z.string(),
   },
   runtimeEnv: {
     DATABASE_URL: process.env.DATABASE_URL,
@@ -32,6 +33,7 @@ export const env = createEnv({
     SERVER_URL: process.env.SERVER_URL,
     PORT: process.env.PORT,
     NEXT_PUBLIC_VERCEL_URL: process.env.VERCEL_URL,
+    NEXT_PUBLIC_SERVER_URL: process.env.SERVER_URL,
   },
 
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,

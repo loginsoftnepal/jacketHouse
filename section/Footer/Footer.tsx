@@ -23,14 +23,14 @@ export const Footer = () => {
           {data.offerSubHeading}
         </span>
 
-        <div className="flex justify-around w-[100%] lg:w-[70%] mx-auto my-8">
+        <div className="flex justify-between w-[100%] lg:w-[70%] mx-auto my-8">
           <Input
-            className="bg-wheat w-full   lg:h-16 mr-2 lg:mr-4 text-sm lg:text-lg"
+            className="bg-wheat w-full inline-block lg:h-16 mr-2 lg:mr-4 text-sm lg:text-lg"
             placeholder="Your Email?"
           />
           <Button
             size={'lg'}
-            className="bg-wheat px-0 py-2 lg:py-8 lg:w-full max-w-[150px] lg:max-w-[200px] font-bold text-sm lg:text-lg text-brand hover:bg-wheat hover:text-[red]"
+            className="bg-wheat px-0 lg:py-8 lg:w-full w-[200px] lg:max-w-[200px] font-bold text-sm lg:text-lg text-brand hover:bg-wheat hover:text-[red]"
           >
             Be a Member
           </Button>
@@ -38,7 +38,7 @@ export const Footer = () => {
       </div>
 
       <div className="w-[80%] mx-auto flex flex-col lg:flex-row justify-between">
-        <div className="firstCol basis-[30%] flex flex-col">
+        <div className="firstCol basis-[30%] mb-2 lg:mb-0 flex flex-col">
           <div className="w-full h-[40px] mb-6">
             <Image
               className="w-full h-full object-contain object-left"
@@ -77,8 +77,8 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="secondColumn basis-[15%] flex flex-col mt-4 lg:mt-0">
-          <h3 className="mb-4 lg:mb-8 uppercase text-white">COMPANY</h3>
+        <div className="secondColumn basis-[15%] flex flex-col mt-4 lg:mt-0 mb-4 lg:mb-0">
+          <h3 className="mb-2 md:mb-4 lg:mb-8 uppercase text-white">COMPANY</h3>
           <Link className="text-darkWheat hover:text-white mb-2" href={'#'}>
             About Us
           </Link>
@@ -93,8 +93,8 @@ export const Footer = () => {
           </Link>
         </div>
 
-        <div className="thirdColumn text-white basis-[15%] flex flex-col">
-          <h3 className="mb-4 lg:mb-8 uppercase">SHOP</h3>
+        <div className="thirdColumn text-white basis-[15%] mb-4 lg:mb-0 flex flex-col">
+          <h3 className="mb-2 md:mb-4 lg:mb-8 uppercase">SHOP</h3>
           <Link className="text-darkWheat hover:text-white mb-2" href={'#'}>
             Women
           </Link>
@@ -109,8 +109,8 @@ export const Footer = () => {
           </Link>
         </div>
 
-        <div className="fouthColumn text-white basis-[15%] flex flex-col">
-          <h3 className="lg:mb-8 mb-4  uppercase">Our Locations</h3>
+        <div className="fouthColumn text-white basis-[15%] flex flex-col mb-4 lg:mb-4">
+          <h3 className="lg:mb-8 md:mb-4 mb-2  uppercase">Our Locations</h3>
 
           <Link className="text-darkWheat hover:text-white mb-2" href={'#'}>
             Satdobato
@@ -130,7 +130,7 @@ export const Footer = () => {
         </div>
 
         <div className="fifthColumn text-white basis-[15%] flex flex-col lg:mb-0 mb-2">
-          <h3 className="mb-4 lg:mb-8 uppercase">Help</h3>
+          <h3 className="mb-2 md:mb-4 lg:mb-8 uppercase">Help</h3>
           <Link className="text-darkWheat hover:text-white mb-2" href={'#'}>
             Customer Service
           </Link>

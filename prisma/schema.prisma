@@ -64,7 +64,7 @@ model VerificationToken {
 model Product {
   id Int @id @default(autoincrement())
   title String
-  image String?
+  image ProductImage[]
   category String
   available Int?
   price Int
@@ -74,3 +74,11 @@ model Product {
   sizes String?
 }
 
+model ProductImage {
+  id Int @id @default(autoincrement())
+  fileName String
+  originalFileName String
+  path String
+  product Product @relation(fields: [productId], references: [id])
+  productId Int
+}

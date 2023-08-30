@@ -9,17 +9,29 @@ import React, { useContext, useEffect, useState } from 'react'
 interface DataType {
   key: string
   title: string
-  collection: string
+  category: string
 }
 
 const AdminHomeSection = () => {
-  let url = `/contact`
-  const { setTopSheet, setTopSheetContent, fetchProducts, products } = useStore()
-  
-  const tableItemEdit = (record: any) => {}
+  let url = `/api/product`
+  const { setTopSheet, setTopSheetContent, products } = useStore()
+  const [product, setProduct] = useState<Product[]>([]);
 
   useEffect(() => {
-     fetchProducts()
+     fetch(`http://localhost:3000/api/product`)
+     .then((res) => {
+       if(!res.ok){
+         throw new Error('Network response was not ok');
+       }
+       return res.json()
+     })
+     .then((data) => {
+      console.log(data)
+        setProduct(data.products)
+     })
+     .catch((error) => {
+      console.log(error)
+     })
   }, [])
 
   const tableItemDelete = async (record: any) => {
@@ -42,7 +54,7 @@ const AdminHomeSection = () => {
     }
   }
 
-  const columns: ColumnsType<DataType | Product> = [
+  const columns: ColumnsType<Product> = [
     {
       title: 'Title',
       dataIndex: 'title',
@@ -53,9 +65,9 @@ const AdminHomeSection = () => {
     },
 
     {
-      title: 'Collection',
-      dataIndex: 'collection',
-      key: 'collection',
+      title: 'Category',
+      dataIndex: 'category',
+      key: 'category',
       responsive: ['lg'],
     },
 
@@ -64,12 +76,13 @@ const AdminHomeSection = () => {
       key: 'view',
       render: (record: any) => (
         <button
-          className="np-admin-main-button"
+          className="font-semibold p-2 rounded-3xl border-[1px] border-black"
           onClick={() => {
             setTopSheetContent(
-              <AdminProductSectionEdit method="PUT" url={url} />,
+              <AdminProductSectionEdit updateData={record} method="PUT" url={url} />,
             )
             setTopSheet(true)
+            
           }}
         >
           View
@@ -81,7 +94,7 @@ const AdminHomeSection = () => {
       key: 'delete',
       render: (record: any) => (
         <button
-          className="np-admin-main-button"
+          className="font-semibold p-2 rounded-3xl border-[1px] border-black"
           onClick={() => tableItemDelete(record)}
         >
           Delete
@@ -102,7 +115,11 @@ const AdminHomeSection = () => {
         >
           Add Product
         </button>
-        <Table dataSource={[]} columns={columns} />
+        <Table
+         dataSource={product}
+         columns={columns}
+         rowKey={(record) => record.id}
+           />
       </div>
     </div>
   )

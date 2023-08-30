@@ -7,19 +7,19 @@ import React from 'react'
 function Product() {
   return (
     <div className="w-full flex flex-col">
-      <div className="w-[80%] 2xl:w-[70%] mx-auto flex my-16 items-center justify-around">
+      <div className="w-[90%] lg:w-[80%] 2xl:w-[70%] mx-auto flex flex-col lg:flex-row my-16 items-center justify-around">
         <ProductShowCase />
         <ProductDesc />
       </div>
 
-      <div className="w-[80%] mx-auto my-8">
+      <div className="w-[90%] lg:w-[80%] mx-auto my-8">
         <h1 className="font-semibold text-darkWheat text-xl my-2">
           Please, Leave one review for quality control :
         </h1>
         <Searchbar
           className="rounded-xl py-3 text-xl"
           placeholder="Write your review about this product"
-          buttonClasses="w-[200px] rounded-3xl px-4 py-6 hover:bg-black hover:text-white"
+          buttonClasses="lg:w-[200px] rounded-3xl lg:px-4 lg:py-6 hover:bg-black hover:text-white"
           buttonName="Post a comment"
         />
         <ProductComment />
@@ -28,4 +28,4 @@ function Product() {
   )
 }
 
-export default Product
+export default Product;
