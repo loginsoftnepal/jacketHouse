@@ -33,7 +33,7 @@ export const env = createEnv({
     SERVER_URL: process.env.SERVER_URL,
     PORT: process.env.PORT,
     NEXT_PUBLIC_VERCEL_URL: process.env.VERCEL_URL,
-    NEXT_PUBLIC_SERVER_URL: process.env.SERVER_URL,
+    NEXT_PUBLIC_SERVER_URL: process.env.NEXT_AUTH_SERVER_URL,
   },
 
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,

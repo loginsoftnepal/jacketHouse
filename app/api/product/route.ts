@@ -14,6 +14,7 @@ export async function GET(request: NextRequest) {
     skip,
     take: limit,
   })
+  
 console.log(products);
   let json_response = {
     status: 'success',

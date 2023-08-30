@@ -1,6 +1,6 @@
 "use client"
 import AdminProductSectionEdit from '@/section/AdminProductEdit/AdminProductEdit'
-import { Product } from '@/store/slice/productSlice'
+import { IProduct } from '@/store/slice/productSlice'
 import { useStore } from '@/store/useStore'
 import { Image, message, Table } from 'antd'
 import { ColumnsType } from 'antd/es/table'
@@ -15,7 +15,7 @@ interface DataType {
 const AdminHomeSection = () => {
   let url = `/api/product`
   const { setTopSheet, setTopSheetContent, products } = useStore()
-  const [product, setProduct] = useState<Product[]>([]);
+  const [product, setProduct] = useState<IProduct[]>([]);
 
   useEffect(() => {
      fetch(`http://localhost:3000/api/product`)
@@ -54,7 +54,7 @@ const AdminHomeSection = () => {
     }
   }
 
-  const columns: ColumnsType<Product> = [
+  const columns: ColumnsType<IProduct> = [
     {
       title: 'Title',
       dataIndex: 'title',
