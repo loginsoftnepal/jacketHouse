@@ -99,3 +99,10 @@ model HomeSection {
   path String
   products Product[] @relation("HomeSectionProducts")
 }
+
+model SalesBanner {
+  id Int @id @default(autoincrement())
+  fileName String
+  originalFileName String
+  path String
+}

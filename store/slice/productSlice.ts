@@ -18,6 +18,7 @@ export interface IProduct {
 export interface IProductSlice {
   products: IProduct[]
   fetchProducts: () => void
+  setProducts: (products: IProduct[]) => void
 }
 
 export const createProductSlice: StateCreator<IProductSlice> = (set, get) => ({

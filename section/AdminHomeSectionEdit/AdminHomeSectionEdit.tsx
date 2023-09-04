@@ -23,7 +23,7 @@ export interface SectionEditProps {
 
 const AdminHomeSectionEdit = (props: SectionEditProps) => {
   const { url, method } = props
-  const { products } = useStore()
+  const { products, setProducts, fetchProducts } = useStore()
   const [isCreated, setIsCreated] = useState(false)
   const [selectProduct, setSelectProduct] = useState<SelectProps['options']>([])
   const [dataValues, setDataValues] = useState<IHomeSection>({
@@ -47,9 +47,25 @@ const AdminHomeSectionEdit = (props: SectionEditProps) => {
         }
        }
       )
-
     setSelectProduct(result)
   }, [products])
+
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/product`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Network response was not ok')
+        }
+        return res.json()
+      })
+      .then((data) => {
+        console.log(data)
+        setProducts(data.products)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }, [])
 
   const handleSubmit = async () => {
     if (!dataValues.title || !dataValues.subtitle) {
