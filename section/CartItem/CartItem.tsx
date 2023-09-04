@@ -12,7 +12,7 @@ export interface CartItemProps {
     price: number
     color?: string
     size?: string
-    image: StaticImageData | string
+    image?: StaticImageData | string
     category: string
     brand: string
     quantity?: number
@@ -35,7 +35,7 @@ function CartItem({ item }: CartItemProps) {
       <div className="basis-[30%] max-h-[100px] m-1 ">
         <Image
           className="w-full h-full object-contain"
-          src={item.image}
+          src={item.image ? item.image : ''}
           alt=""
         />
       </div>

@@ -1,5 +1,6 @@
 'use client'
 import AdminHomeSectionEdit from '@/section/AdminHomeSectionEdit/AdminHomeSectionEdit'
+import { IProduct } from '@/store/slice/productSlice'
 import { useStore } from '@/store/useStore'
 import { Image, message, Table } from 'antd'
 import { ColumnsType } from 'antd/es/table'
@@ -11,10 +12,18 @@ interface DataType {
   collection: string
 }
 
+export interface IHomeSection {
+  id?: number
+  title: string
+  subtitle: string | null
+  products?: IProduct[]
+}
+
 const AdminHomeSection = () => {
-  let url = `/contact`
-  const [selectedData, setSelectedData] = useState({})
+  let url = `/api/homeSection`
   const { setTopSheetContent, setTopSheet } = useStore()
+  const [homeSection, setHomeSection] = useState([])
+
   const tableItemEdit = (record: any) => {}
 
   const tableItemDelete = async (record: any) => {
@@ -37,7 +46,7 @@ const AdminHomeSection = () => {
     }
   }
 
-  const columns: ColumnsType<DataType> = [
+  const columns: ColumnsType<IHomeSection> = [
     {
       title: 'Title',
       dataIndex: 'title',
@@ -88,7 +97,7 @@ const AdminHomeSection = () => {
     <div className="admin-store-category">
       <div className="page-heading">
         <button
-          className="np-admin-main-button add-button"
+          className="text-white p-2 border-2 m-2 border-white rounded-3xl"
           onClick={() => {
             setTopSheetContent(<AdminHomeSectionEdit method="POST" url={url} />)
             setTopSheet(true)

@@ -12,13 +12,13 @@ interface DataType {
   category: string
 }
 
-const AdminHomeSection = () => {
+const AdminProductSection = () => {
   let url = `/api/product`
   const { setTopSheet, setTopSheetContent, products } = useStore()
   const [product, setProduct] = useState<IProduct[]>([])
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/product`)
+    fetch(`${process.env.SERVER_URL}/api/product`)
       .then((res) => {
         if (!res.ok) {
           throw new Error('Network response was not ok')
@@ -118,7 +118,7 @@ const AdminHomeSection = () => {
             setTopSheet(true)
           }}
         >
-          Add Product
+          Add Home Section
         </button>
         <Table
           dataSource={product}
@@ -130,4 +130,4 @@ const AdminHomeSection = () => {
   )
 }
 
-export default AdminHomeSection
+export default AdminProductSection

@@ -62,7 +62,7 @@ export async function apiUpdateProduct(productData: any): Promise<Product> {
 }
 
 export async function apiFetchSingleProduct(
-  productId: string,
+  productId: number,
 ): Promise<Product> {
   const response = await fetch(`${SERVER_ENDPOINT}/api/product/${productId}`)
   return handleResponse<ProductResponse>(response).then(
@@ -82,7 +82,7 @@ export async function apiFetchProducts(
   )
 }
 
-export async function apiDeleteProduct(productId: string): Promise<void> {
+export async function apiDeleteProduct(productId: number): Promise<void> {
   const response = await fetch(`${SERVER_ENDPOINT}/api/product/${productId}`, {
     method: 'DELETE',
   })

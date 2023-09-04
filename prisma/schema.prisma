@@ -72,6 +72,7 @@ model Product {
   brand String
   colors String?
   sizes String?
+  homeSection HomeSection[] @relation("HomeSectionProducts")
 }
 
 model ProductImage {
@@ -81,4 +82,20 @@ model ProductImage {
   path String
   product Product @relation(fields: [productId], references: [id])
   productId Int
+}
+
+model HeroBanner {
+  id Int @id @default(autoincrement())
+  fileName String
+  originalFileName String
+  path String
+}
+
+model HomeSection {
+  id Int @id @default (autoincrement())
+  title String
+  subtitle String?
+  fileName String
+  path String
+  products Product[] @relation("HomeSectionProducts")
 }

@@ -8,7 +8,6 @@ import {
   UploadProps,
 } from 'antd/es/upload/interface'
 import { PlusOutlined } from '@ant-design/icons'
-import Image from 'next/image'
 
 export interface UploadPhotoProps {
   action: string
@@ -36,35 +35,24 @@ function AdminUploadPhoto({
   const [previewOpen, setPreviewOpen] = useState(false)
   const [previewImage, setPreviewImage] = useState('')
   const [previewTitle, setPreviewTitle] = useState('')
-  const [fileList, setFileList] = useState<UploadFile[]>([
-    {
-      uid: '1',
-      name: 'fifthJacketImage.png',
-      status: 'done',
-      url: `http://localhost:3000/api/file?filename=fifthJacketImage.png`,
-    },
-    {
-      uid: '2',
-      name: 'instagramlogo.png',
-      status: 'done',
-      url: 'http://localhost:3000/api/file?filename=instagramlogo.png',
-    },
-  ])
+  const [fileList, setFileList] = useState<UploadFile[]>([])
 
   console.log(process.env.NEXT_PUBLIC_SERVER_URL)
   const fetchPhoto = async () => {
     try {
-      const response = await fetch(`/api/product/${productId}/upload`)
+      const response = await fetch(`${action}`)
       const res = await response.json()
       console.log(res.data)
-      //   setFileList(res.data?.map((img: any) => {
-      //    return {
-      //        uid: img.id,
-      //        name: img.fileName,
-      //        status: 'done',
-      //        url: `http://localhost:3000/api/file?filename=fifthJacketImage.png`
-      //    }
-      //   }))
+      setFileList(
+        res.data?.map((img: any) => {
+          return {
+            uid: img.id,
+            name: img.fileName,
+            status: 'done',
+            url: `${process.env.NEXT_PUBLIC_SERVER_URL}/api/file?filename=${img.fileName}`,
+          }
+        }),
+      )
     } catch (error: any) {
       console.log(error)
     }
@@ -72,7 +60,6 @@ function AdminUploadPhoto({
 
   useEffect(() => {
     if (productId) {
-      console.log(productId)
       fetchPhoto()
     }
   }, [])
@@ -94,11 +81,17 @@ function AdminUploadPhoto({
   const handleRemove = async (file: UploadFile) => {
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_URL}/${action}?filename=${file.name}`,
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/${action}?fileId=${file.uid}`,
         {
           method: 'DELETE',
         },
       )
+      const res = await response.json()
+      if (res.status == 'failed') {
+        message.error('Failed to delete photo')
+        return true
+      }
+
       message.success('Photo deleted successfully')
       return true
     } catch (error: any) {
@@ -119,7 +112,7 @@ function AdminUploadPhoto({
   return (
     <>
       <Upload
-        action={`http://localhost:3000/${action}`}
+        action={`${process.env.NEXT_PUBLIC_SERVER_URL}/${action}`}
         listType={listType}
         fileList={fileList}
         onPreview={handlePreview}
@@ -136,7 +129,7 @@ function AdminUploadPhoto({
         footer={null}
         onCancel={handleCancel}
       >
-        <Image alt="example" style={{ width: '100%' }} src={previewImage} />
+        <img alt="example" style={{ width: '100%' }} src={previewImage} />
       </Modal>
     </>
   )

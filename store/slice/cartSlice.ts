@@ -1,10 +1,10 @@
 import { StateCreator } from 'zustand'
-import { Product } from './productSlice'
+import { IProduct } from './productSlice'
 import Image1 from '../../image/man 1.png'
 
 export interface CartSlice {
-  cart: Product[]
-  addToCart: (product: Product) => void
+  cart: IProduct[]
+  addToCart: (product: IProduct) => void
   removeFromCart: (productId: number) => void
   updateQuantity: (productId: number, action: 'increase' | 'decrease') => void
 }
@@ -108,7 +108,7 @@ export const CreateCartSlice: StateCreator<CartSlice> = (set, get) => ({
       brand: 'legacy',
     },
   ],
-  addToCart: (product: Product) => {
+  addToCart: (product: IProduct) => {
     const cart = get().cart
     const findProduct = cart.find((p) => p.id == product.id)
     if (findProduct && findProduct.quantity) {

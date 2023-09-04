@@ -4,6 +4,7 @@ import { StateCreator } from 'zustand'
 export interface IProduct {
   id: number
   title: string
+  image?: string | StaticImageData
   category: string
   available?: number
   price: number
@@ -11,6 +12,7 @@ export interface IProduct {
   brand: string
   colors?: string
   sizes?: string
+  quantity?: number
 }
 
 export interface IProductSlice {
