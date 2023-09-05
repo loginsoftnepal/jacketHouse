@@ -5,10 +5,12 @@ import { useState } from 'react'
 import { Select, Space, message } from 'antd'
 import type { SelectProps } from 'antd'
 import AdminUploadPhoto from '../AdminUploadPhoto/AdminUploadPhoto'
-import { apiCreateHomeSection, apiUpdateHomeSection } from '@/app/api-request/homeSectionCalls'
+import {
+  apiCreateHomeSection,
+  apiUpdateHomeSection,
+} from '@/app/api-request/homeSectionCalls'
 import { useStore } from '@/store/useStore'
 import { IProduct } from '@/store/slice/productSlice'
-
 
 const handleChange = (value: string[]) => {
   console.log(`selected ${value}`)
@@ -19,7 +21,6 @@ export interface SectionEditProps {
   method: string
   updateData?: IHomeSection
 }
-
 
 const AdminHomeSectionEdit = (props: SectionEditProps) => {
   const { url, method } = props
@@ -40,13 +41,12 @@ const AdminHomeSectionEdit = (props: SectionEditProps) => {
   }, [])
 
   useEffect(() => {
-     const result = products.map((data: IProduct) => {
+    const result = products.map((data: IProduct) => {
       return {
-         value: data.id,
-          label: data.title
-        }
-       }
-      )
+        value: data.id,
+        label: data.title,
+      }
+    })
     setSelectProduct(result)
   }, [products])
 

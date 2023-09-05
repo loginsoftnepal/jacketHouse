@@ -2,6 +2,7 @@ import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import { getServerSession, type NextAuthOptions } from 'next-auth'
 import { prisma } from './db'
 import { env } from '../env.mjs'
+import { compare } from 'bcryptjs'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { GetServerSidePropsContext } from 'next'
 
@@ -45,7 +46,11 @@ export const authOptions: NextAuthOptions = {
       name: 'Credentials',
 
       credentials: {
-        username: { label: 'Username', type: 'text', placeholder: 'jsmith' },
+        email: {
+          label: 'Email',
+          type: 'text',
+          placeholder: 'example@gmail.com',
+        },
         password: { label: 'Password', type: 'password' },
       },
 
@@ -56,23 +61,31 @@ export const authOptions: NextAuthOptions = {
         // e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
         // You can also use the `req` object to obtain additional parameters
         // (i.e., the request IP address)
-        if (!credentials?.username || !credentials?.password) {
+        if (!credentials?.email || !credentials?.password) {
           return null
         }
 
-        const res = await fetch('/your/endpoint', {
-          method: 'POST',
-          body: JSON.stringify(credentials),
-          headers: { 'Content-Type': 'application/json' },
+        console.log(credentials.email, credentials.password)
+        const user = await prisma.user.findUnique({
+          where: {
+            email: credentials.email,
+          },
         })
-        const user = await res.json()
 
-        // If no error and we have user data, return it
-        if (res.ok && user) {
-          return user
+        console.log(user)
+        if (
+          !user ||
+          !(await compare(credentials.password, user.password as string))
+        ) {
+          return null
         }
-        // Return null if user data could not be retrieved
-        return null
+
+        return {
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          randomKey: 'Hey cool',
+        }
       },
     }),
   ],

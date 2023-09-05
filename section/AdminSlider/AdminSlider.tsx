@@ -91,11 +91,6 @@ function SliderNav(props: SliderProps) {
       <BsAppIndicator />,
     ),
     getItem(
-      <Link href={'/admin/home/membership'}>Membership</Link>,
-      'membership',
-      <BsAppIndicator />,
-    ),
-    getItem(
       <Link href={'/admin/home/sales'}>Sales</Link>,
       'sales',
       <BsAppIndicator />,

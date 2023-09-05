@@ -64,22 +64,29 @@ export async function apiUpdateHomeSection(
   )
 }
 
-export async function apiFetchHomeSection():Promise<HomeSection[]> {
+export async function apiFetchHomeSection(): Promise<HomeSection[]> {
   const response = await fetch(`${SERVER_ENDPOINT}/api/homeSection`)
-  return handleResponse<HomeSectionListResponse>(response).then((data) => data.homeSection)
-} 
+  return handleResponse<HomeSectionListResponse>(response).then(
+    (data) => data.homeSection,
+  )
+}
 
-export async function apiDeleteHomeSection(homeSectionId: number):Promise<void> {
-  const response = await fetch(`${SERVER_ENDPOINT}/api/homeSection/${homeSectionId}`, {
-     method: 'DELETE',
-  })
+export async function apiDeleteHomeSection(
+  homeSectionId: number,
+): Promise<void> {
+  const response = await fetch(
+    `${SERVER_ENDPOINT}/api/homeSection/${homeSectionId}`,
+    {
+      method: 'DELETE',
+    },
+  )
 
-  if(response.status !== 204) {
-    const errorResponse: ErrorResponse = await response.json();
-    if(errorResponse) {
+  if (response.status !== 204) {
+    const errorResponse: ErrorResponse = await response.json()
+    if (errorResponse) {
       throw new Error(errorResponse.message)
     } else {
-       throw new Error(`API-Error: ${response.status}`)
+      throw new Error(`API-Error: ${response.status}`)
     }
   }
 }

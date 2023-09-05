@@ -5,24 +5,61 @@ import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Icons } from '@/components/Icons/Icons'
+import { useRouter } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
+import { signIn } from 'next-auth/react'
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
+  const router = useRouter()
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
+  const [error, setError] = React.useState('')
+  const [formValues, setFormValues] = React.useState({
+    email: '',
+    password: '',
+  })
+
+  const searchParams = useSearchParams()
+  const callBackurl = searchParams.get('callbackUrl') || '/home'
 
   async function onSubmit(event: React.SyntheticEvent) {
     event.preventDefault()
     setIsLoading(true)
 
-    setTimeout(() => {
+    try {
+      const res = await signIn('credentials', {
+        redirect: false,
+        email: formValues.email,
+        password: formValues.password,
+        callBackurl,
+      })
+
+      setFormValues({ email: '', password: '' })
       setIsLoading(false)
-    }, 3000)
+
+      if (!res?.error) {
+        router.push(callBackurl)
+      } else {
+        setError('Invalid email or password')
+      }
+    } catch (error: any) {
+      setIsLoading(false)
+      setError(error)
+    }
+  }
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target
+    setFormValues({ ...formValues, [name]: value })
   }
 
   return (
     <div className={cn('grid gap-6', className)} {...props}>
-      <form method="post" action="/api/auth/signin/email" onSubmit={onSubmit}>
+      <form onSubmit={onSubmit}>
+        {error && (
+          <p className="text-center bg-red-300 py-4 mb-6 rounded">{error}</p>
+        )}
         <div className="grid gap-2">
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="email">
@@ -30,21 +67,30 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
             </Label>
             <Input
               id="email"
+              name="email"
               placeholder="name@example.com"
               type="email"
               autoCapitalize="none"
               autoComplete="email"
               autoCorrect="off"
               disabled={isLoading}
+              value={formValues.email}
+              onChange={handleChange}
             />
+            <Label className="sr-only" htmlFor="email">
+              Password
+            </Label>
             <Input
               id="password"
+              name="password"
               placeholder="password123,"
               type="password"
               autoCapitalize="none"
-              autoComplete="email"
+              autoComplete="password"
               autoCorrect="off"
               disabled={isLoading}
+              value={formValues.password}
+              onChange={handleChange}
             />
           </div>
           <Button disabled={isLoading}>

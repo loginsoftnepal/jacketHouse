@@ -7,9 +7,9 @@ export async function PATCH(
 ) {
   try {
     const id = params.id
-    const json = await request.json()
+    let json = await request.json()
 
-    const updated_homeSection = await prisma.homeSection.update({
+    const updated_brand = await prisma.brand.update({
       where: { id },
       data: json,
     })
@@ -17,7 +17,7 @@ export async function PATCH(
     let json_response = {
       status: 'success',
       data: {
-        homeSection: updated_homeSection,
+        brand: updated_brand,
       },
     }
 
@@ -28,10 +28,7 @@ export async function PATCH(
       message: error.message,
     }
 
-    return new NextResponse(JSON.stringify(error_response), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json ' },
-    })
+    return NextResponse.json(error_response)
   }
 }
 
@@ -40,21 +37,12 @@ export async function DELETE(
   { params }: { params: { id: number } },
 ) {
   try {
-    const id = params.id
-    await prisma.homeSection.delete({
-      where: { id },
-    })
-
-    return new NextResponse(null, { status: 204 })
   } catch (error: any) {
     let error_response = {
       status: 'error',
       message: error.message,
     }
 
-    return new NextResponse(JSON.stringify(error_response), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    })
+    return NextResponse.json(error_response)
   }
 }
