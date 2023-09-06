@@ -36,8 +36,7 @@ function ProfileForm() {
       message: "Phone number must be valid",
      }).max(100, {
       message: "Phone number must be valid",
-     }),
-
+     })
  })
 
  const form = useForm<z.infer<typeof formSchema>>({
