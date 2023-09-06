@@ -2,9 +2,9 @@ import Image from 'next/image'
 import Searchbar from '../Searchbar/Searchbar'
 import Logo from '../../image/Logo.png'
 import NavMenu from '../NavMenu/NavMenu'
-import NavItem from '../NavItem/NavItem'
 import Link from 'next/link'
 import MobileMenuContainer from '../MobileMenu/MobileMenuContainer'
+import NavItemContainer from '../NavItemContainer/NavItemContainer'
 
 export default function Navbar() {
   return (
@@ -24,7 +24,7 @@ export default function Navbar() {
         className="my-2 hidden lg:flex"
       />
       <NavMenu />
-      <NavItem hidden={true} />
+      <NavItemContainer hidden={true} />
       <MobileMenuContainer />
     </div>
   )

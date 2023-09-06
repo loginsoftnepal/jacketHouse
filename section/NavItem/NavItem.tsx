@@ -1,5 +1,5 @@
-'use client'
-import { Button } from '@/components/ui/button'
+"use client"
+import React from 'react'
 import {
   Sheet,
   SheetClose,
@@ -10,28 +10,27 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet'
-import { useStore } from '@/store/useStore'
-import { LayoutGrid } from 'lucide-react'
-import React from 'react'
-import CartItem from '../CartItem/CartItem'
-import { signIn, useSession } from 'next-auth/react'
 import Image from 'next/image'
 import CartSvg from '../../image/Group 3.svg'
-import User from '../../image/ion_person-outline.svg'
+import { useStore } from '@/store/useStore'
+import CartItem from '../CartItem/CartItem'
+import { Button } from '@/components/ui/button'
+import { Session } from 'next-auth'
 import NavProfile from '../NavProfile/NavProfile'
+import { signIn } from 'next-auth/react'
+import { User } from 'lucide-react'
 
-interface PropsType {
-  hidden?: boolean
+interface NavItemProps {
+  session: Session | null;
 }
+function NavItem({session}: NavItemProps) {
 
-function NavItem(props: PropsType) {
   const { cart } = useStore()
-  const session = useSession()
-  return (
-    <div
-      className={`hidden lg:flex justify-around lg:justify-center basis-[50%] lg:basis-[15%] 2xl:basis-[10%] w-full items-center`}
+
+  return (  
+  <div className={`hidden lg:flex justify-around lg:justify-center basis-[50%] lg:basis-[15%] 2xl:basis-[10%] w-full items-center`}
     >
-      <div className="relative mx-4 2xl:mx-4 lg:mt-2">
+     <div className="relative mx-4 2xl:mx-4 lg:mt-2">
         <Sheet>
           <SheetTrigger>
             {/* <ShoppingBag color="#000000" strokeWidth={1.75} /> */}
@@ -65,7 +64,7 @@ function NavItem(props: PropsType) {
       </div>
 
       <div>
-        {session && session.status === 'authenticated' ? (
+        {session && session ? (
           <NavProfile />
         ) : (
           <Button
@@ -73,17 +72,13 @@ function NavItem(props: PropsType) {
             className="rounded-3xl py-2"
             onClick={() => signIn()}
           >
-            <Image alt="" src={User} className="mr-2" width={20} />
+            <User />
             {`Login`}
           </Button>
         )}
       </div>
-
-      {/* <div className={`hidden lg:inline-block`}>
-        <LayoutGrid color="#000000" fill="#0f0f0f" strokeWidth={1.75} />
-      </div> */}
-    </div>
+      </div>
   )
 }
 
-export default NavItem
+export default NavItem;

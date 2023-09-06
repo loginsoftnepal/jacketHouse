@@ -9,24 +9,24 @@ import { MdSettings } from 'react-icons/md'
 export interface ISidebarItem {
   name: string
   icon: React.ReactNode
+  link: string
 }
 function ProfileSidebar() {
   const sidebarItem: ISidebarItem[] = [
     {
-      name: 'Dashboard',
-      icon: <LayoutGrid size={20} color={'black'} />,
-    },
-    {
       name: 'Profile',
       icon: <AiOutlineUser size={20} color={'black'} />,
+      link: '/home/protected/profile'
     },
     {
       name: 'Order',
       icon: <FcSalesPerformance size={20} color={'black'} />,
+      link: '/home/protected/order'
     },
     {
       name: 'Settings',
       icon: <MdSettings size={20} color={'black'} />,
+      link: '/home/protected/settings'
     },
   ]
 

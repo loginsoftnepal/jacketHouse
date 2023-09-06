@@ -12,8 +12,10 @@ function NavProfile() {
   return (
     <Link href="/home/protected/profile">
       <Avatar>
-      <AvatarImage src={ProfileImage} alt="@shadcn" />
-      <AvatarFallback>CN</AvatarFallback>
+      <AvatarImage src={''} alt="@shadcn" />
+      <AvatarFallback>
+        <Image src={ProfileImage} alt='' />
+      </AvatarFallback>
       </Avatar>
     </Link>
   )
