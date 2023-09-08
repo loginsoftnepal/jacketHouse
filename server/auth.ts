@@ -3,7 +3,8 @@ import { getServerSession, type NextAuthOptions } from 'next-auth'
 import { prisma } from './db'
 import { env } from '../env.mjs'
 import { compare } from 'bcryptjs'
-import CredentialsProvider from 'next-auth/providers/credentials'
+import CredentialsProvider from 'next-auth/providers/credentials';
+import GoogleProvider from "next-auth/providers/google";
 import { GetServerSidePropsContext } from 'next'
 
 export const authOptions: NextAuthOptions = {
@@ -15,6 +16,12 @@ export const authOptions: NextAuthOptions = {
     newUser: '/auth/new-user',
   },
   callbacks: {
+    // async signIn({ account, profile }) {
+    //    if(account?.provider === "google") {
+    //      return profile?.emailVerified && profile?.email?.endsWith("@gmail.com")
+    //    }
+    //    return true;
+    // },
     session: ({ session, token }) => {
       return {
         ...session,
@@ -41,7 +48,12 @@ export const authOptions: NextAuthOptions = {
     strategy: 'jwt',
   },
   adapter: PrismaAdapter(prisma),
+  secret: process.env.SECRET,
   providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID as string ,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string
+    }),
     CredentialsProvider({
       name: 'Credentials',
 
@@ -79,7 +91,11 @@ export const authOptions: NextAuthOptions = {
         ) {
           return null
         }
-
+        
+        if(!user.emailVerified) {
+           throw new Error('User is not activated.')
+        }
+        
         return {
           id: user.id,
           email: user.email,

@@ -52,14 +52,34 @@ model User {
   image String?
   accounts Account[]
   sessions Session[]
+  avatar UserAvatar?
+  verificationToken VerificationToken[]
+  forgetPasswordToken ForgetPasswordToken[]
+}
+
+model UserAvatar {
+  id Int @id @default(autoincrement())
+  fileName String
+  originalFileName String
+  path String
+  userId String @unique
+  user User @relation(fields: [userId], references: [id])
 }
 
 model VerificationToken {
-  identifier String
+  id Int @id @default(autoincrement())
   token String @unique
   expires DateTime
+  user User @relation(fields: [userId], references: [id])
+  userId String
+}
 
-  @@unique([identifier, token])
+model ForgetPasswordToken {
+  id Int @id @default(autoincrement())
+  token String @unique
+  expires DateTime
+  user User @relation(fields: [userId], references: [id])
+  userId String
 }
 
 model Product {

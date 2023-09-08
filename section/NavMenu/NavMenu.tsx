@@ -3,10 +3,11 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 export default function NavMenu() {
+
   const pathname = usePathname()
 
   return (
-    <div className="lg:flex lg:h-[5vh] basis-[35%] 2xl:basis-[30%] justify-between items-center px-4 hidden">
+    <div className="lg:flex lg:h-[10vh] 2xl:h-[7vh] basis-[35%] 2xl:basis-[30%] justify-between items-center px-4 hidden">
       <div className={`h-full flex items-center relative`}>
         <Link
           href={'/'}

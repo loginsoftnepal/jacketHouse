@@ -21,9 +21,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <NextAuthProvider>
-          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-        </NextAuthProvider>
           <Toaster />
+          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        </NextAuthProvider> 
       </body>
     </html>
   )

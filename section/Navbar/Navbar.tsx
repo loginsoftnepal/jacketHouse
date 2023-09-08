@@ -7,8 +7,9 @@ import MobileMenuContainer from '../MobileMenu/MobileMenuContainer'
 import NavItemContainer from '../NavItemContainer/NavItemContainer'
 
 export default function Navbar() {
+
   return (
-    <div className="flex py-4 px-4 md:px-12 2xl:px-16 w-full justify-between items-center shadow-xl overflow-hidden">
+    <div className="flex px-4 md:px-12 2xl:px-16 w-full justify-between items-center shadow-xl overflow-hidden">
       <div className="w-[60px] md:w-[90px] lg:w-[130px]">
         <Link href={'/'}>
           <Image

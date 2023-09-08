@@ -1,41 +1,56 @@
 'use client'
 import * as React from 'react'
 import { cn } from '@/lib/utils'
-import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Icons } from '@/components/Icons/Icons'
 import { useRouter } from 'next/navigation'
 import { useSearchParams } from 'next/navigation'
 import { signIn } from 'next-auth/react'
+import { z } from 'zod'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const router = useRouter()
+
+  const formSchema = z.object({
+    email: z.string().email('Email must be in valid format'),
+    password: z.string().min(8, {
+      message: "Password must have at least 8 characters."
+    }).max(30, {
+      message: 'Password must be less than 30 characters long.'
+    })
+  })
+
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
   const [error, setError] = React.useState('')
-  const [formValues, setFormValues] = React.useState({
-    email: '',
-    password: '',
+ 
+  const form = useForm<z.infer<typeof formSchema>>({
+     resolver: zodResolver(formSchema),
+     defaultValues: {
+       email: '',
+       password: ''
+     }
   })
 
   const searchParams = useSearchParams()
   const callBackurl = searchParams.get('callbackUrl') || '/home'
 
-  async function onSubmit(event: React.SyntheticEvent) {
-    event.preventDefault()
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true)
 
     try {
       const res = await signIn('credentials', {
         redirect: false,
-        email: formValues.email,
-        password: formValues.password,
+        email: values.email,
+        password: values.password,
         callBackurl,
       })
 
-      setFormValues({ email: '', password: '' })
       setIsLoading(false)
 
       if (!res?.error) {
@@ -49,58 +64,52 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     }
   }
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target
-    setFormValues({ ...formValues, [name]: value })
-  }
 
   return (
+    <>
     <div className={cn('grid gap-6', className)} {...props}>
-      <form onSubmit={onSubmit}>
+      <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)}>
         {error && (
           <p className="text-center bg-red-300 py-4 mb-6 rounded">{error}</p>
         )}
-        <div className="grid gap-2">
-          <div className="grid gap-1">
-            <Label className="sr-only" htmlFor="email">
-              Email
-            </Label>
-            <Input
-              id="email"
-              name="email"
-              placeholder="name@example.com"
-              type="email"
-              autoCapitalize="none"
-              autoComplete="email"
-              autoCorrect="off"
-              disabled={isLoading}
-              value={formValues.email}
-              onChange={handleChange}
-            />
-            <Label className="sr-only" htmlFor="email">
-              Password
-            </Label>
-            <Input
-              id="password"
-              name="password"
-              placeholder="password123,"
-              type="password"
-              autoCapitalize="none"
-              autoComplete="password"
-              autoCorrect="off"
-              disabled={isLoading}
-              value={formValues.password}
-              onChange={handleChange}
-            />
-          </div>
-          <Button disabled={isLoading}>
+           <FormField
+             control={form.control}
+             name="email"
+             render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input placeholder='Enter email address' {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+             )}
+           />
+
+           <FormField
+             control={form.control}
+             name='password'
+             render={({ field }) => (
+               <FormItem>
+                 <FormLabel>Password</FormLabel>
+                 <FormControl>
+                   <Input placeholder='Enter your password' {...field} />
+                 </FormControl>
+                 <FormMessage />
+               </FormItem>
+               )}
+           />
+
+          <Button disabled={isLoading} className='w-full mt-2' type='submit'>
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
             Sign In with Email
           </Button>
-        </div>
+        
       </form>
+      </Form>
       <div className="relative">
         <div className="absolute inset-0 flex items-center">
           <span className="w-full border-t" />
@@ -111,7 +120,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
           </span>
         </div>
       </div>
-      <Button variant="outline" type="button" disabled={isLoading}>
+      <Button variant="outline" type="button" disabled={isLoading} onClick={() => signIn("google")}>
         {isLoading ? (
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (
@@ -120,5 +129,6 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         Google
       </Button>
     </div>
+    </>
   )
 }
