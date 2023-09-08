@@ -23,7 +23,7 @@ async function handleResponse<T>(response: Response): Promise<T> {
 }
 
 export async function apiForgetPassword(data: any): Promise<ForgetPasswordRespose> {
-    console.log(process.env.NEXT_PUBLIC_SERVER_URL)
+   
     const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/send-token`, {
         method: 'POST',
         headers: {

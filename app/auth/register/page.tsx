@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Image1 from '../../../image/man 1.png'
 import { UserRegisterForm } from '@/section/UserRegisterForm/UserRegisterForm'
+import { Card } from '@/components/ui/card'
 
 export default function Register() {
   return (
@@ -28,6 +29,8 @@ export default function Register() {
           </div>
         </div>
         <div className="lg:p-8">
+
+        <Card className='border-[1px] border-[rgba(0,0,0,0.2)] lg:w-[70%] mx-auto py-8'>
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
             <div className="flex flex-col space-y-2 text-center">
               <h1 className="text-2xl font-semibold tracking-tight">
@@ -39,6 +42,7 @@ export default function Register() {
             </div>
             <UserRegisterForm />
           </div>
+          </Card>
         </div>
       </div>
     </>

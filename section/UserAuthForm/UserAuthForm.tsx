@@ -11,6 +11,7 @@ import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { Card, CardContent } from '@/components/ui/card'
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -68,6 +69,8 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   return (
     <>
     <div className={cn('grid gap-6', className)} {...props}>
+
+     
       <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         {error && (
@@ -101,7 +104,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
                )}
            />
 
-          <Button disabled={isLoading} className='w-full mt-2' type='submit'>
+          <Button disabled={isLoading} className='w-full mt-2' type='submit' >
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}

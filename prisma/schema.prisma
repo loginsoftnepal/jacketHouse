@@ -18,8 +18,8 @@ model Example {
 
 //Necessary for Next Auth
 model Account {
-  id String  @id @default(cuid())
-  userId String
+  id Int  @id @default(autoincrement())
+  userId Int
   type String
   provider String
   providerAccountId String
@@ -36,15 +36,15 @@ model Account {
 }
 
 model Session {
-  id String @id @default(cuid())
+  id Int @id @default(autoincrement())
   sessionToken String @unique
-  userId String
+  userId Int
   expires DateTime
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model User {
-  id String @id @default(cuid())
+  id Int @id @default(autoincrement())
   name String?
   email String? @unique
   emailVerified DateTime?
@@ -55,6 +55,7 @@ model User {
   avatar UserAvatar?
   verificationToken VerificationToken[]
   forgetPasswordToken ForgetPasswordToken[]
+  comment Comment[]
 }
 
 model UserAvatar {
@@ -62,7 +63,7 @@ model UserAvatar {
   fileName String
   originalFileName String
   path String
-  userId String @unique
+  userId Int @unique
   user User @relation(fields: [userId], references: [id])
 }
 
@@ -71,7 +72,7 @@ model VerificationToken {
   token String @unique
   expires DateTime
   user User @relation(fields: [userId], references: [id])
-  userId String
+  userId Int
 }
 
 model ForgetPasswordToken {
@@ -79,7 +80,7 @@ model ForgetPasswordToken {
   token String @unique
   expires DateTime
   user User @relation(fields: [userId], references: [id])
-  userId String
+  userId Int
 }
 
 model Product {
@@ -133,4 +134,12 @@ model Brand {
   filename String
   path String
   title String
+}
+
+model Comment {
+  id Int @id @default(autoincrement())
+  content String
+  createdAt DateTime @default(now())
+  userId Int
+  user User @relation(fields: [userId], references: [id])
 }

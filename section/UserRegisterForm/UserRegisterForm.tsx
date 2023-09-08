@@ -57,7 +57,11 @@ export function UserRegisterForm({ className, ...props }: UserAuthFormProps) {
         return
       }
 
-      signIn(undefined, { callbackUrl: '/' })
+      signIn("credentials", { 
+        email: values.email,
+        password: values.password,
+        callbackUrl: '/auth/new-user',
+       })
     } catch (error: any) {
       setIsLoading(false)
       setError(error)
@@ -69,7 +73,7 @@ export function UserRegisterForm({ className, ...props }: UserAuthFormProps) {
       <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         {error && (
-          <p className="text-center bg-red-300 py-4 mb-6 rounded">{error}</p>
+          <p className="text-center text-red py-4 mb-6 rounded">{error}</p>
         )}
       
           <FormField

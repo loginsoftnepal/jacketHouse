@@ -4,6 +4,7 @@ import { UserAuthForm } from '@/section/UserAuthForm/UserAuthForm'
 import Image from 'next/image'
 import Link from 'next/link'
 import Image1 from '../../../image/man 1.png'
+import { Card } from '@/components/ui/card'
 
 export default function SignIn() {
   return (
@@ -36,16 +37,18 @@ export default function SignIn() {
           </div>
         </div>
         <div className="lg:p-8">
-          <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
 
-            <div className="flex flex-col space-y-2 text-center">
+        <Card className='border-[1px] border-[rgba(0,0,0,0.2)] lg:w-[70%] mx-auto py-8'>
+          <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+             <div className="flex flex-col space-y-2 text-center">
               <h1 className="text-2xl font-semibold tracking-tight">SignIn</h1>
               <p className="text-sm text-muted-foreground">
                 Enter your email below to login
               </p>
-            </div>
-            <UserAuthForm />
+              </div>
+            <UserAuthForm />  
           </div>
+        </Card>
         </div>
       </div>
     </>

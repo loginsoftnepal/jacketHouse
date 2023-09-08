@@ -7,7 +7,7 @@ import { NextResponse } from 'next/server'
 
 export async function POST(req: Request) {
   try {
-    const { name, email, password } = await req.json()
+    const { name, email, password } = await req.json();
     
     const isEmailUsed = await prisma.user.findUnique({
       where: {
@@ -54,7 +54,7 @@ export async function POST(req: Request) {
       data: {
         userId: user.id,
         token: `${randomUUID()}${randomUUID()}`.replace(/-/g, ''),
-        expires: new Date(Date.now() * 1000 * 60 * 30)
+        expires: new Date(Date.now() + 1000 * 60 * 30)
       }
     })
 

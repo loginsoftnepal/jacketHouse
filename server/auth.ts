@@ -16,12 +16,6 @@ export const authOptions: NextAuthOptions = {
     newUser: '/auth/new-user',
   },
   callbacks: {
-    // async signIn({ account, profile }) {
-    //    if(account?.provider === "google") {
-    //      return profile?.emailVerified && profile?.email?.endsWith("@gmail.com")
-    //    }
-    //    return true;
-    // },
     session: ({ session, token }) => {
       return {
         ...session,
@@ -77,14 +71,12 @@ export const authOptions: NextAuthOptions = {
           return null
         }
 
-        console.log(credentials.email, credentials.password)
         const user = await prisma.user.findUnique({
           where: {
             email: credentials.email,
           },
         })
 
-        console.log(user)
         if (
           !user ||
           !(await compare(credentials.password, user.password as string))
@@ -97,9 +89,10 @@ export const authOptions: NextAuthOptions = {
         }
         
         return {
-          id: user.id,
+          id: user.id.toString(),
           email: user.email,
           name: user.name,
+          image: user.image,
           randomKey: 'Hey cool',
         }
       },
