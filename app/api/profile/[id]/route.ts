@@ -50,15 +50,15 @@ export async function GET(
       { status: 404 },
     )
   }
- let profileDto = {
-   id: profile.id,
-   username: profile.name,
-   fullname: profile.fullname,
-   email: profile.email,
-   phone: profile.phone,
-   address1: profile.address1,
-   address2: profile.address2
- }
+  let profileDto = {
+    id: profile.id,
+    username: profile.name,
+    fullname: profile.fullname,
+    email: profile.email,
+    phone: profile.phone,
+    address1: profile.address1,
+    address2: profile.address2,
+  }
   return NextResponse.json(
     { status: 'success', profile: profileDto },
     { status: 200 },

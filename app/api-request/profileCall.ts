@@ -35,7 +35,7 @@ async function handleResponse<T>(response: Response): Promise<T> {
 }
 
 export async function apiUpdateProfile(profileData: any) {
-  console.log(profileData);
+  console.log(profileData)
   const response = await fetch(
     `${SERVER_ENDPOINT}/api/profile/${profileData.id}`,
     {
@@ -46,6 +46,8 @@ export async function apiUpdateProfile(profileData: any) {
       body: JSON.stringify(profileData.formData),
     },
   )
+
+  console.log(await response.json())
 
   return handleResponse<ProfileResponse>(response).then((data) => data.profile)
 }

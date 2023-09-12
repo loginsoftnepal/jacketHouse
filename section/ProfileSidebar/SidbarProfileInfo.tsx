@@ -8,7 +8,7 @@ import { getServerSession } from 'next-auth'
 
 async function SidebarProfileInfo() {
   const session = await getServerSession(authOptions)
-  console.log('serverside', session?.user)
+  // console.log('serverside', session?.user)
   return (
     <div className="w-full px-2 py-4 border-b-[1px] border-b-[rgba(0,0,0,0.2)] bg:white flex justify-around items-center">
       <Avatar>

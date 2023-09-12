@@ -19,8 +19,7 @@ import { apiUpdatePassword } from '@/app/api-request/settingCalls'
 import { useSession } from 'next-auth/react'
 
 function SettingsForm() {
-
-  const session = useSession();
+  const session = useSession()
 
   const formSchema = z.object({
     oldPassword: z.string(),
@@ -45,9 +44,11 @@ function SettingsForm() {
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    // await apiUpdatePassword({id: (session.data?.user as any).id, formData: values})
-
+    const res = await apiUpdatePassword({
+      id: (session.data?.user as any).id,
+      formData: values,
+    })
+    console.log(res)
   }
 
   return (
@@ -77,7 +78,7 @@ function SettingsForm() {
             <FormItem>
               <FormLabel>New Password</FormLabel>
               <FormControl>
-                <Input type="password" placeholder="shadcn" {...field} />
+                <Input placeholder="shadcn" {...field} />
               </FormControl>
               <FormDescription>
                 Enter the new password, must be 8 characters long.

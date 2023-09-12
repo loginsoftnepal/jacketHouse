@@ -19,14 +19,13 @@ import { apiUploadAvatar } from '@/app/api-request/userCalls'
 import { getServerAuthSession } from '@/server/auth'
 
 interface IProfileAvatar {
-   image: string | null | undefined
+  image: string | null | undefined
 }
 
-function ProfileAvatar({image}: IProfileAvatar) {
-
+function ProfileAvatar({ image }: IProfileAvatar) {
   const InpRef = useRef<null | HTMLInputElement>(null)
   const session = useSession()
-  console.log(session.data)
+  // console.log(session.data)
   const [avatar, setAvatar] = useState<File | null>(null)
   const [open, setOpen] = useState(false)
 

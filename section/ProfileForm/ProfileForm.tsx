@@ -25,12 +25,10 @@ import { useSession } from 'next-auth/react'
 import { useInternalMessage } from 'antd/es/message/useMessage'
 
 interface IProfileForm {
-  profile: Profile,
+  profile: Profile
 }
 
-function ProfileForm({profile}: IProfileForm) {
-
-  
+function ProfileForm({ profile }: IProfileForm) {
   const formSchema = z.object({
     username: z
       .string()
@@ -79,7 +77,7 @@ function ProfileForm({profile}: IProfileForm) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: profile?.username ? profile.username : '',
-      fullname: profile?.fullname ? profile.fullname: '',
+      fullname: profile?.fullname ? profile.fullname : '',
       email: profile?.email ? profile.email : '',
       phone: profile?.phone ? profile.phone : '',
       address1: profile?.address1 ? profile.address1 : '',
@@ -89,9 +87,19 @@ function ProfileForm({profile}: IProfileForm) {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      console.log(values);
-      const updatedProfile = await apiUpdateProfile({id: profile.id, formData: {name: values.username, fullname: values.fullname, email: values.email, phone: values.phone, address1: values.address1, address2: values.address2}})
-      console.log(updatedProfile);
+      console.log(values)
+      const updatedProfile = await apiUpdateProfile({
+        id: profile.id,
+        formData: {
+          name: values.username,
+          fullname: values.fullname,
+          email: values.email,
+          phone: values.phone,
+          address1: values.address1,
+          address2: values.address2,
+        },
+      })
+      console.log(updatedProfile)
     } catch (error: any) {
       console.log(error)
     }
