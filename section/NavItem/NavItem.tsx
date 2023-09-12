@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import React from 'react'
 import {
   Sheet,
@@ -21,16 +21,16 @@ import { signIn } from 'next-auth/react'
 import { User } from 'lucide-react'
 
 interface NavItemProps {
-  session: Session | null;
+  session: Session | null
 }
-function NavItem({session}: NavItemProps) {
-
+function NavItem({ session }: NavItemProps) {
   const { cart } = useStore()
 
-  return (  
-  <div className={`hidden lg:flex justify-around lg:justify-center basis-[50%] lg:basis-[15%] 2xl:basis-[10%] w-full items-center`}
+  return (
+    <div
+      className={`hidden lg:flex justify-around lg:justify-center basis-[50%] lg:basis-[15%] 2xl:basis-[10%] w-full items-center`}
     >
-     <div className="relative mx-4 2xl:mx-4 lg:mt-2">
+      <div className="relative mx-4 2xl:mx-4 lg:mt-2">
         <Sheet>
           <SheetTrigger>
             {/* <ShoppingBag color="#000000" strokeWidth={1.75} /> */}
@@ -65,7 +65,7 @@ function NavItem({session}: NavItemProps) {
 
       <div>
         {session && session ? (
-          <NavProfile />
+          <NavProfile session={session} />
         ) : (
           <Button
             variant={'default'}
@@ -77,8 +77,8 @@ function NavItem({session}: NavItemProps) {
           </Button>
         )}
       </div>
-      </div>
+    </div>
   )
 }
 
-export default NavItem;
+export default NavItem

@@ -12,13 +12,13 @@ const getSession = async () => {
 }
 
 async function NavItemContainer(props: PropsType) {
-   const session = await getSession();
+  const session = await getSession()
 
-   return (
-      <div>
-         <NavItem session={session} />
-      </div>
+  return (
+    <div>
+      <NavItem session={session} />
+    </div>
   )
 }
 
-export default NavItemContainer;
+export default NavItemContainer

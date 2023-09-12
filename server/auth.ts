@@ -3,9 +3,10 @@ import { getServerSession, type NextAuthOptions } from 'next-auth'
 import { prisma } from './db'
 import { env } from '../env.mjs'
 import { compare } from 'bcryptjs'
-import CredentialsProvider from 'next-auth/providers/credentials';
-import GoogleProvider from "next-auth/providers/google";
+import CredentialsProvider from 'next-auth/providers/credentials'
+import GoogleProvider from 'next-auth/providers/google'
 import { GetServerSidePropsContext } from 'next'
+import { redirect } from 'next/navigation'
 
 export const authOptions: NextAuthOptions = {
   pages: {
@@ -17,21 +18,24 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     session: ({ session, token }) => {
+      console.log(token)
       return {
         ...session,
         user: {
-          ...session.user,
-          id: token.id,
-          randomKey: token.randomKey,
+          ...token,
         },
       }
     },
-    jwt: ({ token, user }) => {
+    jwt: ({ token, user, trigger, session }) => {
+      if (trigger === 'update') {
+        return { ...token, ...session.user }
+      }
       if (user) {
+        console.log('we are here user', user)
         const u = user as unknown as any
         return {
           ...token,
-          id: u.id,
+          ...user,
           randomKey: u.randomKey,
         }
       }
@@ -45,8 +49,8 @@ export const authOptions: NextAuthOptions = {
   secret: process.env.SECRET,
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID as string ,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
     CredentialsProvider({
       name: 'Credentials',
@@ -75,6 +79,9 @@ export const authOptions: NextAuthOptions = {
           where: {
             email: credentials.email,
           },
+          include: {
+            accounts: true, //include the associated accounts
+          },
         })
 
         if (
@@ -83,16 +90,19 @@ export const authOptions: NextAuthOptions = {
         ) {
           return null
         }
-        
-        if(!user.emailVerified) {
-           throw new Error('User is not activated.')
-        }
-        
+
+        // if(!user.emailVerified) {
+        //    console.log(user);
+        //    return redirect('/auth/new-user')
+        // }
+
         return {
           id: user.id.toString(),
           email: user.email,
           name: user.name,
           image: user.image,
+          emailVerified: user.emailVerified,
+          isGoogleAuth: user.accounts?.length > 0 ? true : false,
           randomKey: 'Hey cool',
         }
       },

@@ -16,17 +16,17 @@ function ProfileSidebar() {
     {
       name: 'Profile',
       icon: <AiOutlineUser size={20} color={'black'} />,
-      link: '/home/protected/profile'
+      link: '/home/protected/profile',
     },
     {
       name: 'Order',
       icon: <FcSalesPerformance size={20} color={'black'} />,
-      link: '/home/protected/order'
+      link: '/home/protected/order',
     },
     {
       name: 'Settings',
       icon: <MdSettings size={20} color={'black'} />,
-      link: '/home/protected/settings'
+      link: '/home/protected/settings',
     },
   ]
 

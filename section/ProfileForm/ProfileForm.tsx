@@ -1,63 +1,104 @@
-"use client"
-import { Icons } from '@/components/Icons/Icons';
-import { Button } from '@/components/ui/button';
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+'use client'
+import { Icons } from '@/components/Icons/Icons'
+import { Button } from '@/components/ui/button'
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import React, { useState } from 'react'
-import { useForm } from 'react-hook-form';
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from 'zod';
+import React, { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as z from 'zod'
+import ProfileAvatar from '../ProfileAvatar/ProfileAvatar'
+import {
+  Profile,
+  apiGetProfile,
+  apiUpdateProfile,
+} from '@/app/api-request/profileCall'
+import { useSession } from 'next-auth/react'
+import { useInternalMessage } from 'antd/es/message/useMessage'
 
-function ProfileForm() {
+interface IProfileForm {
+  profile: Profile,
+}
 
- const formSchema = z.object({
-     username: z.string().min(2, {
-      message: "Username must be at least 2 characters."
-     }).max(30, {
-      message: "Username must not be more than 30 characters long."
-     }),
-     fullname: z.string().min(2, {
-      message: "Username must be at least 2 characters."
-     }).max(30, {
-      message: "Username must not be more than 30 characters long."
-     }),
-     email: z.string().email(),
-     phone: z.string().min(7, {
-      message: "Phone number must be valid",
-     }).max(30, {
-      message: "Phone number must be valid",
-     }),  
-     address1: z.string().min(7, {
-      message: "Phone number must be valid",
-     }).max(100, {
-      message: "Phone number must be valid",
-     }),
-     address2: z.string().min(7, {
-      message: "Phone number must be valid",
-     }).max(100, {
-      message: "Phone number must be valid",
-     })
- })
+function ProfileForm({profile}: IProfileForm) {
 
- const form = useForm<z.infer<typeof formSchema>>({
-     resolver: zodResolver(formSchema),
-     defaultValues: {
-       username: '',
-       fullname: '',
-       email: '',
-       phone: '',
-       address1: '',
-       address2: ''
-     }
- });
+  
+  const formSchema = z.object({
+    username: z
+      .string()
+      .min(2, {
+        message: 'Username must be at least 2 characters.',
+      })
+      .max(30, {
+        message: 'Username must not be more than 30 characters long.',
+      }),
+    fullname: z
+      .string()
+      .min(2, {
+        message: 'Username must be at least 2 characters.',
+      })
+      .max(30, {
+        message: 'Username must not be more than 30 characters long.',
+      }),
+    email: z.string().email(),
+    phone: z
+      .string()
+      .min(7, {
+        message: 'Phone number must be valid',
+      })
+      .max(30, {
+        message: 'Phone number must be valid',
+      }),
+    address1: z
+      .string()
+      .min(7, {
+        message: 'Phone number must be valid',
+      })
+      .max(100, {
+        message: 'Phone number must be valid',
+      }),
+    address2: z
+      .string()
+      .min(7, {
+        message: 'Phone number must be valid',
+      })
+      .max(100, {
+        message: 'Phone number must be valid',
+      }),
+  })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-     console.log(values)
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      username: profile?.username ? profile.username : '',
+      fullname: profile?.fullname ? profile.fullname: '',
+      email: profile?.email ? profile.email : '',
+      phone: profile?.phone ? profile.phone : '',
+      address1: profile?.address1 ? profile.address1 : '',
+      address2: profile?.address2 ? profile.address2 : '',
+    },
+  })
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      console.log(values);
+      const updatedProfile = await apiUpdateProfile({id: profile.id, formData: {name: values.username, fullname: values.fullname, email: values.email, phone: values.phone, address1: values.address1, address2: values.address2}})
+      console.log(updatedProfile);
+    } catch (error: any) {
+      console.log(error)
+    }
   }
 
   return (
-    
-      <Form {...form}>
+    <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
@@ -76,7 +117,7 @@ function ProfileForm() {
           )}
         />
 
-         <FormField
+        <FormField
           control={form.control}
           name="fullname"
           render={({ field }) => (
@@ -93,7 +134,7 @@ function ProfileForm() {
           )}
         />
 
-          <FormField
+        <FormField
           control={form.control}
           name="email"
           render={({ field }) => (
@@ -110,7 +151,7 @@ function ProfileForm() {
           )}
         />
 
-         <FormField
+        <FormField
           control={form.control}
           name="phone"
           render={({ field }) => (
@@ -127,7 +168,7 @@ function ProfileForm() {
           )}
         />
 
-         <FormField
+        <FormField
           control={form.control}
           name="address1"
           render={({ field }) => (
@@ -144,7 +185,7 @@ function ProfileForm() {
           )}
         />
 
-       <FormField
+        <FormField
           control={form.control}
           name="address2"
           render={({ field }) => (
@@ -166,4 +207,4 @@ function ProfileForm() {
   )
 }
 
-export default ProfileForm;
+export default ProfileForm

@@ -23,7 +23,7 @@ export default function RootLayout({
         <NextAuthProvider>
           <Toaster />
           <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-        </NextAuthProvider> 
+        </NextAuthProvider>
       </body>
     </html>
   )
