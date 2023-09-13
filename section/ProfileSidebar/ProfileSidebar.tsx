@@ -38,8 +38,8 @@ function ProfileSidebar() {
 
       <div className="">
         {sidebarItem &&
-          sidebarItem.map((data) => {
-            return <ProfileSidebarItem info={data} />
+          sidebarItem.map((data, index) => {
+            return <ProfileSidebarItem key={index} info={data} />
           })}
       </div>
     </div>

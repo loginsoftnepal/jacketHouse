@@ -1,9 +1,9 @@
 'use client'
-import AdminHomeSectionEdit from '@/section/AdminHomeSectionEdit/AdminHomeSectionEdit'
 import { useStore } from '@/store/useStore'
 import { Image, message, Table } from 'antd'
 import { ColumnsType } from 'antd/es/table'
 import React, { useContext, useState } from 'react'
+import AdminCategoryEdit from './AdminCategoryEdit'
 
 interface DataType {
   key: string
@@ -11,8 +11,9 @@ interface DataType {
   collection: string
 }
 
-const AdminBrandSection = () => {
-  let url = `/contact`
+const AdminCategorySection = () => {
+
+  let url = `/api/category`
   const [selectedData, setSelectedData] = useState({})
   const { setTopSheetContent, setTopSheet } = useStore()
   const tableItemEdit = (record: any) => {}
@@ -47,12 +48,12 @@ const AdminBrandSection = () => {
       ),
     },
 
-    {
-      title: 'Collection',
-      dataIndex: 'collection',
-      key: 'collection',
-      responsive: ['lg'],
-    },
+    // {
+    //   title: '',
+    //   dataIndex: 'collection',
+    //   key: 'collection',
+    //   responsive: ['lg'],
+    // },
 
     {
       title: 'View',
@@ -61,7 +62,7 @@ const AdminBrandSection = () => {
         <button
           className="np-admin-main-button"
           onClick={() => {
-            setTopSheetContent(<AdminHomeSectionEdit method="PUT" url={url} />)
+            setTopSheetContent(<AdminCategoryEdit method="PUT" url={url} />)
             setTopSheet(true)
             tableItemEdit(record)
           }}
@@ -90,11 +91,11 @@ const AdminBrandSection = () => {
         <button
           className="text-white p-2 border-2 m-2 border-white rounded-3xl"
           onClick={() => {
-            setTopSheetContent(<AdminHomeSectionEdit method="POST" url={url} />)
+            setTopSheetContent(<AdminCategoryEdit method="POST" url={url} />)
             setTopSheet(true)
           }}
         >
-          Add Brand
+          Add Category
         </button>{' '}
         <Table dataSource={[]} columns={columns} />
       </div>
@@ -102,4 +103,4 @@ const AdminBrandSection = () => {
   )
 }
 
-export default AdminBrandSection
+export default AdminCategorySection;
