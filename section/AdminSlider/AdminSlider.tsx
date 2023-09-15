@@ -15,6 +15,10 @@ import {
   InsertRowBelowOutlined,
   MinusOutlined,
   AppstoreAddOutlined,
+  CodepenCircleOutlined,
+  ShopOutlined,
+  ShoppingOutlined,
+  GiftOutlined,
 } from '@ant-design/icons'
 import { BsAppIndicator } from 'react-icons/bs'
 import Sider from 'antd/es/layout/Sider'
@@ -83,18 +87,41 @@ function SliderNav(props: SliderProps) {
     getItem(
       <Link href="/admin/home/brand">Our Brands</Link>,
       'ourBrand',
-      <BsAppIndicator />,
+      <CodepenCircleOutlined />,
+    ),
+    getItem(
+      <Link href="/admin/home/category">Our Category</Link>,
+      "ourCategory",
+      <CodepenCircleOutlined />,
     ),
     getItem(
       <Link href="/admin/home/product">Our Products</Link>,
       'ourProduct',
-      <BsAppIndicator />,
+      <ShopOutlined />,
+    ),
+    getItem('Order Page', 'order', <ShoppingOutlined />, [
+    getItem(
+      <Link href={'/admin/home/order/placed'}>Placed Order</Link>,
+      'placed',
+      <GiftOutlined />
     ),
     getItem(
-      <Link href={'/admin/home/sales'}>Sales</Link>,
-      'sales',
-      <BsAppIndicator />,
+      <Link href={'/admin/home/order/progress'}>InTransit Order</Link>,
+      'inTransit',
+      <GiftOutlined />
     ),
+    getItem(
+      <Link href={'/admin/home/order/delivered'}>Delivered Order</Link>,
+      'delivered',
+      <GiftOutlined />,
+    ),
+    getItem(
+      <Link href={'/admin/home/order/cancelled'}>Cancelled Order</Link>,
+      'cancelled',
+      <GiftOutlined />
+    ),
+    ]),
+
   ]
 
   return (

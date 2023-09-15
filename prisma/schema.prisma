@@ -61,6 +61,7 @@ model User {
   verificationToken VerificationToken[]
   forgetPasswordToken ForgetPasswordToken[]
   comment Comment[]
+  order Order[]
 }
 
 model UserAvatar {
@@ -100,6 +101,7 @@ model Product {
   colors String?
   sizes String?
   homeSection HomeSection[] @relation("HomeSectionProducts")
+  orderItem orderItem[]
 }
 
 model ProductImage {
@@ -147,4 +149,33 @@ model Comment {
   createdAt DateTime @default(now())
   userId Int
   user User @relation(fields: [userId], references: [id])
+}
+
+model Order {
+  id Int @id @default(autoincrement())
+  orderStatus String
+  username String
+  email String
+  phone String
+  userId Int 
+  user User @relation(fields: [userId], references: [id])
+  subtotal Int
+  deliveryAmount Int?
+  total Int
+  country String
+  province String
+  city String
+  line1 String
+  line2 String
+  postalCode String
+  orderItem orderItem[]
+}
+
+model orderItem {
+  id Int @id @default(autoincrement())
+  orderId Int
+  order Order @relation(fields: [orderId], references: [id])
+  productId Int
+  product Product @relation(fields: [productId], references: [id])
+  quantity Int
 }
