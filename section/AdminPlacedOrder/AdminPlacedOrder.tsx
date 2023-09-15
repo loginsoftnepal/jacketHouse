@@ -1,3 +1,4 @@
+"use client"
 import { Image, message, Table } from "antd";
 import React, { useContext, useState } from "react";
 import { useEffect } from "react";
@@ -38,7 +39,6 @@ const AdminPlacedOrders = ({placedOrder}: IAdminPlacedOrders) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ orderId: record.id }),
-
       });
       const data = await res.json();
       if (res.status == 200 || res.status == 201) {

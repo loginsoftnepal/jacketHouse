@@ -1,3 +1,4 @@
+"use client"
 import InputField from "@/components/InputField/InputField";
 import { OrderType } from "@/type/types";
 import { Order } from "@prisma/client";
@@ -79,7 +80,6 @@ const statusItems = items.map((ss, index) => {
 
 
     try {
-
       const res = await fetch(url, {
         method: props.method,
         headers: {
