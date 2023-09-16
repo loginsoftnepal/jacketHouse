@@ -12,7 +12,6 @@ interface DataType {
 }
 
 const AdminCategorySection = () => {
-
   let url = `/api/category`
   const [selectedData, setSelectedData] = useState({})
   const { setTopSheetContent, setTopSheet } = useStore()
@@ -103,4 +102,4 @@ const AdminCategorySection = () => {
   )
 }
 
-export default AdminCategorySection;
+export default AdminCategorySection

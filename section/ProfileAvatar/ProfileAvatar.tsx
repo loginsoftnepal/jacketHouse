@@ -25,7 +25,6 @@ interface IProfileAvatar {
 function ProfileAvatar({ image }: IProfileAvatar) {
   const InpRef = useRef<null | HTMLInputElement>(null)
   const session = useSession()
-  // console.log(session.data)
   const [avatar, setAvatar] = useState<File | null>(null)
   const [open, setOpen] = useState(false)
 

@@ -1,12 +1,12 @@
-import AdminPlacedOrders from '@/section/AdminPlacedOrder/AdminPlacedOrder';
+import AdminPlacedOrders from '@/section/AdminPlacedOrder/AdminPlacedOrder'
 import React from 'react'
 
 function PlacedOrderPage() {
   return (
     <div>
-        <AdminPlacedOrders placedOrder={[]} />
+      <AdminPlacedOrders placedOrder={[]} />
     </div>
   )
 }
 
-export default PlacedOrderPage;
+export default PlacedOrderPage

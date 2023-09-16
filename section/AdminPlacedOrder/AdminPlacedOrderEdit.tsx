@@ -1,37 +1,36 @@
-"use client"
-import InputField from "@/components/InputField/InputField";
-import { OrderType } from "@/type/types";
-import { Order } from "@prisma/client";
-import { Dropdown, message, Select, Switch } from "antd";
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+'use client'
+import InputField from '@/components/InputField/InputField'
+import { OrderType } from '@/type/types'
+import { Order } from '@prisma/client'
+import { Dropdown, message, Select, Switch } from 'antd'
+import React from 'react'
+import { useState } from 'react'
+import { useEffect } from 'react'
 
 export interface IAdminPlacedOrderEdit {
-    url: string,
-    method: string,
-    updateData?: OrderType
+  url: string
+  method: string
+  updateData?: OrderType
 }
 
 const AdminPlacedOrdersEdit = (props: IAdminPlacedOrderEdit) => {
-  const {Option} = Select;
-  const { url } = props;
-  const server = process.env.NEXT_PUBLIC_SERVER_URL;
+  const { Option } = Select
+  const { url } = props
+  const server = process.env.NEXT_PUBLIC_SERVER_URL
 
-  const [dropValue, setDropValue] = useState("");
+  const [dropValue, setDropValue] = useState('')
 
- const items = ["readyToShip", "inTransit", "delivered", "cancelled"];
+  const items = ['readyToShip', 'inTransit', 'delivered', 'cancelled']
 
-const statusItems = items.map((ss, index) => {
-  return {
-    key: index,
-    label: <div onClick={(e) => setDropValue(ss)}>{ss}</div>,
-  };
-});
-
+  const statusItems = items.map((ss, index) => {
+    return {
+      key: index,
+      label: <div onClick={(e) => setDropValue(ss)}>{ss}</div>,
+    }
+  })
 
   const [dataValues, setDataValues] = useState<OrderType>({
-    city: "",
+    city: '',
     country: '',
     line1: '',
     line2: '',
@@ -41,79 +40,74 @@ const statusItems = items.map((ss, index) => {
     deliveredDate: '',
     email: '',
     id: '',
-    phone: "",
+    phone: '',
     purchasedDate: '',
     orderStatus: '',
     subtotal: '',
     total: '',
     userId: '',
-    username: "",
+    username: '',
     deliveryAmount: '',
-    products: []
-  });
-
-
-  useEffect(() => {
-    if(props.updateData) {
-    setDataValues(props?.updateData);
-}
-  }, [props.updateData]);
+    products: [],
+  })
 
   useEffect(() => {
-      if(props.updateData) {
-        setDropValue(props?.updateData.orderStatus);
-      }
+    if (props.updateData) {
+      setDataValues(props?.updateData)
+    }
+  }, [props.updateData])
+
+  useEffect(() => {
+    if (props.updateData) {
+      setDropValue(props?.updateData.orderStatus)
+    }
   }, [])
 
   useEffect(() => {
-    if(dropValue) {
-      setDataValues({...dataValues, orderStatus: dropValue})
+    if (dropValue) {
+      setDataValues({ ...dataValues, orderStatus: dropValue })
     }
- }, [dropValue])
-
+  }, [dropValue])
 
   const addData = async () => {
-
     if (!dataValues.orderStatus) {
-      return message.error("Please select a Order Status");
+      return message.error('Please select a Order Status')
     }
-
 
     try {
       const res = await fetch(url, {
         method: props.method,
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(
           props.updateData
-            ?  { 
-               status: dataValues.orderStatus,
+            ? {
+                status: dataValues.orderStatus,
                 orderId: dataValues.id,
               }
             : {
                 ...dataValues,
-              }
+              },
         ),
-      });
+      })
 
-     console.log(dataValues.orderStatus);
+      console.log(dataValues.orderStatus)
 
-      const data = await res.json();
+      const data = await res.json()
       if (res.status == 200 || res.status == 201) {
-        return message.success(data.message);
+        return message.success(data.message)
       }
-      return message.error(data.message);
+      return message.error(data.message)
     } catch (error) {
-      message.error(`${props.updateData ? "Updating" : "Adding"} Failed!`);
+      message.error(`${props.updateData ? 'Updating' : 'Adding'} Failed!`)
     }
-  };
+  }
 
   return (
     <div>
-      <div style={{ display: "flex" }}>
-
-        <Dropdown menu={{ items:statusItems }} placement="bottomLeft">
+      <div style={{ display: 'flex' }}>
+        <Dropdown menu={{ items: statusItems }} placement="bottomLeft">
           <div className="admin-input-field">
             <div className="input-label">Order Status</div>
             <input
@@ -124,7 +118,6 @@ const statusItems = items.map((ss, index) => {
             />
           </div>
         </Dropdown>
-        
 
         <InputField
           inputValue={dataValues}
@@ -135,7 +128,7 @@ const statusItems = items.map((ss, index) => {
           label="OrderId"
         />
       </div>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: 'flex' }}>
         <InputField
           inputValue={dataValues}
           setInputValue={setDataValues}
@@ -153,7 +146,7 @@ const statusItems = items.map((ss, index) => {
           label="Email"
         />
       </div>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: 'flex' }}>
         <InputField
           inputValue={dataValues}
           setInputValue={setDataValues}
@@ -172,8 +165,8 @@ const statusItems = items.map((ss, index) => {
           label="userId"
         />
       </div>
-    
-       <div style={{display: 'flex'}}>
+
+      <div style={{ display: 'flex' }}>
         <InputField
           inputValue={dataValues}
           setInputValue={setDataValues}
@@ -182,8 +175,8 @@ const statusItems = items.map((ss, index) => {
           placeholder="Enter Stripe CustomerId"
           label="CustomerId"
         />
-     
-     <InputField
+
+        <InputField
           inputValue={dataValues}
           setInputValue={setDataValues}
           name="subtotal"
@@ -193,7 +186,7 @@ const statusItems = items.map((ss, index) => {
         />
       </div>
 
-      <div style={{display: 'flex'}}>
+      <div style={{ display: 'flex' }}>
         <InputField
           inputValue={dataValues}
           setInputValue={setDataValues}
@@ -202,8 +195,8 @@ const statusItems = items.map((ss, index) => {
           placeholder="Enter Delivery Amount"
           label="Delivery Amount"
         />
-     
-     <InputField
+
+        <InputField
           inputValue={dataValues}
           setInputValue={setDataValues}
           name="total"
@@ -213,7 +206,7 @@ const statusItems = items.map((ss, index) => {
         />
       </div>
 
-      <div style={{display: 'flex'}}>
+      <div style={{ display: 'flex' }}>
         <InputField
           inputValue={dataValues}
           setInputValue={setDataValues}
@@ -222,8 +215,8 @@ const statusItems = items.map((ss, index) => {
           placeholder="Enter Country Name.."
           label="Country"
         />
-     
-     <InputField
+
+        <InputField
           inputValue={dataValues}
           setInputValue={setDataValues}
           name="province"
@@ -233,7 +226,7 @@ const statusItems = items.map((ss, index) => {
         />
       </div>
 
-      <div style={{display: 'flex'}}>
+      <div style={{ display: 'flex' }}>
         <InputField
           inputValue={dataValues}
           setInputValue={setDataValues}
@@ -242,8 +235,8 @@ const statusItems = items.map((ss, index) => {
           placeholder="Enter city"
           label="City"
         />
-     
-     <InputField
+
+        <InputField
           inputValue={dataValues}
           setInputValue={setDataValues}
           name="line1"
@@ -253,7 +246,7 @@ const statusItems = items.map((ss, index) => {
         />
       </div>
 
-       <div style={{display: 'flex'}}>
+      <div style={{ display: 'flex' }}>
         <InputField
           inputValue={dataValues}
           setInputValue={setDataValues}
@@ -262,8 +255,8 @@ const statusItems = items.map((ss, index) => {
           placeholder="Enter line2"
           label="Line 2"
         />
-     
-     <InputField
+
+        <InputField
           inputValue={dataValues}
           setInputValue={setDataValues}
           name="postalCode"
@@ -279,7 +272,7 @@ const statusItems = items.map((ss, index) => {
           <Switch defaultChecked onChange={onChange} />
         </div>
       </div> */}
-   
+
       {/* <ImagePopupModal
         visible={visible}
         setVisible={setVisible}
@@ -290,7 +283,7 @@ const statusItems = items.map((ss, index) => {
         heading="Select service image"
       /> */}
 
-<div className="sales-list">
+      <div className="sales-list">
         {props.updateData?.products.map((pup) => {
           return (
             <div className="sales-list-item">
@@ -304,26 +297,26 @@ const statusItems = items.map((ss, index) => {
                 <div className="sal-pid">productId: {pup.id}</div>
               </div>
             </div>
-          );
+          )
         })}
       </div>
       <div className="total-container">
         <div className="total-title">Total</div>
-     
+
         <div className="delivery">
-          Delivery: {props.updateData?.deliveredDate.toLocaleString()}{" "}
+          Delivery: {props.updateData?.deliveredDate.toLocaleString()}{' '}
           {props.updateData?.deliveredDate
-            ? " (Rs. " + props.updateData?.deliveryAmount + ")"
-            : ""}
+            ? ' (Rs. ' + props.updateData?.deliveryAmount + ')'
+            : ''}
         </div>
         <div className="total">Total: Rs. {props.updateData?.total}</div>
       </div>
 
       <button onClick={() => addData()} className="np-admin-main-button">
-        {props.updateData ? "Update" : "Add"}
+        {props.updateData ? 'Update' : 'Add'}
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default AdminPlacedOrdersEdit;
+export default AdminPlacedOrdersEdit

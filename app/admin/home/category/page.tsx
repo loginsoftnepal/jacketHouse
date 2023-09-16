@@ -1,13 +1,12 @@
-import AdminCategorySection from '@/section/AdminCategory/AdminCategorySection';
+import AdminCategorySection from '@/section/AdminCategory/AdminCategorySection'
 import React from 'react'
 
 function AdminCategory() {
-
   return (
     <div>
-        <AdminCategorySection />
+      <AdminCategorySection />
     </div>
   )
 }
 
-export default AdminCategory;
+export default AdminCategory

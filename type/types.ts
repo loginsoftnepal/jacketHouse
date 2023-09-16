@@ -1,11 +1,10 @@
-import { ProductType } from "@/section/AdminProductEdit/AdminProductEdit"
-import { Product } from "@prisma/client"
+import { ProductType } from '@/section/AdminProductEdit/AdminProductEdit'
+import { Product } from '@prisma/client'
 
 export type SessionByDevice = {
   dimensionValues: { value: any }[]
   metricValues: { value: any }[]
 }
-
 
 export type OrderType = {
   id: number | string

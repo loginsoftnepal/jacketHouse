@@ -9,7 +9,9 @@ import {
 } from 'antd/es/upload/interface'
 import { PlusOutlined } from '@ant-design/icons'
 
+
 export interface UploadPhotoProps {
+  fetchedFileList?: UploadFile[]
   action: string
   listType: UploadListType | undefined
   name: string
@@ -26,6 +28,7 @@ const getBase64 = (file: RcFile): Promise<string> =>
   })
 
 function AdminUploadPhoto({
+  fetchedFileList,
   action,
   listType,
   name,
@@ -37,30 +40,9 @@ function AdminUploadPhoto({
   const [previewTitle, setPreviewTitle] = useState('')
   const [fileList, setFileList] = useState<UploadFile[]>([])
 
-  console.log(process.env.NEXT_PUBLIC_SERVER_URL)
-  const fetchPhoto = async () => {
-    try {
-      const response = await fetch(`${action}`)
-      const res = await response.json()
-      console.log(res.data)
-      setFileList(
-        res.data?.map((img: any) => {
-          return {
-            uid: img.id,
-            name: img.fileName,
-            status: 'done',
-            url: `${process.env.NEXT_PUBLIC_SERVER_URL}/api/file?filename=${img.fileName}`,
-          }
-        }),
-      )
-    } catch (error: any) {
-      console.log(error)
-    }
-  }
-
   useEffect(() => {
-    if (productId) {
-      fetchPhoto()
+    if (fetchedFileList) {
+       setFileList(fetchedFileList)
     }
   }, [])
 

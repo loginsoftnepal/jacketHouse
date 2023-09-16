@@ -3,7 +3,13 @@ import Image, { StaticImageData } from 'next/image'
 import React from 'react'
 import { X } from 'lucide-react'
 import { useStore } from '@/store/useStore'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 
 export interface CartItemProps {
   item: {
@@ -46,18 +52,17 @@ function CartItem({ item }: CartItemProps) {
         <h4 className="text-sm">{`Quantity: ${item.quantity}`}</h4>
         <div className="w-full flex justify-between">
           <h3 className="text-sm">
-             <Select>
-               <SelectTrigger className='w-[100px] px-0 py-0 my-0'>
-                  <SelectValue placeholder="color" />
-               </SelectTrigger>
-               <SelectContent>
-                  <SelectItem value='sm'>Small</SelectItem>
-                  <SelectItem value='md'>Medium</SelectItem>
-                  <SelectItem value='lg'>Large</SelectItem>
-                  <SelectItem value='l'>Extra Large</SelectItem>
-  
-               </SelectContent>
-             </Select>
+            <Select>
+              <SelectTrigger className="w-[100px] px-0 py-0 my-0">
+                <SelectValue placeholder="color" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="sm">Small</SelectItem>
+                <SelectItem value="md">Medium</SelectItem>
+                <SelectItem value="lg">Large</SelectItem>
+                <SelectItem value="l">Extra Large</SelectItem>
+              </SelectContent>
+            </Select>
           </h3>
           <h3 className="text-sm">{`Size: ${item.size}`}</h3>
         </div>
