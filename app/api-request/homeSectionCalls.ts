@@ -1,3 +1,4 @@
+import { IHomeSection } from '@/section/AdminHomeSectionEdit/AdminHomeSection'
 import { HomeSection, Product } from '@prisma/client'
 
 export type ErrorResponse = {
@@ -35,7 +36,7 @@ async function handleResponse<T>(response: Response): Promise<T> {
 export async function apiCreateHomeSection(
   homeSectionData: any,
 ): Promise<HomeSection> {
-  const response = await fetch(`${SERVER_ENDPOINT}/api/product/`, {
+  const response = await fetch(`${SERVER_ENDPOINT}/api/homeSection/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -50,8 +51,9 @@ export async function apiCreateHomeSection(
 
 export async function apiUpdateHomeSection(
   homeSectionData: any,
+  id: number,
 ): Promise<HomeSection> {
-  const response = await fetch(`${SERVER_ENDPOINT}/api/homeSection`, {
+  const response = await fetch(`${SERVER_ENDPOINT}/api/homeSection/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -89,4 +91,13 @@ export async function apiDeleteHomeSection(
       throw new Error(`API-Error: ${response.status}`)
     }
   }
+}
+
+export async function apiFetchHomeSectionById(homeSectionId: number): Promise<IHomeSection> {
+  const response = await fetch(`${SERVER_ENDPOINT}/api/homeSection/${homeSectionId}`, {
+    method: 'GET',
+  })
+
+  
+  return handleResponse<HomeSectionResponse>(response).then((data) => data.data.homeSection);
 }

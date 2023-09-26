@@ -93,7 +93,7 @@ model Product {
   id Int @id @default(autoincrement())
   title String
   image ProductImage[]
-  category String
+  category String?
   available Int?
   price Int
   description String
@@ -124,8 +124,8 @@ model HomeSection {
   id Int @id @default (autoincrement())
   title String
   subtitle String?
-  fileName String
-  path String
+  fileName String?
+  path String?
   products Product[] @relation("HomeSectionProducts")
 }
 

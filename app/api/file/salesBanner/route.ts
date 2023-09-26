@@ -4,7 +4,7 @@ import { join } from 'path';
 
 export function GET(req: NextRequest) {
   const filename = req.nextUrl.searchParams.get('filename')
-  const filePath = join(process.cwd(), 'public/heroBanner', filename!)
+  const filePath = join(process.cwd(), 'public/salesBanner', filename!)
 
   if (!existsSync(filePath)) {
     return NextResponse.json({
@@ -13,8 +13,9 @@ export function GET(req: NextRequest) {
     })
   }
 
-  const file = readFileSync(filePath);
-  const response = new NextResponse(file);
-  response.headers.set('Content-Type', 'image/png');
+  const file = readFileSync(filePath)
+  const response = new NextResponse(file)
+  response.headers.set('Content-Type', 'image/png')
   return response;
 }
+

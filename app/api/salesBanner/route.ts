@@ -39,10 +39,10 @@ export const POST = async (req: NextRequest) => {
     }
 
     const destinationDirPath = join(process.cwd(), 'public/salesBanner')
-    const { uniqueName, extension } = UniqueFileName(destinationDirPath)
+    const { uniqueName, extension } = UniqueFileName(file.name)
     const destination = join(destinationDirPath, uniqueName)
 
-    if (!existsSync(destinationDirPath)) {
+    if (!existsSync(destination)) {
       fs.mkdir(destinationDirPath, { recursive: true })
     }
 

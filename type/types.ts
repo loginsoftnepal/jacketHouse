@@ -27,3 +27,10 @@ export type OrderType = {
   deliveryAmount: number | string
   products: ProductType[]
 }
+
+export interface fileListType {
+  uid: number | undefined,
+  name: string,
+  status: string,
+  url: string
+}

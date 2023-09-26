@@ -99,7 +99,7 @@ export async function DELETE(
       data: homeSection,
     })
 
-    if (existsSync(filePath)) {
+    if (filePath && existsSync(filePath)) {
       await deletePhoto(filePath)
     }
 

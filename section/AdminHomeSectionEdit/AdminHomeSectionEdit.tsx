@@ -1,9 +1,10 @@
-import { IHomeSection } from '@/app/admin/home/homeSection/page'
+"use client";
+import { IHomeSection } from './AdminHomeSection'
 import InputField from '@/components/InputField/InputField'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { Select, Space, message } from 'antd'
-import type { SelectProps } from 'antd'
+import type { SelectProps, UploadFile } from 'antd'
 import AdminUploadPhoto from '../AdminUploadPhoto/AdminUploadPhoto'
 import {
   apiCreateHomeSection,
@@ -11,15 +12,13 @@ import {
 } from '@/app/api-request/homeSectionCalls'
 import { useStore } from '@/store/useStore'
 import { IProduct } from '@/store/slice/productSlice'
-
-const handleChange = (value: string[]) => {
-  console.log(`selected ${value}`)
-}
+import { fileListType } from '@/type/types';
+import { HomeSection } from '@prisma/client';
 
 export interface SectionEditProps {
   url: string
   method: string
-  updateData?: IHomeSection
+  updateData?: HomeSection
 }
 
 const AdminHomeSectionEdit = (props: SectionEditProps) => {
@@ -27,6 +26,7 @@ const AdminHomeSectionEdit = (props: SectionEditProps) => {
   const { products, setProducts, fetchProducts } = useStore()
   const [isCreated, setIsCreated] = useState(false)
   const [selectProduct, setSelectProduct] = useState<SelectProps['options']>([])
+  const [fileList, setFileList] = useState<UploadFile<any>[] | undefined>([])
   const [dataValues, setDataValues] = useState<IHomeSection>({
     title: '',
     subtitle: '',
@@ -37,6 +37,14 @@ const AdminHomeSectionEdit = (props: SectionEditProps) => {
     if (props.updateData) {
       setDataValues(props.updateData)
       setIsCreated(true)
+      if(props.updateData.fileName) {
+      setFileList([{
+        uid: props.updateData.id.toString(),
+        name: props.updateData.fileName,
+        status: 'done',
+        url: `${process.env.NEXT_PUBLIC_SERVER_URL}/api/file/homeSection?filename=${props.updateData.fileName}`
+      }])
+     }
     }
   }, [])
 
@@ -67,18 +75,23 @@ const AdminHomeSectionEdit = (props: SectionEditProps) => {
       })
   }, [])
 
+const handleChange = (value: string[]) => {
+  console.log(value)
+  setDataValues({...dataValues, products: value})
+}
+
   const handleSubmit = async () => {
-    if (!dataValues.title || !dataValues.subtitle) {
+    if (!dataValues.title || !dataValues.subtitle || dataValues.products?.length == 0) {
       return message.error('please fill all the fields.')
     }
 
     const homeSectionData = JSON.stringify(dataValues)
-
+    console.log(dataValues);
     try {
       const homeSectionValues =
         method == 'POST'
           ? await apiCreateHomeSection(homeSectionData)
-          : await apiUpdateHomeSection(homeSectionData)
+          : await apiUpdateHomeSection(homeSectionData, dataValues.id as number)
       message.success('Product created successfully.')
       setDataValues(homeSectionValues)
       setIsCreated(true)
@@ -93,10 +106,11 @@ const AdminHomeSectionEdit = (props: SectionEditProps) => {
       {isCreated && (
         <div>
           <AdminUploadPhoto
+            fetchedFileList={fileList}
             action={`/api/homeSection/${dataValues.id}/upload`}
             listType="picture-card"
-            name="productPhoto"
-            multiple={true}
+            name="homeSectionPhoto"
+            multiple={false}
           />
         </div>
       )}
@@ -127,6 +141,9 @@ const AdminHomeSectionEdit = (props: SectionEditProps) => {
             style={{ width: '100%', height: '25px' }}
             onChange={handleChange}
             options={selectProduct}
+            value={props.updateData && props.updateData.products?.map((product) => {
+                return {label: product.title, value: product.id}
+            })} 
             placeholder="Please Select product"
           />
         </Space>

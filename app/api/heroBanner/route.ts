@@ -28,8 +28,8 @@ export async function GET(request: NextRequest) {
 
 export const POST = async (req: NextRequest) => {
   try {
-    const data = await req.formData()
-    const file: File | null = data.get('heroBanner') as unknown as File
+    const data = await req.formData();
+    const file: File | null = data.get('heroBanner') as unknown as File;
 
     if (!file) {
       return NextResponse.json({

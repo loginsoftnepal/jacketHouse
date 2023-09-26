@@ -21,7 +21,7 @@ export interface ProductType {
   id?: number
   title: string
   image?: string | null
-  category: string
+  category: string | null
   price: number
   colors?: string | null
   sizes?: string | null
@@ -31,8 +31,8 @@ export interface ProductType {
 }
 
 const AdminProductSectionEdit = (props: SectionEditProps) => {
-  const { url, method } = props
-  const [isCreated, setIsCreated] = useState(false)
+  const { url, method } = props;
+  const [isCreated, setIsCreated] = useState(false);
 
   const [dataValues, setDataValues] = useState<ProductType>({
     title: '',
@@ -47,8 +47,8 @@ const AdminProductSectionEdit = (props: SectionEditProps) => {
 
   useEffect(() => {
     if (props.updateData) {
-      setDataValues(props.updateData)
-      setIsCreated(true)
+      setDataValues(props.updateData);
+      setIsCreated(true);
     }
   }, [])
   const handleSubmit = async () => {

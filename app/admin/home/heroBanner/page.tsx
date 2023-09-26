@@ -1,21 +1,17 @@
 import AdminUploadPhoto from '@/section/AdminUploadPhoto/AdminUploadPhoto'
 
-
 const getHeroBanner = async () => {
-  const response = await fetch(`${process.env.SERVER_URL}/api/heroBanner`, {
-    method: 'GET',
-  })
-
+  const response = await fetch(`${process.env.SERVER_URL}/api/heroBanner`, { cache: 'no-cache'})
   if (!response.ok) {
     throw new Error('Failed to fetch data.')
   }
-
   return response.json()
 }
 
 async function GalleryList() {
  
 const getData = await getHeroBanner();
+console.log(getData);
 const fileList = getData.heroBanner.map((banner: any) => {
      return {
       uid: banner.id,

@@ -3,7 +3,11 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(request: NextRequest) {
   try {
-    const homeSection = await prisma.homeSection.findMany()
+    const homeSection = await prisma.homeSection.findMany({
+      include: {
+        products: true
+      },
+    });
     let json_response = {
       status: 'success',
       results: homeSection.length,
@@ -24,8 +28,13 @@ export async function GET(request: NextRequest) {
 export const POST = async (req: NextResponse) => {
   try {
     const json = await req.json()
+    console.log(json);
     const homeSection = await prisma.homeSection.create({
-      data: json,
+      data: {...json, products: {
+        connect: json.products.map((productId: number) => {
+          return {id: Number(productId)}
+        })},
+      }
     })
 
     let json_response = {
