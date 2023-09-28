@@ -117,7 +117,7 @@ const AdminHomeSection = ({ homeSectionData }: HomeSectionData) => {
         >
           Add Home Section
         </button>
-        <Table dataSource={homeSection} columns={columns} rowKey={(record) => record.id} />
+        <Table dataSource={homeSection} columns={columns} rowKey={(record) => `${record.id}`} />
       </div>
     </div>
   )

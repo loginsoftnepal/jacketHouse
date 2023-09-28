@@ -4,54 +4,48 @@ import {
   apiUpdateProduct,
 } from '@/app/api-request/productCalls'
 import InputField from '@/components/InputField/InputField'
-import { Product } from '@prisma/client'
+import { Brand, Product } from '@prisma/client'
 import { message, Select } from 'antd'
 import { RcFile } from 'antd/es/upload'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import AdminUploadPhoto from '../AdminUploadPhoto/AdminUploadPhoto'
+import { IBrandSection } from './AdminBrandSection'
+import { apiCreateBrand, apiUpdateBrand } from '@/app/api-request/brandCalls'
 
 export interface SectionEditProps {
   url: string
   method: string
-  updateData?: Product
+  updateData?: Brand
 }
 
-export interface ProductType {
-  id?: number
-  title: string
-}
-
-const AdminProductSectionEdit = (props: SectionEditProps) => {
+const AdminBrandEdit = (props: SectionEditProps) => {
   const { url, method } = props
-  const [isCreated, setIsCreated] = useState(false)
-
-  const [dataValues, setDataValues] = useState<ProductType>({
-    title: '',
+  const [dataValues, setDataValues] = useState<IBrandSection>({
+    title: ''
   })
 
   useEffect(() => {
     if (props.updateData) {
       setDataValues(props.updateData)
-      setIsCreated(true)
     }
   }, [])
+
   const handleSubmit = async () => {
     console.log(dataValues)
     if (!dataValues.title) {
       return message.error('Please fill all the fields.')
     }
 
-    const productData = JSON.stringify(dataValues)
+    const brandData = JSON.stringify(dataValues)
 
     try {
-      const product =
+      const brand =
         method == 'POST'
-          ? await apiCreateProduct(productData)
-          : await apiUpdateProduct(productData)
-      message.success('Product created successfully.')
-      setDataValues(product)
-      setIsCreated(true)
+          ? await apiCreateBrand(brandData)
+          : await apiUpdateBrand(brandData, dataValues.id! )
+      message.success('Brand created successfully.')
+      setDataValues(brand)
     } catch (error: any) {
       message.error(error.toString())
       console.log(error)
@@ -60,17 +54,7 @@ const AdminProductSectionEdit = (props: SectionEditProps) => {
 
   return (
     <>
-      {isCreated && (
-        <div>
-          <AdminUploadPhoto
-            action={`/api/brand/${dataValues.id}/upload`}
-            listType="picture-card"
-            name="productPhoto"
-            multiple={false}
-            productId={dataValues.id}
-          />
-        </div>
-      )}
+      
       <div>
         <div style={{ display: 'flex' }}>
           <InputField
@@ -78,7 +62,7 @@ const AdminProductSectionEdit = (props: SectionEditProps) => {
             setInputValue={setDataValues}
             name="title"
             type="text"
-            placeholder="Enter Product Name..."
+            placeholder="Enter Brand Name..."
             label="Brand Name"
           />
         </div>
@@ -94,4 +78,4 @@ const AdminProductSectionEdit = (props: SectionEditProps) => {
   )
 }
 
-export default AdminProductSectionEdit
+export default AdminBrandEdit;

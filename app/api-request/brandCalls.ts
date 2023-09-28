@@ -21,7 +21,7 @@ async function handleResponse<T>(response: Response): Promise<T> {
   const contentType = response.headers.get('Content-Type')
   const isJson = contentType?.includes('application/json')
   const data = isJson ? await response.json() : await response.text()
-
+  console.log(data);
   if (!response.ok) {
     const message = isJson
       ? data.message || response.statusText
@@ -44,8 +44,8 @@ export async function apiCreateBrand(brandData: any): Promise<Brand> {
   return handleResponse<BrandResponse>(response).then((data) => data.data.brand)
 }
 
-export async function apiUpdateProduct(brandData: any): Promise<Brand> {
-  const response = await fetch(`${SERVER_ENDPOINT}/api/brand`, {
+export async function apiUpdateBrand(brandData: any, id: number): Promise<Brand> {
+  const response = await fetch(`${SERVER_ENDPOINT}/api/brand/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

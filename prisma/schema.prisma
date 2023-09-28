@@ -93,11 +93,13 @@ model Product {
   id Int @id @default(autoincrement())
   title String
   image ProductImage[]
-  category String?
+  categoryId Int?
+  category Category? @relation(fields: [categoryId], references: [id])
   available Int?
   price Int
   description String
-  brand String
+  brandId Int?
+  brand Brand? @relation(fields: [brandId], references: [id])
   colors String?
   sizes String?
   homeSection HomeSection[] @relation("HomeSectionProducts")
@@ -121,7 +123,7 @@ model HeroBanner {
 }
 
 model HomeSection {
-  id Int @id @default (autoincrement())
+  id Int @id @default(autoincrement())
   title String
   subtitle String?
   fileName String?
@@ -137,10 +139,15 @@ model SalesBanner {
 }
 
 model Brand {
-  id Int @id @default(autoincrement())
-  filename String
-  path String
+  id Int @id @default(autoincrement()) 
   title String
+  product Product[]
+}
+
+model Category {
+  id Int @id @default(autoincrement())
+  title String
+  product Product[]
 }
 
 model Comment {

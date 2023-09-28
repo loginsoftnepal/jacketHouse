@@ -1,14 +1,14 @@
 import { prisma } from '@/server/db'
 import { NextResponse } from 'next/server'
 
-export async function PATCH(
+export async function PUT(
   request: Request,
   { params }: { params: { id: number } },
 ) {
   try {
-    const id = params.id
+    const id = Number(params.id)
     let json = await request.json()
-
+   console.log(id);
     const updated_brand = await prisma.brand.update({
       where: { id },
       data: json,
