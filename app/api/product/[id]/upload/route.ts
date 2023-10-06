@@ -67,7 +67,7 @@ export async function GET(
         productId: id,
       },
     })
-
+    
     let json_response = {
       status: 'success',
       data: productImage,

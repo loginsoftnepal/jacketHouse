@@ -9,13 +9,14 @@ export async function GET(request: NextRequest) {
   const limit = limit_str ? parseInt(limit_str, 10) : 10
   const skip = (page - 1) * limit
 
-  console.log('we are here')
   const products = await prisma.product.findMany({
-    skip,
-    take: limit,
+    include: {
+      category: true,
+      brand: true,
+      image: true,
+    }
   })
 
-  console.log(products)
   let json_response = {
     status: 'success',
     results: products.length,
@@ -30,13 +31,16 @@ export async function POST(request: Request) {
     const json = await request.json()
 
     const product = await prisma.product.create({
-      data: json,
-    })
+      data: {
+        ...json,
+        category: { connect: {id: Number(json.category)}},
+        brand: { connect: {id: Number(json.brand)}},
+    }});
 
     let json_response = {
       status: 'success',
       data: {
-        product,
+        product
       },
     }
 

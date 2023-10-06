@@ -10,6 +10,8 @@ import { RcFile } from 'antd/es/upload'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import AdminUploadPhoto from '../AdminUploadPhoto/AdminUploadPhoto'
+import { ICategorySection } from './AdminCategorySection'
+import { apiCreateCategory, apiUpdateCategory } from '@/app/api-request/categoryCalls'
 
 export interface SectionEditProps {
   url: string
@@ -17,23 +19,17 @@ export interface SectionEditProps {
   updateData?: Product
 }
 
-export interface ProductType {
-  id?: number
-  title: string
-}
-
 const AdminCategoryEdit = (props: SectionEditProps) => {
   const { url, method } = props
   const [isCreated, setIsCreated] = useState(false)
 
-  const [dataValues, setDataValues] = useState<ProductType>({
+  const [dataValues, setDataValues] = useState<ICategorySection>({
     title: '',
   })
 
   useEffect(() => {
     if (props.updateData) {
       setDataValues(props.updateData)
-      setIsCreated(true)
     }
   }, [])
   const handleSubmit = async () => {
@@ -42,16 +38,15 @@ const AdminCategoryEdit = (props: SectionEditProps) => {
       return message.error('Please fill all the fields.')
     }
 
-    const productData = JSON.stringify(dataValues)
+    const cateogryData = JSON.stringify(dataValues)
 
     try {
-      const product =
+      const category =
         method == 'POST'
-          ? await apiCreateProduct(productData)
-          : await apiUpdateProduct(productData)
-      message.success('Product created successfully.')
-      setDataValues(product)
-      setIsCreated(true)
+          ? await apiCreateCategory(cateogryData)
+          : await apiUpdateCategory(cateogryData, dataValues.id!)
+      message.success('Category created successfully.')
+      setDataValues(category)
     } catch (error: any) {
       message.error(error.toString())
       console.log(error)
@@ -60,17 +55,6 @@ const AdminCategoryEdit = (props: SectionEditProps) => {
 
   return (
     <>
-      {isCreated && (
-        <div>
-          <AdminUploadPhoto
-            action={`/api/brand/${dataValues.id}/upload`}
-            listType="picture-card"
-            name="productPhoto"
-            multiple={false}
-            productId={dataValues.id}
-          />
-        </div>
-      )}
       <div>
         <div style={{ display: 'flex' }}>
           <InputField

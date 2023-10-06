@@ -102,6 +102,7 @@ model Product {
   brand Brand? @relation(fields: [brandId], references: [id])
   colors String?
   sizes String?
+  gender String?
   homeSection HomeSection[] @relation("HomeSectionProducts")
   orderItem orderItem[]
 }

@@ -47,8 +47,8 @@ export async function apiCreateProduct(productData: any): Promise<Product> {
   )
 }
 
-export async function apiUpdateProduct(productData: any): Promise<Product> {
-  const response = await fetch(`${SERVER_ENDPOINT}/api/product/`, {
+export async function apiUpdateProduct(productData: any, productId: number): Promise<Product> {
+  const response = await fetch(`${SERVER_ENDPOINT}/api/product/${productId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

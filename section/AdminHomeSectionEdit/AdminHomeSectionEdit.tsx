@@ -13,12 +13,16 @@ import {
 import { useStore } from '@/store/useStore'
 import { IProduct } from '@/store/slice/productSlice'
 import { fileListType } from '@/type/types';
-import { HomeSection } from '@prisma/client';
+import { HomeSection, Product } from '@prisma/client';
 
 export interface SectionEditProps {
   url: string
   method: string
-  updateData?: HomeSection
+  updateData?: HomeSectionType
+}
+
+export interface HomeSectionType extends HomeSection {
+  product?: Product[]
 }
 
 const AdminHomeSectionEdit = (props: SectionEditProps) => {
@@ -67,7 +71,6 @@ const AdminHomeSectionEdit = (props: SectionEditProps) => {
         return res.json()
       })
       .then((data) => {
-        console.log(data)
         setProducts(data.products)
       })
       .catch((error) => {
@@ -86,7 +89,6 @@ const handleChange = (value: string[]) => {
     }
 
     const homeSectionData = JSON.stringify(dataValues)
-    console.log(dataValues);
     try {
       const homeSectionValues =
         method == 'POST'
@@ -141,8 +143,8 @@ const handleChange = (value: string[]) => {
             style={{ width: '100%', height: '25px' }}
             onChange={handleChange}
             options={selectProduct}
-            value={props.updateData && props.updateData.products?.map((product) => {
-                return {label: product.title, value: product.id}
+            value={props.updateData && props.updateData.product && props.updateData.product?.map((data) => {
+                return {label: data.title, value: data.id}
             })} 
             placeholder="Please Select product"
           />

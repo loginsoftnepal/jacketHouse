@@ -35,18 +35,22 @@ export async function GET(
   return NextResponse.json(json_response)
 }
 
-export async function PATCH(
+export async function PUT(
   request: Request,
   { params }: { params: { id: number } },
 ) {
   try {
-    const id = params.id
+    const id = Number(params.id);
     let json = await request.json()
 
     const updated_product = await prisma.product.update({
       where: { id },
-      data: json,
-    })
+      data: {
+        ...json,
+        category: { connect: {id: Number(json.category)}},
+        brand: { connect: { id: Number(json.brand)}},
+       },
+    });
 
     let json_response = {
       status: 'success',

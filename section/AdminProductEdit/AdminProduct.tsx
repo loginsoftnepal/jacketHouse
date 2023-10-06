@@ -1,33 +1,31 @@
 'use client'
+import AdminProductSectionEdit from '@/section/AdminProductEdit/AdminProductEdit'
+import { IProduct } from '@/store/slice/productSlice'
 import { useStore } from '@/store/useStore'
+import { Product } from '@prisma/client'
 import { Image, message, Table } from 'antd'
 import { ColumnsType } from 'antd/es/table'
 import React, { useContext, useEffect, useState } from 'react'
-import AdminCategoryEdit from './AdminCategoryEdit'
-import { Category } from '@prisma/client'
 
 interface DataType {
   key: string
   title: string
-  collection: string
+  category: string
 }
 
-export interface ICategorySection {
-  id?: number
-  title: string
+interface ProductSectionData {
+    productData: Product[];
 }
 
-interface CategorySectionData {
-  categoryData: Category[]
-}
+const AdminProductSection = ({ productData }: ProductSectionData) => {
+  let url = `/api/product`
+  const { setTopSheet, setTopSheetContent, products } = useStore()
+  const [product, setProduct] = useState<Product[]>([])
 
-const AdminCategorySection = ({ categoryData }: CategorySectionData) => {
-  let url = `/api/category`
-  const [category, setCategory] = useState<Category[]>([])
-  const { setTopSheetContent, setTopSheet } = useStore()
-   
+
   useEffect(() => {
-    setCategory(categoryData);
+     console.log(productData);
+     setProduct(productData);
   }, [])
 
   const tableItemDelete = async (record: any) => {
@@ -50,7 +48,7 @@ const AdminCategorySection = ({ categoryData }: CategorySectionData) => {
     }
   }
 
-  const columns: ColumnsType<ICategorySection> = [
+  const columns: ColumnsType<Product> = [
     {
       title: 'Title',
       dataIndex: 'title',
@@ -60,13 +58,27 @@ const AdminCategorySection = ({ categoryData }: CategorySectionData) => {
       ),
     },
     {
+      title: 'Price',
+      dataIndex: 'price',
+      key: 'price',
+      render: (text: string, record: any) => (
+         <div>{text}</div>
+      )
+    },
+    {
       title: 'View',
       key: 'view',
       render: (record: any) => (
         <button
-          className="np-admin-main-button"
+          className="font-semibold p-2 rounded-3xl border-[1px] border-black"
           onClick={() => {
-            setTopSheetContent(<AdminCategoryEdit method="PUT" url={url} updateData={record} />)
+            setTopSheetContent(
+              <AdminProductSectionEdit
+                updateData={record}
+                method="PUT"
+                url={url}
+              />,
+            )
             setTopSheet(true)
           }}
         >
@@ -79,7 +91,7 @@ const AdminCategorySection = ({ categoryData }: CategorySectionData) => {
       key: 'delete',
       render: (record: any) => (
         <button
-          className="np-admin-main-button"
+          className="font-semibold p-2 rounded-3xl border-[1px] border-black"
           onClick={() => tableItemDelete(record)}
         >
           Delete
@@ -94,16 +106,22 @@ const AdminCategorySection = ({ categoryData }: CategorySectionData) => {
         <button
           className="text-white p-2 border-2 m-2 border-white rounded-3xl"
           onClick={() => {
-            setTopSheetContent(<AdminCategoryEdit method="POST" url={url} />)
+            setTopSheetContent(
+              <AdminProductSectionEdit url={url} method="POST" />,
+            )
             setTopSheet(true)
           }}
         >
-          Add Category
-        </button>{' '}
-        <Table dataSource={category} columns={columns} rowKey={(record) => `${record.id}`} />
+          Add Product 
+        </button>
+        <Table
+          dataSource={product}
+          columns={columns}
+          rowKey={(record) => `${record.id}`}
+        />
       </div>
     </div>
   )
 }
 
-export default AdminCategorySection
+export default AdminProductSection
